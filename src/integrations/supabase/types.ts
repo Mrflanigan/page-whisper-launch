@@ -14,7 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      business_sites: {
+        Row: {
+          business_name: string
+          created_at: string
+          description: string | null
+          email: string | null
+          hero_image_url: string | null
+          hours_text: string | null
+          id: string
+          logo_url: string | null
+          phone: string | null
+          service_area: string | null
+          tagline: string | null
+          theme: Database["public"]["Enums"]["site_theme"]
+          updated_at: string
+        }
+        Insert: {
+          business_name: string
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          hero_image_url?: string | null
+          hours_text?: string | null
+          id?: string
+          logo_url?: string | null
+          phone?: string | null
+          service_area?: string | null
+          tagline?: string | null
+          theme?: Database["public"]["Enums"]["site_theme"]
+          updated_at?: string
+        }
+        Update: {
+          business_name?: string
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          hero_image_url?: string | null
+          hours_text?: string | null
+          id?: string
+          logo_url?: string | null
+          phone?: string | null
+          service_area?: string | null
+          tagline?: string | null
+          theme?: Database["public"]["Enums"]["site_theme"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +70,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      site_theme: "modern" | "classic" | "bold" | "minimal" | "warm"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +197,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      site_theme: ["modern", "classic", "bold", "minimal", "warm"],
+    },
   },
 } as const
