@@ -112,14 +112,13 @@ const CreateSite = () => {
           </motion.p>
           
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1] tracking-tight">
-            <span className="block">A Website as</span>
+            <span className="block">Professional Website</span>
             <span className="block mt-2">
+              in{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">
-                Remarkable
+                30 Minutes
               </span>
-              {" "}as
             </span>
-            <span className="block">Your Business</span>
           </h1>
           
           <motion.p 
