@@ -5,10 +5,23 @@ import { Smartphone, Camera, ArrowRight, ArrowLeft, Check } from 'lucide-react';
 
 const CreateSite = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Subtle texture overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-accent/3" />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Stunning gradient backgrounds */}
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Main warm gradient - sunset over ocean feel */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50/50 to-rose-50/30" />
+        
+        {/* Golden glow top right */}
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/40 via-orange-200/30 to-transparent rounded-full blur-3xl" />
+        
+        {/* Warm rose glow bottom left */}
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-rose-200/30 via-pink-100/20 to-transparent rounded-full blur-3xl" />
+        
+        {/* Soft peach center accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-r from-orange-100/20 via-amber-100/30 to-yellow-100/20 rounded-full blur-3xl" />
+        
+        {/* Subtle golden shimmer overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-amber-50/40" />
       </div>
 
       {/* Navigation */}
@@ -132,7 +145,7 @@ const CreateSite = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="max-w-3xl mx-auto"
         >
-          <div className="relative border border-accent/20 rounded-sm p-10 md:p-14 bg-gradient-to-b from-card to-background">
+          <div className="relative border border-amber-200/50 rounded-sm p-10 md:p-14 bg-gradient-to-br from-white/80 via-amber-50/50 to-orange-50/30 backdrop-blur-sm shadow-xl shadow-amber-900/5">
             {/* Corner accents */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-accent/40" />
             <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-accent/40" />
@@ -199,23 +212,31 @@ const CreateSite = () => {
           transition={{ duration: 0.6, delay: 1.1 }}
           className="max-w-xl mx-auto text-center"
         >
-          <p className="text-muted-foreground mb-8 text-lg">
-            Ready to elevate your presence?
-          </p>
-          
-          <Link to="/builder">
-            <Button 
-              size="lg" 
-              className="text-lg md:text-xl px-12 py-8 h-auto w-full max-w-md rounded-sm bg-foreground text-background hover:bg-foreground/90 transition-all duration-500 tracking-wide"
-            >
-              Begin Your Journey
-              <ArrowRight className="w-5 h-5 ml-3" />
-            </Button>
-          </Link>
-          
-          <p className="text-muted-foreground mt-8 text-base">
-            A few minutes is all it takes
-          </p>
+          {/* CTA Card with gradient */}
+          <div className="relative p-10 md:p-14 rounded-2xl bg-gradient-to-br from-amber-600 via-orange-600 to-rose-600 shadow-2xl shadow-orange-900/30 overflow-hidden">
+            {/* Shimmer overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/5" />
+            
+            <div className="relative">
+              <p className="text-white/80 mb-6 text-lg">
+                Ready to elevate your presence?
+              </p>
+              
+              <Link to="/builder">
+                <Button 
+                  size="lg" 
+                  className="text-lg md:text-xl px-12 py-8 h-auto w-full rounded-sm bg-white text-amber-900 hover:bg-white/95 transition-all duration-500 tracking-wide shadow-lg"
+                >
+                  Begin Your Journey
+                  <ArrowRight className="w-5 h-5 ml-3" />
+                </Button>
+              </Link>
+              
+              <p className="text-white/70 mt-6 text-base">
+                A few minutes is all it takes
+              </p>
+            </div>
+          </div>
         </motion.div>
       </section>
 
