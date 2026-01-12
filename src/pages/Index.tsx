@@ -55,7 +55,7 @@ const Index = () => {
             </Button>
           </a>
           <p className="text-secondary/70 mt-4 text-sm">
-            Need our service? Feel free to call!
+            Ready to move? Give us a call!
           </p>
         </div>
 
