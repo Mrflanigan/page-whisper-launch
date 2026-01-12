@@ -5,22 +5,8 @@ import heroImage from "@/assets/hero-moving.jpg";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-foreground/90 backdrop-blur-sm py-4 px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Truck className="w-8 h-8 text-secondary" />
-            <span className="text-xl md:text-2xl font-bold text-secondary">Top Choice Moving</span>
-          </div>
-          <a href="tel:253-267-3212" className="hidden sm:flex items-center gap-2 text-secondary hover:text-accent transition-colors">
-            <Phone className="w-5 h-5" />
-            <span className="font-medium">253-267-3212</span>
-          </a>
-        </div>
-      </header>
-
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-16">
+      <section className="relative min-h-screen flex items-start justify-start">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -30,17 +16,17 @@ const Index = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <div className="mb-6">
-            <Truck className="w-16 h-16 mx-auto text-secondary mb-4" />
+        <div className="relative z-10 text-left px-6 md:px-12 pt-12 md:pt-20 max-w-4xl">
+          <div className="flex items-center gap-4 mb-4">
+            <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-secondary mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-6 tracking-tight">
             Top Choice Moving
           </h1>
-          <p className="text-xl md:text-2xl text-secondary/90 mb-8 font-light">
+          <p className="text-xl md:text-2xl text-secondary/90 mb-6 font-light">
             Professional Loading & Unloading Services
           </p>
-          <p className="text-lg md:text-xl text-secondary/80 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-secondary/80 mb-10 max-w-xl">
             We work with Uhaul, Penske, and all moving trucks. Very affordable rates — we come to you!
           </p>
 
