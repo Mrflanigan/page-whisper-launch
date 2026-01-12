@@ -5,8 +5,22 @@ import heroImage from "@/assets/hero-moving.jpg";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-foreground/90 backdrop-blur-sm py-4 px-6">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Truck className="w-8 h-8 text-secondary" />
+            <span className="text-xl md:text-2xl font-bold text-secondary">Top Choice Moving</span>
+          </div>
+          <a href="tel:253-267-3212" className="hidden sm:flex items-center gap-2 text-secondary hover:text-accent transition-colors">
+            <Phone className="w-5 h-5" />
+            <span className="font-medium">253-267-3212</span>
+          </a>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center pt-16">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
