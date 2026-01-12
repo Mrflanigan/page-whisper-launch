@@ -1,12 +1,13 @@
 import { Phone, Clock, MapPin, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -20,7 +21,19 @@ const Index = () => {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
             Top Choice Moving
           </h1>
-          <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "calc(100vw + 100%)" }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+              repeatDelay: 2,
+            }}
+            className="inline-block"
+          >
+            <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
+          </motion.div>
         </div>
 
         {/* Hero Content - Centered */}
