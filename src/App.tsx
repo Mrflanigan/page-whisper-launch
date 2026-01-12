@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Builder from "./pages/Builder";
 import Site from "./pages/Site";
+import MobileUpload from "./pages/MobileUpload";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/builder" element={<Builder />} />
           <Route path="/site/:id" element={<Site />} />
+          <Route path="/upload/:token" element={<MobileUpload />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

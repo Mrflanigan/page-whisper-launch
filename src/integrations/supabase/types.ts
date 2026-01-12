@@ -62,6 +62,44 @@ export type Database = {
         }
         Relationships: []
       }
+      upload_sessions: {
+        Row: {
+          created_at: string
+          expires_at: string
+          id: string
+          site_id: string | null
+          token: string
+          upload_type: string
+          uploaded_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          expires_at?: string
+          id?: string
+          site_id?: string | null
+          token?: string
+          upload_type?: string
+          uploaded_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          id?: string
+          site_id?: string | null
+          token?: string
+          upload_type?: string
+          uploaded_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "upload_sessions_site_id_fkey"
+            columns: ["site_id"]
+            isOneToOne: false
+            referencedRelation: "business_sites"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
