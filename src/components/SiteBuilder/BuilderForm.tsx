@@ -5,11 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { ImageUpload } from './ImageUpload';
+import { MultiMediaUpload } from './MultiMediaUpload';
+import { MultiVideoUpload } from './MultiVideoUpload';
 import { ThemeSelector } from './ThemeSelector';
-import { PhoneUploadModal } from './PhoneUploadModal';
 import { supabase } from '@/integrations/supabase/client';
 import { SiteTheme } from '@/lib/themes';
-import { Loader2, Video } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 interface FormData {
   business_name: string;
@@ -20,9 +21,9 @@ interface FormData {
   hours_text: string;
   service_area: string;
   theme: SiteTheme;
-  hero_image_url?: string;
   logo_url?: string;
-  video_url?: string;
+  gallery_images: string[];
+  videos: string[];
 }
 
 export const BuilderForm = () => {
@@ -37,6 +38,8 @@ export const BuilderForm = () => {
     hours_text: '',
     service_area: '',
     theme: 'modern',
+    gallery_images: [],
+    videos: [],
   });
 
   const handleChange = (field: keyof FormData, value: string) => {
@@ -48,9 +51,24 @@ export const BuilderForm = () => {
     setLoading(true);
 
     try {
+      // Store arrays as JSON strings for hero_image_url (gallery) and add video support
+      const dataToInsert = {
+        business_name: formData.business_name,
+        tagline: formData.tagline,
+        description: formData.description,
+        phone: formData.phone,
+        email: formData.email,
+        hours_text: formData.hours_text,
+        service_area: formData.service_area,
+        theme: formData.theme,
+        logo_url: formData.logo_url,
+        // Store gallery as JSON in hero_image_url field
+        hero_image_url: formData.gallery_images.length > 0 ? JSON.stringify(formData.gallery_images) : null,
+      };
+
       const { data, error } = await supabase
         .from('business_sites')
-        .insert([formData])
+        .insert([dataToInsert])
         .select()
         .single();
 
@@ -149,52 +167,35 @@ export const BuilderForm = () => {
       </div>
 
       {/* Images & Video */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-foreground">Images & Video</h2>
+      <div className="space-y-6">
+        <h2 className="text-xl font-semibold text-foreground">Photos & Videos</h2>
+        <p className="text-sm text-muted-foreground">
+          Images are automatically compressed for fast loading. Videos max 25MB each.
+        </p>
         
-        <div className="grid gap-6 sm:grid-cols-2">
-          <ImageUpload
-            label="Background / Hero Image"
-            value={formData.hero_image_url}
-            onChange={(url) => setFormData(prev => ({ ...prev, hero_image_url: url }))}
-          />
-          
-          <ImageUpload
-            label="Logo (optional)"
-            value={formData.logo_url}
-            onChange={(url) => setFormData(prev => ({ ...prev, logo_url: url }))}
-          />
-        </div>
+        {/* Logo */}
+        <ImageUpload
+          label="Logo (optional)"
+          value={formData.logo_url}
+          onChange={(url) => setFormData(prev => ({ ...prev, logo_url: url }))}
+        />
 
-        {/* Video Upload */}
-        <div className="space-y-3">
-          <Label>Short Video (optional)</Label>
-          <p className="text-sm text-muted-foreground">
-            Have a video on your phone? Upload it easily with a QR code.
-          </p>
-          
-          {formData.video_url ? (
-            <div className="space-y-2">
-              <video 
-                src={formData.video_url} 
-                controls 
-                className="w-full max-h-48 rounded-lg bg-black"
-              />
-              <Button 
-                type="button" 
-                variant="outline" 
-                size="sm"
-                onClick={() => setFormData(prev => ({ ...prev, video_url: undefined }))}
-              >
-                Remove Video
-              </Button>
-            </div>
-          ) : (
-            <PhoneUploadModal 
-              onUploadComplete={(url) => setFormData(prev => ({ ...prev, video_url: url }))}
-            />
-          )}
-        </div>
+        {/* Gallery Images */}
+        <MultiMediaUpload
+          label="Photo Gallery"
+          values={formData.gallery_images}
+          onChange={(urls) => setFormData(prev => ({ ...prev, gallery_images: urls }))}
+          maxFiles={10}
+        />
+
+        {/* Videos */}
+        <MultiVideoUpload
+          label="Videos"
+          values={formData.videos}
+          onChange={(urls) => setFormData(prev => ({ ...prev, videos: urls }))}
+          maxFiles={3}
+          maxSizeMB={25}
+        />
       </div>
 
       {/* Theme */}
