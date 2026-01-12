@@ -17,10 +17,10 @@ const Index = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 text-left px-6 md:px-12 pt-12 md:pt-20 max-w-4xl">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-6 tracking-tight flex items-center gap-4">
-            <Truck className="w-12 h-12 md:w-16 md:h-16" />
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
             Top Choice Moving
           </h1>
+          <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary mb-6" />
           <p className="text-xl md:text-2xl text-secondary/90 mb-6 font-light">
             Professional Loading & Unloading Services
           </p>
