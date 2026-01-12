@@ -112,13 +112,14 @@ const CreateSite = () => {
           </motion.p>
           
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1] tracking-tight">
-            <span className="block">We Build</span>
+            <span className="block">A Website as</span>
             <span className="block mt-2">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">
-                Stunning
+                Remarkable
               </span>
-              {" "}Websites
+              {" "}as
             </span>
+            <span className="block">Your Business</span>
           </h1>
           
           <motion.p 
@@ -127,8 +128,8 @@ const CreateSite = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Transform your vision into a breathtaking digital experience. 
-            No technical skills required — just your story.
+            In just minutes, create a stunning online presence that captures 
+            the essence of what makes you exceptional.
           </motion.p>
 
           {/* CTA Button */}
@@ -162,25 +163,25 @@ const CreateSite = () => {
         >
           <div className="text-center mb-20">
             <p className="text-amber-400/60 text-sm tracking-[0.3em] uppercase mb-4">The Experience</p>
-            <h2 className="font-display text-3xl md:text-5xl text-white">Three Simple Steps</h2>
+            <h2 className="font-display text-3xl md:text-5xl text-white">Three effortless moments to your new website</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { 
                 step: "01", 
-                title: "Share Your Vision", 
-                desc: "Tell us about your business. Your story, your style, your dreams." 
+                title: "Share Your Story", 
+                desc: "Simply tell us your business name and how to reach you. We handle everything else." 
               },
               { 
                 step: "02", 
-                title: "We Craft Magic", 
-                desc: "Our AI transforms your words into a stunning, professional website." 
+                title: "Add Your Images", 
+                desc: "Upload your finest photos directly. We'll ensure they look absolutely stunning." 
               },
               { 
                 step: "03", 
-                title: "Go Live", 
-                desc: "Review, refine, and launch. Your digital presence, perfected." 
+                title: "From Any Device", 
+                desc: "Photos on your phone? Scan a simple code and they appear instantly. Pure magic." 
               },
             ].map((item, index) => (
               <motion.div
@@ -225,11 +226,12 @@ const CreateSite = () => {
                   <span className="text-amber-400 text-sm tracking-wide">Magic Feature</span>
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl text-white mb-4">
-                  Upload From Your Phone
+                  Photos on Your Phone?
                 </h3>
                 <p className="text-white/60 text-lg leading-relaxed">
-                  Scan a QR code and upload your photos directly from your phone. 
-                  No cables, no hassle — pure simplicity.
+                  We've crafted an effortless solution. Simply scan a code with your camera, 
+                  select your images, and watch them appear on your new website. 
+                  No cables. No confusion. Just seamless simplicity.
                 </p>
               </div>
               
@@ -258,12 +260,12 @@ const CreateSite = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              "Stunning, custom design",
-              "Mobile-first responsive layout",
-              "Lightning-fast performance",
-              "SEO optimized from day one",
-              "Secure hosting included",
-              "Unlimited revisions",
+              "Professional website design",
+              "Optimized for every device",
+              "One-tap calling for customers",
+              "Shareable link for anywhere",
+              "Lightning-fast loading",
+              "Completely complimentary",
             ].map((feature, index) => (
               <motion.div
                 key={feature}
@@ -292,12 +294,8 @@ const CreateSite = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-display text-4xl md:text-6xl text-white mb-6">
-            Ready to Stand Out?
-          </h2>
-          <p className="text-white/60 text-xl mb-12 max-w-xl mx-auto">
-            Join thousands who've transformed their online presence. 
-            Your journey starts with a single click.
+          <p className="text-white/60 text-xl mb-8">
+            Ready to elevate your presence?
           </p>
           
           <Link to="/builder">
@@ -311,19 +309,23 @@ const CreateSite = () => {
           </Link>
           
           <p className="text-white/40 mt-8 text-base">
-            Takes less than 5 minutes
+            A few minutes is all it takes
           </p>
         </motion.div>
       </section>
 
       {/* Footer */}
       <footer className="relative z-10 px-8 md:px-16 py-12 border-t border-white/10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/30 text-sm tracking-wide">
-            Crafted with obsessive attention to detail
-          </p>
-          <p className="text-white/30 text-sm">
-            © 2024 · All rights reserved
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-8 bg-amber-400/30" />
+            <span className="text-amber-400/60 text-xs tracking-[0.3em] uppercase">
+              Crafted with Care
+            </span>
+            <div className="h-px w-8 bg-amber-400/30" />
+          </div>
+          <p className="text-white/40 text-sm">
+            Questions? We're here to guide you every step of the way.
           </p>
         </div>
       </footer>
