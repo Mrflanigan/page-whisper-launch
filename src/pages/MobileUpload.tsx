@@ -2,16 +2,17 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
-import { Upload, Check, X, Loader2, Video } from 'lucide-react';
+import { Upload, Check, X, Loader2, Video, Image as ImageIcon } from 'lucide-react';
+import imageCompression from 'browser-image-compression';
 
 const MobileUpload = () => {
   const { token } = useParams<{ token: string }>();
   const [session, setSession] = useState<{ id: string; upload_type: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
-  const [uploaded, setUploaded] = useState(false);
+  const [uploadedUrls, setUploadedUrls] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [preview, setPreview] = useState<string | null>(null);
+  const [progress, setProgress] = useState<string>('');
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -43,7 +44,17 @@ const MobileUpload = () => {
         }
 
         if (data.uploaded_url) {
-          setUploaded(true);
+          // Parse existing URLs if any
+          try {
+            const existingUrls = JSON.parse(data.uploaded_url);
+            if (Array.isArray(existingUrls)) {
+              setUploadedUrls(existingUrls);
+            }
+          } catch {
+            if (data.uploaded_url) {
+              setUploadedUrls([data.uploaded_url]);
+            }
+          }
         }
 
         setSession({ id: data.id, upload_type: data.upload_type });
@@ -58,57 +69,80 @@ const MobileUpload = () => {
     fetchSession();
   }, [token]);
 
+  const compressImage = async (file: File): Promise<File> => {
+    if (!file.type.startsWith('image/')) return file;
+    
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
+
+    try {
+      setProgress('Compressing...');
+      return await imageCompression(file, options);
+    } catch {
+      return file;
+    }
+  };
+
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || !session) return;
-
-    // Validate file type
-    if (!file.type.startsWith('video/')) {
-      setError('Please select a video file');
-      return;
-    }
-
-    // Max 50MB
-    if (file.size > 50 * 1024 * 1024) {
-      setError('Video must be under 50MB');
-      return;
-    }
+    const files = Array.from(e.target.files || []);
+    if (!files.length || !session) return;
 
     setUploading(true);
     setError(null);
+    const newUrls: string[] = [];
 
     try {
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${session.id}-${Date.now()}.${fileExt}`;
-      const filePath = `videos/${fileName}`;
+      for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        setProgress(`Processing ${i + 1}/${files.length}...`);
 
-      // Upload to storage
-      const { error: uploadError } = await supabase.storage
-        .from('site-images')
-        .upload(filePath, file);
+        // Validate and compress
+        if (file.type.startsWith('video/')) {
+          if (file.size > 25 * 1024 * 1024) {
+            setError(`Video "${file.name}" is too large. Max 25MB.`);
+            continue;
+          }
+        } else if (file.type.startsWith('image/')) {
+          file = await compressImage(file);
+        }
 
-      if (uploadError) throw uploadError;
+        const fileExt = file.name.split('.').pop();
+        const folder = file.type.startsWith('video/') ? 'videos' : 'images';
+        const fileName = `${folder}/${session.id}-${Date.now()}-${i}.${fileExt}`;
 
-      // Get public URL
-      const { data: { publicUrl } } = supabase.storage
-        .from('site-images')
-        .getPublicUrl(filePath);
+        setProgress(`Uploading ${i + 1}/${files.length}...`);
 
-      // Update session with uploaded URL
-      const { error: updateError } = await supabase
+        const { error: uploadError } = await supabase.storage
+          .from('site-images')
+          .upload(fileName, file);
+
+        if (uploadError) throw uploadError;
+
+        const { data: { publicUrl } } = supabase.storage
+          .from('site-images')
+          .getPublicUrl(fileName);
+
+        newUrls.push(publicUrl);
+      }
+
+      const allUrls = [...uploadedUrls, ...newUrls];
+      setUploadedUrls(allUrls);
+
+      // Update session with all URLs as JSON
+      await supabase
         .from('upload_sessions')
-        .update({ uploaded_url: publicUrl })
+        .update({ uploaded_url: JSON.stringify(allUrls) })
         .eq('id', session.id);
 
-      if (updateError) throw updateError;
-
-      setPreview(publicUrl);
-      setUploaded(true);
     } catch (err) {
       console.error('Upload error:', err);
-      setError('Failed to upload video. Please try again.');
+      setError('Failed to upload. Please try again.');
     } finally {
       setUploading(false);
+      setProgress('');
     }
   };
 
@@ -130,21 +164,43 @@ const MobileUpload = () => {
     );
   }
 
-  if (uploaded) {
+  if (uploadedUrls.length > 0 && !uploading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 text-center">
         <Check className="w-16 h-16 text-green-500 mb-4" />
-        <h1 className="text-xl font-semibold text-foreground mb-2">Upload Complete!</h1>
+        <h1 className="text-xl font-semibold text-foreground mb-2">
+          {uploadedUrls.length} file(s) uploaded!
+        </h1>
         <p className="text-muted-foreground mb-6">
-          You can now close this page and return to your desktop.
+          You can close this page or add more files.
         </p>
-        {preview && (
-          <video 
-            src={preview} 
-            controls 
-            className="max-w-full max-h-48 rounded-lg"
+        
+        {/* Show previews */}
+        <div className="grid grid-cols-2 gap-2 max-w-sm mb-6">
+          {uploadedUrls.slice(-4).map((url, i) => (
+            <div key={i} className="aspect-square rounded-lg overflow-hidden border border-border">
+              {url.includes('/videos/') ? (
+                <video src={url} className="w-full h-full object-cover" />
+              ) : (
+                <img src={url} alt="" className="w-full h-full object-cover" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Add more button */}
+        <label className="w-full max-w-xs">
+          <input
+            type="file"
+            accept="image/*,video/*"
+            multiple
+            onChange={handleFileSelect}
+            className="hidden"
           />
-        )}
+          <Button variant="outline" className="w-full" asChild>
+            <span>Add More Files</span>
+          </Button>
+        </label>
       </div>
     );
   }
@@ -153,10 +209,16 @@ const MobileUpload = () => {
     <div className="min-h-screen flex flex-col bg-background p-4">
       {/* Header */}
       <div className="text-center py-8">
-        <Video className="w-12 h-12 mx-auto mb-4 text-primary" />
-        <h1 className="text-2xl font-bold text-foreground mb-2">Upload Video</h1>
+        <div className="flex justify-center gap-2 mb-4">
+          <ImageIcon className="w-10 h-10 text-primary" />
+          <Video className="w-10 h-10 text-primary" />
+        </div>
+        <h1 className="text-2xl font-bold text-foreground mb-2">Upload Files</h1>
         <p className="text-muted-foreground">
-          Select a video from your phone to upload
+          Select photos or videos from your phone
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          Images auto-compressed • Videos max 25MB
         </p>
       </div>
 
@@ -169,8 +231,8 @@ const MobileUpload = () => {
         <label className="w-full max-w-sm">
           <input
             type="file"
-            accept="video/*"
-            capture="environment"
+            accept="image/*,video/*"
+            multiple
             onChange={handleFileSelect}
             disabled={uploading}
             className="hidden"
@@ -179,22 +241,18 @@ const MobileUpload = () => {
             {uploading ? (
               <>
                 <Loader2 className="w-12 h-12 mx-auto mb-4 animate-spin text-primary" />
-                <p className="text-foreground font-medium">Uploading...</p>
+                <p className="text-foreground font-medium">{progress}</p>
                 <p className="text-sm text-muted-foreground">Please wait</p>
               </>
             ) : (
               <>
                 <Upload className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-foreground font-medium">Tap to Select Video</p>
-                <p className="text-sm text-muted-foreground mt-1">or record a new one</p>
+                <p className="text-foreground font-medium">Tap to Select Files</p>
+                <p className="text-sm text-muted-foreground mt-1">Photos & videos</p>
               </>
             )}
           </div>
         </label>
-
-        <p className="text-xs text-muted-foreground mt-6 text-center">
-          Maximum file size: 50MB
-        </p>
       </div>
     </div>
   );
