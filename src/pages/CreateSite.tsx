@@ -87,7 +87,7 @@ const CreateSite = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 px-8 md:px-16 pt-20 md:pt-32 pb-24">
+      <section className="relative z-10 px-8 md:px-16 pt-8 md:pt-12 pb-24">
         <motion.div 
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 40 }}
