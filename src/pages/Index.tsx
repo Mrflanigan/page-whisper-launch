@@ -38,7 +38,7 @@ const Index = () => {
             </motion.div>
           </div>
           
-          <Link to="/builder">
+          <Link to="/create">
             <Button variant="outline" className="bg-secondary/20 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground">
               <Plus className="w-4 h-4 mr-2" />
               Create Your Site
