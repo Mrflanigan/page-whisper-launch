@@ -1,257 +1,329 @@
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
-import { Smartphone, Camera, ArrowRight, ArrowLeft, Check } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Check, ArrowLeft, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 const CreateSite = () => {
+  // Generate stable particle positions
+  const particles = useMemo(() => 
+    [...Array(20)].map((_, i) => ({
+      left: `${(i * 5) % 100}%`,
+      top: `${(i * 7 + 10) % 100}%`,
+      duration: 4 + (i % 4),
+      delay: i * 0.25,
+    })), 
+  []);
+
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Stunning gradient backgrounds */}
-      <div className="fixed inset-0 pointer-events-none">
-        {/* Main warm gradient - sunset over ocean feel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50/50 to-rose-50/30" />
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Stunning Cityscape Background with Ken Burns Effect */}
+      <div className="fixed inset-0">
+        <motion.div 
+          className="absolute inset-0 w-[110%] h-[110%] -top-[5%] -left-[5%]"
+          animate={{ 
+            scale: [1, 1.08],
+          }}
+          transition={{ 
+            duration: 30, 
+            repeat: Infinity, 
+            repeatType: "reverse",
+            ease: "linear"
+          }}
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=2400&q=90"
+            alt="Stunning cityscape at dusk"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
         
-        {/* Golden glow top right */}
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/40 via-orange-200/30 to-transparent rounded-full blur-3xl" />
+        {/* Dark gradient overlay - heavier at bottom for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
         
-        {/* Warm rose glow bottom left */}
-        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-rose-200/30 via-pink-100/20 to-transparent rounded-full blur-3xl" />
+        {/* Warm accent glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[60%] bg-gradient-to-t from-amber-900/20 via-transparent to-transparent" />
         
-        {/* Soft peach center accent */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-r from-orange-100/20 via-amber-100/30 to-yellow-100/20 rounded-full blur-3xl" />
-        
-        {/* Subtle golden shimmer overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-amber-50/40" />
+        {/* Subtle vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+      </div>
+
+      {/* Floating particles effect */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {particles.map((particle, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-amber-400/30 rounded-full"
+            style={{
+              left: particle.left,
+              top: particle.top,
+            }}
+            animate={{
+              y: [-20, -100],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "linear"
+            }}
+          />
+        ))}
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 px-6 md:px-12 py-6 flex justify-between items-center">
-        <Link to="/">
-          <Button variant="ghost" size="lg" className="text-base px-6 py-5 h-auto text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back
-          </Button>
+      <motion.nav 
+        className="relative z-10 flex justify-between items-center px-8 md:px-16 py-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Link to="/" className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm tracking-wide">Back</span>
         </Link>
-        <div className="text-sm tracking-[0.2em] uppercase text-muted-foreground font-medium">
-          Est. 2024
-        </div>
-      </nav>
+        <span className="text-white/30 text-sm tracking-[0.3em]">EST. 2024</span>
+      </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-32">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      <section className="relative z-10 px-8 md:px-16 pt-20 md:pt-32 pb-24">
+        <motion.div 
+          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          {/* Accent line */}
+          <motion.div 
+            className="w-16 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mb-12"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          />
+          
+          <motion.p 
+            className="text-amber-400/80 text-sm md:text-base tracking-[0.4em] uppercase mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* Decorative line */}
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-12 bg-accent/50" />
-              <span className="text-accent text-sm tracking-[0.3em] uppercase font-medium">
-                Your Digital Presence
+            Your Digital Presence Awaits
+          </motion.p>
+          
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1] tracking-tight">
+            <span className="block">We Build</span>
+            <span className="block mt-2">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">
+                Stunning
               </span>
-              <div className="h-px w-12 bg-accent/50" />
-            </div>
+              {" "}Websites
+            </span>
+          </h1>
+          
+          <motion.p 
+            className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Transform your vision into a breathtaking digital experience. 
+            No technical skills required — just your story.
+          </motion.p>
 
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground mb-8 leading-[1.1] tracking-tight">
-              A Website as
-              <br />
-              <em className="font-normal">Remarkable</em> as
-              <br />
-              Your Business
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
-              In just minutes, create a stunning online presence that captures 
-              the essence of what makes you exceptional.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Elegant Divider */}
-      <div className="relative z-10 flex justify-center pb-20">
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="h-px w-32 bg-gradient-to-r from-transparent via-accent to-transparent"
-        />
-      </div>
-
-      {/* The Experience */}
-      <section className="relative z-10 px-6 md:px-12 pb-24">
-        <div className="max-w-4xl mx-auto">
+          {/* CTA Button */}
           <motion.div
+            className="mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <h2 className="font-display text-3xl md:text-4xl font-light text-foreground mb-4">
-              The Experience
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Three effortless moments to your new website
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            {[
-              {
-                num: "01",
-                title: "Share Your Story",
-                desc: "Simply tell us your business name and how to reach you. We handle everything else."
-              },
-              {
-                num: "02",
-                title: "Add Your Images",
-                desc: "Upload your finest photos directly. We'll ensure they look absolutely stunning."
-              },
-              {
-                num: "03",
-                title: "From Any Device",
-                desc: "Photos on your phone? Scan a simple code and they appear instantly. Pure magic."
-              }
-            ].map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
-                className="text-center"
+            <Link to="/builder">
+              <Button 
+                size="lg" 
+                className="text-lg md:text-xl px-12 py-8 h-auto rounded-full bg-white text-black hover:bg-amber-100 transition-all duration-500 tracking-wide shadow-2xl shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-105"
               >
-                <div className="text-accent text-sm tracking-[0.2em] mb-4 font-medium">
-                  {step.num}
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-light text-foreground mb-4">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {step.desc}
-                </p>
+                Start Creating
+                <ArrowRight className="w-5 h-5 ml-3" />
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* The Experience Section */}
+      <section className="relative z-10 px-8 md:px-16 py-24">
+        <motion.div 
+          className="max-w-5xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="text-center mb-20">
+            <p className="text-amber-400/60 text-sm tracking-[0.3em] uppercase mb-4">The Experience</p>
+            <h2 className="font-display text-3xl md:text-5xl text-white">Three Simple Steps</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                step: "01", 
+                title: "Share Your Vision", 
+                desc: "Tell us about your business. Your story, your style, your dreams." 
+              },
+              { 
+                step: "02", 
+                title: "We Craft Magic", 
+                desc: "Our AI transforms your words into a stunning, professional website." 
+              },
+              { 
+                step: "03", 
+                title: "Go Live", 
+                desc: "Review, refine, and launch. Your digital presence, perfected." 
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.step}
+                className="relative p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-amber-400/30 transition-all duration-500 group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ y: -5 }}
+              >
+                <span className="text-amber-400/40 text-sm font-mono tracking-wider">{item.step}</span>
+                <h3 className="font-display text-2xl text-white mt-4 mb-3 group-hover:text-amber-200 transition-colors">{item.title}</h3>
+                <p className="text-white/50 leading-relaxed">{item.desc}</p>
+                
+                {/* Subtle glow on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/0 via-transparent to-amber-400/0 group-hover:from-amber-400/5 group-hover:to-amber-400/5 transition-all duration-500" />
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Phone Feature - Luxury Callout */}
-      <section className="relative z-10 px-6 md:px-12 pb-24">
+      {/* Phone Upload Feature */}
+      <section className="relative z-10 px-8 md:px-16 py-24">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="relative border border-amber-200/50 rounded-sm p-10 md:p-14 bg-gradient-to-br from-white/80 via-amber-50/50 to-orange-50/30 backdrop-blur-sm shadow-xl shadow-amber-900/5">
-            {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-accent/40" />
-            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-accent/40" />
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-accent/40" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-accent/40" />
-
-            <div className="text-center">
-              <Smartphone className="w-10 h-10 text-accent mx-auto mb-6" strokeWidth={1.5} />
-              <h3 className="font-display text-3xl md:text-4xl font-light text-foreground mb-4">
-                Photos on Your Phone?
-              </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
-                We've crafted an effortless solution. Simply scan a code with your camera, 
-                select your images, and watch them appear on your new website. 
-                No cables. No confusion. Just seamless simplicity.
-              </p>
+          <div className="relative p-12 md:p-16 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-400/5 rounded-full blur-2xl" />
+            
+            <div className="relative flex flex-col md:flex-row items-center gap-10">
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/10 border border-amber-400/20 mb-6">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span className="text-amber-400 text-sm tracking-wide">Magic Feature</span>
+                </div>
+                <h3 className="font-display text-3xl md:text-4xl text-white mb-4">
+                  Upload From Your Phone
+                </h3>
+                <p className="text-white/60 text-lg leading-relaxed">
+                  Scan a QR code and upload your photos directly from your phone. 
+                  No cables, no hassle — pure simplicity.
+                </p>
+              </div>
+              
+              <div className="w-40 h-40 rounded-2xl bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center">
+                <div className="w-28 h-28 bg-white/80 rounded-xl flex items-center justify-center">
+                  <span className="text-black/30 text-xs">QR Code</span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
       </section>
 
       {/* What's Included */}
-      <section className="relative z-10 px-6 md:px-12 pb-24">
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="text-center mb-12"
-          >
-            <h2 className="font-display text-3xl md:text-4xl font-light text-foreground">
-              What's Included
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="grid sm:grid-cols-2 gap-x-12 gap-y-5"
-          >
-            {[
-              "Professional website design",
-              "Optimized for every device",
-              "One-tap calling for customers",
-              "Shareable link for anywhere",
-              "Lightning-fast loading",
-              "Completely complimentary"
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <Check className="w-5 h-5 text-accent flex-shrink-0" strokeWidth={1.5} />
-                <span className="text-foreground text-lg">{item}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative z-10 px-6 md:px-12 pt-8 pb-24">
+      <section className="relative z-10 px-8 md:px-16 py-24">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="max-w-xl mx-auto text-center"
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          {/* CTA Card with gradient */}
-          <div className="relative p-10 md:p-14 rounded-2xl bg-gradient-to-br from-amber-600 via-orange-600 to-rose-600 shadow-2xl shadow-orange-900/30 overflow-hidden">
-            {/* Shimmer overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/5" />
-            
-            <div className="relative">
-              <p className="text-white/80 mb-6 text-lg">
-                Ready to elevate your presence?
-              </p>
-              
-              <Link to="/builder">
-                <Button 
-                  size="lg" 
-                  className="text-lg md:text-xl px-12 py-8 h-auto w-full rounded-sm bg-white text-amber-900 hover:bg-white/95 transition-all duration-500 tracking-wide shadow-lg"
-                >
-                  Begin Your Journey
-                  <ArrowRight className="w-5 h-5 ml-3" />
-                </Button>
-              </Link>
-              
-              <p className="text-white/70 mt-6 text-base">
-                A few minutes is all it takes
-              </p>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="font-display text-3xl md:text-5xl text-white">What's Included</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              "Stunning, custom design",
+              "Mobile-first responsive layout",
+              "Lightning-fast performance",
+              "SEO optimized from day one",
+              "Secure hosting included",
+              "Unlimited revisions",
+            ].map((feature, index) => (
+              <motion.div
+                key={feature}
+                className="flex items-center gap-4 p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="w-10 h-10 rounded-full bg-amber-400/10 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-5 h-5 text-amber-400" />
+                </div>
+                <span className="text-white/80 text-lg">{feature}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>
 
+      {/* Final CTA */}
+      <section className="relative z-10 px-8 md:px-16 py-32">
+        <motion.div
+          className="max-w-3xl mx-auto text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="font-display text-4xl md:text-6xl text-white mb-6">
+            Ready to Stand Out?
+          </h2>
+          <p className="text-white/60 text-xl mb-12 max-w-xl mx-auto">
+            Join thousands who've transformed their online presence. 
+            Your journey starts with a single click.
+          </p>
+          
+          <Link to="/builder">
+            <Button 
+              size="lg" 
+              className="text-xl px-16 py-10 h-auto rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-black hover:from-amber-300 hover:via-amber-400 hover:to-amber-300 transition-all duration-500 tracking-wide shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 font-medium"
+            >
+              Begin Your Journey
+              <ArrowRight className="w-6 h-6 ml-3" />
+            </Button>
+          </Link>
+          
+          <p className="text-white/40 mt-8 text-base">
+            Takes less than 5 minutes
+          </p>
+        </motion.div>
+      </section>
+
       {/* Footer */}
-      <footer className="relative z-10 px-6 md:px-12 py-12 border-t border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-8 bg-accent/30" />
-            <span className="text-accent text-xs tracking-[0.3em] uppercase">
-              Crafted with Care
-            </span>
-            <div className="h-px w-8 bg-accent/30" />
-          </div>
-          <p className="text-muted-foreground text-sm">
-            Questions? We're here to guide you every step of the way.
+      <footer className="relative z-10 px-8 md:px-16 py-12 border-t border-white/10">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/30 text-sm tracking-wide">
+            Crafted with obsessive attention to detail
+          </p>
+          <p className="text-white/30 text-sm">
+            © 2024 · All rights reserved
           </p>
         </div>
       </footer>
