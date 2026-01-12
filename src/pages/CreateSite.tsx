@@ -127,8 +127,7 @@ const CreateSite = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            In just minutes, create a stunning online presence that captures 
-            the essence of what makes you exceptional.
+            Powered by lightning-fast AI that builds while you describe.
           </motion.p>
 
           {/* CTA Button */}
