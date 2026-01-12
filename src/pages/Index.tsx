@@ -1,5 +1,6 @@
-import { Phone, Clock, MapPin, Truck } from "lucide-react";
+import { Phone, Clock, MapPin, Truck, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 
@@ -16,24 +17,33 @@ const Index = () => {
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
 
-        {/* Company Name - Upper Left */}
-        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
-            Top Choice Moving
-          </h1>
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "calc(100vw + 100%)" }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear",
-              repeatDelay: 2,
-            }}
-            className="inline-block"
-          >
-            <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
-          </motion.div>
+        {/* Header with Company Name and Builder Link */}
+        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex justify-between items-start">
+          <div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
+              Top Choice Moving
+            </h1>
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: "calc(100vw + 100%)" }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear",
+                repeatDelay: 2,
+              }}
+              className="inline-block"
+            >
+              <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
+            </motion.div>
+          </div>
+          
+          <Link to="/builder">
+            <Button variant="outline" className="bg-secondary/20 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground">
+              <Plus className="w-4 h-4 mr-2" />
+              Create Your Site
+            </Button>
+          </Link>
         </div>
 
         {/* Hero Content - Centered */}
