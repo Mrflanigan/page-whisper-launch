@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-start justify-start">
+      <section className="relative min-h-screen flex flex-col">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -16,7 +16,7 @@ const Index = () => {
         </div>
 
         {/* Company Name - Upper Left */}
-        <div className="absolute top-0 left-0 z-10 px-6 md:px-12 pt-8 md:pt-12">
+        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
             Top Choice Moving
           </h1>
@@ -24,7 +24,7 @@ const Index = () => {
         </div>
 
         {/* Hero Content - Centered */}
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto">
           <p className="text-xl md:text-2xl text-secondary/90 mb-8 font-light">
             Professional Loading & Unloading Services
           </p>
@@ -48,8 +48,8 @@ const Index = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-secondary/50 rounded-full flex justify-center">
+        <div className="relative z-10 pb-8 flex justify-center">
+          <div className="w-6 h-10 border-2 border-secondary/50 rounded-full flex justify-center animate-bounce">
             <div className="w-1.5 h-3 bg-secondary/50 rounded-full mt-2" />
           </div>
         </div>
