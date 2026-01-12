@@ -39,8 +39,11 @@ const Index = () => {
           </div>
           
           <Link to="/create">
-            <Button variant="outline" className="bg-secondary/20 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground">
-              <Plus className="w-4 h-4 mr-2" />
+            <Button 
+              size="lg" 
+              className="text-base px-6 py-6 h-auto bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+            >
+              <Plus className="w-5 h-5 mr-2" />
               Create Your Site
             </Button>
           </Link>
