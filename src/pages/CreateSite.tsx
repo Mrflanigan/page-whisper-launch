@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Smartphone, Image, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Smartphone, Image, Sparkles, ArrowRight, CheckCircle2, ArrowLeft } from 'lucide-react';
 
 const CreateSite = () => {
   const steps = [
@@ -24,6 +24,16 @@ const CreateSite = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted">
+      {/* Back Button */}
+      <div className="px-6 pt-6">
+        <Link to="/">
+          <Button variant="ghost" size="lg" className="text-base px-6 py-6 h-auto">
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Home
+          </Button>
+        </Link>
+      </div>
+
       {/* Hero */}
       <div className="px-6 pt-16 pb-12 text-center max-w-2xl mx-auto">
         <motion.div
@@ -120,12 +130,12 @@ const CreateSite = () => {
         className="px-6 py-12 text-center"
       >
         <Link to="/builder">
-          <Button size="lg" className="text-lg px-8 py-6 h-auto">
+          <Button size="lg" className="text-xl px-10 py-8 h-auto w-full max-w-sm">
             Let's Get Started
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-6 h-6 ml-3" />
           </Button>
         </Link>
-        <p className="text-sm text-muted-foreground mt-4">
+        <p className="text-base text-muted-foreground mt-4">
           Takes about 5 minutes
         </p>
       </motion.div>
