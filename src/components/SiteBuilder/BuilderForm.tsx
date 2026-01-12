@@ -6,9 +6,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { ImageUpload } from './ImageUpload';
 import { ThemeSelector } from './ThemeSelector';
+import { PhoneUploadModal } from './PhoneUploadModal';
 import { supabase } from '@/integrations/supabase/client';
 import { SiteTheme } from '@/lib/themes';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Video } from 'lucide-react';
 
 interface FormData {
   business_name: string;
@@ -21,6 +22,7 @@ interface FormData {
   theme: SiteTheme;
   hero_image_url?: string;
   logo_url?: string;
+  video_url?: string;
 }
 
 export const BuilderForm = () => {
@@ -146,9 +148,9 @@ export const BuilderForm = () => {
         </div>
       </div>
 
-      {/* Images */}
+      {/* Images & Video */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-foreground">Images</h2>
+        <h2 className="text-xl font-semibold text-foreground">Images & Video</h2>
         
         <div className="grid gap-6 sm:grid-cols-2">
           <ImageUpload
@@ -162,6 +164,36 @@ export const BuilderForm = () => {
             value={formData.logo_url}
             onChange={(url) => setFormData(prev => ({ ...prev, logo_url: url }))}
           />
+        </div>
+
+        {/* Video Upload */}
+        <div className="space-y-3">
+          <Label>Short Video (optional)</Label>
+          <p className="text-sm text-muted-foreground">
+            Have a video on your phone? Upload it easily with a QR code.
+          </p>
+          
+          {formData.video_url ? (
+            <div className="space-y-2">
+              <video 
+                src={formData.video_url} 
+                controls 
+                className="w-full max-h-48 rounded-lg bg-black"
+              />
+              <Button 
+                type="button" 
+                variant="outline" 
+                size="sm"
+                onClick={() => setFormData(prev => ({ ...prev, video_url: undefined }))}
+              >
+                Remove Video
+              </Button>
+            </div>
+          ) : (
+            <PhoneUploadModal 
+              onUploadComplete={(url) => setFormData(prev => ({ ...prev, video_url: url }))}
+            />
+          )}
         </div>
       </div>
 
