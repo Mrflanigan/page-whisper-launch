@@ -127,7 +127,7 @@ const CreateSite = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Powered By Lightning-Fast AI
+            Powered By Lightning-Fast Intelligence
           </motion.p>
 
           {/* CTA Button */}
