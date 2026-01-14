@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Truck } from "lucide-react";
 import heroImage from "@/assets/hero-moving.jpg";
 import emptyRoom from "@/assets/empty-room.jpg";
@@ -31,10 +31,10 @@ const MovingAnimation = () => {
 
       // Phase 2: Truck drives right across screen
       setTruckPhase("drive-right");
-      await delay(1000); // Halfway through truck animation
+      await delay(1000);
       if (!isMounted) return;
-      setScene("empty"); // Switch background as truck passes
-      await delay(1500); // Truck finishes exiting
+      setScene("empty");
+      await delay(1500);
       if (!isMounted) return;
       setTruckPhase("hidden");
 
@@ -51,11 +51,10 @@ const MovingAnimation = () => {
       if (!isMounted) return;
       setTruckPhase("hidden");
 
-      // Phase 5: New house pause (longer - 4s)
+      // Phase 5: New house pause (4s)
       await delay(4000);
       if (!isMounted) return;
 
-      // Loop back
       runAnimation();
     };
 
@@ -69,63 +68,56 @@ const MovingAnimation = () => {
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
   return (
-    <>
-      {/* Background layers - z-0 */}
-      <AnimatePresence mode="sync">
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Single background that crossfades */}
+      <motion.div
+        key={scene}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${backgrounds[scene]})` }}
+      />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-foreground/60" />
+
+      {/* Truck driving right */}
+      {truckPhase === "drive-right" && (
         <motion.div
-          key={scene}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{ backgroundImage: `url(${backgrounds[scene]})` }}
-        />
-      </AnimatePresence>
-
-      {/* Dark overlay - z-[1] */}
-      <div className="absolute inset-0 bg-foreground/60 z-[1]" />
-
-      {/* Truck layer - z-10 (below content which is z-20+) */}
-      <AnimatePresence>
-        {truckPhase === "drive-right" && (
-          <motion.div
-            key="truck-right"
-            initial={{ x: "-150px" }}
-            animate={{ x: "calc(100vw + 150px)" }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2.5, ease: "linear" }}
-            className="absolute bottom-[20%] z-10 pointer-events-none"
-          >
-            <div className="bg-secondary rounded-lg p-3 shadow-2xl flex items-center gap-2">
-              <Truck className="w-12 h-12 md:w-16 md:h-16 text-foreground" />
-              <div className="text-foreground text-right">
-                <p className="text-xs md:text-sm font-bold whitespace-nowrap">Top Choice</p>
-                <p className="text-[10px] md:text-xs text-accent font-semibold">253-267-3212</p>
-              </div>
+          initial={{ x: -200 }}
+          animate={{ x: "calc(100vw + 200px)" }}
+          transition={{ duration: 2.5, ease: "linear" }}
+          className="absolute bottom-[18%] z-10 pointer-events-none"
+        >
+          <div className="bg-secondary/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-2xl flex items-center gap-3 border border-secondary">
+            <Truck className="w-10 h-10 md:w-14 md:h-14 text-foreground" />
+            <div className="text-foreground">
+              <p className="text-sm md:text-base font-bold whitespace-nowrap">Top Choice</p>
+              <p className="text-xs text-accent font-semibold">253-267-3212</p>
             </div>
-          </motion.div>
-        )}
-        {truckPhase === "drive-left" && (
-          <motion.div
-            key="truck-left"
-            initial={{ x: "calc(100vw + 150px)" }}
-            animate={{ x: "-150px" }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2.5, ease: "linear" }}
-            className="absolute bottom-[20%] z-10 pointer-events-none"
-          >
-            <div className="bg-secondary rounded-lg p-3 shadow-2xl flex items-center gap-2 scale-x-[-1]">
-              <Truck className="w-12 h-12 md:w-16 md:h-16 text-foreground" />
-              <div className="text-foreground text-right scale-x-[-1]">
-                <p className="text-xs md:text-sm font-bold whitespace-nowrap">Top Choice</p>
-                <p className="text-[10px] md:text-xs text-accent font-semibold">253-267-3212</p>
-              </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Truck driving left */}
+      {truckPhase === "drive-left" && (
+        <motion.div
+          initial={{ x: "calc(100vw + 200px)" }}
+          animate={{ x: -200 }}
+          transition={{ duration: 2.5, ease: "linear" }}
+          className="absolute bottom-[18%] z-10 pointer-events-none"
+        >
+          <div className="bg-secondary/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-2xl flex items-center gap-3 border border-secondary transform scale-x-[-1]">
+            <Truck className="w-10 h-10 md:w-14 md:h-14 text-foreground" />
+            <div className="text-foreground scale-x-[-1]">
+              <p className="text-sm md:text-base font-bold whitespace-nowrap">Top Choice</p>
+              <p className="text-xs text-accent font-semibold">253-267-3212</p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          </div>
+        </motion.div>
+      )}
+    </div>
   );
 };
 
