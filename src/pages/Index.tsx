@@ -7,21 +7,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-moving.jpg";
+import MovingAnimation from "@/components/MovingAnimation";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[85vh] flex flex-col overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-foreground/60" />
-        </div>
+        {/* Animated Background with Truck */}
+        <MovingAnimation />
 
         {/* Header with Company Name */}
         <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12">
@@ -74,13 +68,6 @@ const Index = () => {
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
-          </div>
-        </div>
-
-        {/* Animated Truck - below Services button */}
-        <div className="relative z-10 px-6 md:px-12 mt-2">
-          <div className="animate-truck-drive">
-            <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
           </div>
         </div>
 
