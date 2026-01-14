@@ -29,33 +29,14 @@ const Index = () => {
             Top Choice Moving
           </h1>
           
-          {/* Centered Services Button with Truck Animation */}
-          <div className="flex justify-center mt-4 relative overflow-visible">
-            {/* Animated Truck that goes around the button */}
-            <motion.div
-              initial={{ x: "-50vw", y: 0 }}
-              animate={{
-                x: ["-50vw", "-100px", "-100px", "100px", "100px", "50vw"],
-                y: [0, 0, 50, 50, 0, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                repeatDelay: 2,
-                times: [0, 0.3, 0.38, 0.62, 0.7, 1],
-              }}
-              className="absolute top-0 z-0"
-              style={{ left: "50%" }}
-            >
-              <Truck className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
-            </motion.div>
-
+          {/* Centered Services Button */}
+          <div className="flex flex-col items-center mt-4">
             {/* Services Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button 
                   variant="outline" 
-                  className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground relative z-10"
+                  className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
                 >
                   Services Offered
                   <ChevronDown className="w-4 h-4 ml-2" />
@@ -94,6 +75,21 @@ const Index = () => {
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Animated Truck - simple side to side below button */}
+            <motion.div
+              initial={{ x: "-100vw" }}
+              animate={{ x: "100vw" }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear",
+                repeatDelay: 2,
+              }}
+              className="mt-4"
+            >
+              <Truck className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
+            </motion.div>
           </div>
         </div>
 
