@@ -84,8 +84,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Hero Content - moved up */}
-        <div className="relative z-10 flex flex-col items-center justify-start text-center px-4 max-w-5xl mx-auto mt-8 md:mt-12">
+        {/* Hero Content - Everything on page one */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto">
           <p className="text-lg md:text-xl text-secondary/90 mb-1 font-light">
             Professional Loading & Unloading Services
           </p>
