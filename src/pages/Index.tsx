@@ -83,13 +83,29 @@ const Index = () => {
         </div>
 
         {/* Hero Content - Centered, moved up */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto -mt-24 md:-mt-32">
-          <p className="text-xl md:text-2xl text-secondary/90 mb-4 font-light">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto -mt-16 md:-mt-20">
+          <p className="text-xl md:text-2xl text-secondary/90 mb-2 font-light">
             Professional Loading & Unloading Services
           </p>
-          <p className="text-base md:text-lg text-secondary/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-secondary/80 mb-6 max-w-2xl mx-auto">
             We work with Uhaul, Penske, and all moving trucks. Very affordable rates — we come to you!
           </p>
+
+          {/* Three Service Cards - on hero */}
+          <div className="grid grid-cols-3 gap-3 mb-6 w-full max-w-3xl">
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-3 text-center border border-secondary/30">
+              <Truck className="w-6 h-6 mx-auto mb-1 text-secondary" />
+              <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
+            </div>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-3 text-center border border-secondary/30">
+              <MapPin className="w-6 h-6 mx-auto mb-1 text-secondary" />
+              <h3 className="text-sm font-semibold text-secondary">We Come to You</h3>
+            </div>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-3 text-center border border-secondary/30">
+              <Clock className="w-6 h-6 mx-auto mb-1 text-secondary" />
+              <h3 className="text-sm font-semibold text-secondary">Flexible Hours</h3>
+            </div>
+          </div>
 
           {/* CTA Button */}
           <a href="tel:253-267-3212" className="inline-block">
@@ -101,60 +117,22 @@ const Index = () => {
               253-267-3212
             </Button>
           </a>
-          <p className="text-secondary/70 mt-4 text-sm">
+          <p className="text-secondary/70 mt-3 text-sm">
             Ready to move? Give us a call!
           </p>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="relative z-10 pb-8 flex justify-center">
+        <div className="relative z-10 pb-6 flex justify-center">
           <div className="w-6 h-10 border-2 border-secondary/50 rounded-full flex justify-center animate-bounce">
             <div className="w-1.5 h-3 bg-secondary/50 rounded-full mt-2" />
           </div>
         </div>
       </section>
 
-      {/* Services & Info Section */}
+      {/* Business Info Section */}
       <section className="py-10 px-4 bg-background">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
-            Why Choose Us?
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-4 mb-10">
-            {/* Service Card 1 */}
-            <div className="bg-card rounded-lg p-5 shadow-md border border-border text-center">
-              <Truck className="w-8 h-8 mx-auto mb-2 text-accent" />
-              <h3 className="text-lg font-semibold mb-2 text-card-foreground">
-                All Truck Types
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                We load and unload for Uhaul, Penske, Budget, and all other moving truck rentals.
-              </p>
-            </div>
-
-            {/* Service Card 2 */}
-            <div className="bg-card rounded-lg p-5 shadow-md border border-border text-center">
-              <MapPin className="w-8 h-8 mx-auto mb-2 text-accent" />
-              <h3 className="text-lg font-semibold mb-2 text-card-foreground">
-                We Come to You
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Serving King County, Pierce County & all surrounding areas. No job too big or small.
-              </p>
-            </div>
-
-            {/* Service Card 3 */}
-            <div className="bg-card rounded-lg p-5 shadow-md border border-border text-center">
-              <Clock className="w-8 h-8 mx-auto mb-2 text-accent" />
-              <h3 className="text-lg font-semibold mb-2 text-card-foreground">
-                Flexible Hours
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Available Monday through Saturday, 9am – 5pm. Very affordable rates.
-              </p>
-            </div>
-          </div>
 
           {/* Business Info */}
           <div className="bg-secondary rounded-lg p-6 md:p-8 text-center">
