@@ -1,6 +1,6 @@
-import { Phone, Clock, MapPin, Truck, Plus } from "lucide-react";
+import { Phone, Clock, MapPin, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 
@@ -17,36 +17,24 @@ const Index = () => {
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
 
-        {/* Header with Company Name and Builder Link */}
-        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex justify-between items-start">
-          <div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
-              Top Choice Moving
-            </h1>
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: "calc(100vw + 100%)" }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear",
-                repeatDelay: 2,
-              }}
-              className="inline-block"
-            >
-              <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
-            </motion.div>
-          </div>
-          
-          <Link to="/create">
-            <Button 
-              size="lg" 
-              className="text-base px-6 py-6 h-auto bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
-            >
-              <Plus className="w-5 h-5 mr-2" />
-              Create Your Site
-            </Button>
-          </Link>
+        {/* Header with Company Name */}
+        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
+            Top Choice Moving
+          </h1>
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "calc(100vw + 100%)" }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+              repeatDelay: 2,
+            }}
+            className="inline-block"
+          >
+            <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
+          </motion.div>
         </div>
 
         {/* Hero Content - Centered */}
