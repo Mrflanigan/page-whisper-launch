@@ -1,12 +1,12 @@
-import { Phone, Clock, MapPin, Truck, Trash2, TreePine } from "lucide-react";
+import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 
@@ -23,24 +23,71 @@ const Index = () => {
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
 
-        {/* Header with Company Name */}
-        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
-            Top Choice Moving
-          </h1>
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "calc(100vw + 100%)" }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear",
-              repeatDelay: 2,
-            }}
-            className="inline-block"
-          >
-            <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
-          </motion.div>
+        {/* Header with Company Name and Services Dropdown */}
+        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex justify-between items-start">
+          <div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
+              Top Choice Moving
+            </h1>
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: "calc(100vw + 100%)" }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear",
+                repeatDelay: 2,
+              }}
+              className="inline-block"
+            >
+              <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
+            </motion.div>
+          </div>
+
+          {/* Services Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+              >
+                Services Offered
+                <ChevronDown className="w-4 h-4 ml-2" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-72 bg-card border border-border shadow-lg z-50">
+              <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
+                <Truck className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-card-foreground">Loading & Unloading</p>
+                  <p className="text-sm text-muted-foreground">All truck types: Uhaul, Penske, Budget & more</p>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
+                <Trash2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-card-foreground">Hauling & Dump Runs</p>
+                  <p className="text-sm text-muted-foreground">Full load required — no single item hauling</p>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
+                <TreePine className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-card-foreground">Yard Clearing</p>
+                  <p className="text-sm text-muted-foreground">Objects & debris removal</p>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <div className="p-3 text-center border-t border-border bg-muted/50">
+                <p className="text-sm text-muted-foreground">
+                  King County, Pierce County & surrounding
+                </p>
+                <p className="text-sm font-semibold text-accent">Very affordable rates!</p>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Hero Content - Centered */}
@@ -117,54 +164,6 @@ const Index = () => {
             </div>
           </div>
 
-          {/* More Services Accordion */}
-          <Accordion type="single" collapsible className="mb-16">
-            <AccordionItem value="more-services" className="border-none">
-              <AccordionTrigger className="bg-card rounded-lg px-8 py-6 shadow-md border border-border hover:no-underline hover:bg-card/80 text-xl font-semibold text-card-foreground">
-                More Services We Offer
-              </AccordionTrigger>
-              <AccordionContent className="pt-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Hauling & Dump Runs */}
-                  <div className="bg-card rounded-lg p-8 shadow-md border border-border">
-                    <div className="flex items-start gap-4">
-                      <Trash2 className="w-10 h-10 text-accent flex-shrink-0" />
-                      <div>
-                        <h4 className="text-lg font-semibold mb-2 text-card-foreground">
-                          Hauling & Dump Runs
-                        </h4>
-                        <p className="text-muted-foreground">
-                          We haul away unwanted items and make dump runs. Must be enough for a full load — no single item hauling.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Yard Clearing */}
-                  <div className="bg-card rounded-lg p-8 shadow-md border border-border">
-                    <div className="flex items-start gap-4">
-                      <TreePine className="w-10 h-10 text-accent flex-shrink-0" />
-                      <div>
-                        <h4 className="text-lg font-semibold mb-2 text-card-foreground">
-                          Yard Clearing
-                        </h4>
-                        <p className="text-muted-foreground">
-                          Clearing of objects and debris from your yard. Full load required for service.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 text-center">
-                  <p className="text-muted-foreground">
-                    <span className="font-semibold text-foreground">Service Area:</span> King County, Pierce County & surrounding areas
-                  </p>
-                  <p className="text-accent font-semibold mt-2">Very affordable rates!</p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
 
           {/* Business Info */}
           <div className="bg-secondary rounded-lg p-8 md:p-12 text-center">
