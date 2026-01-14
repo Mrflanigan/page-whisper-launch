@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Truck } from "lucide-react";
 import heroImage from "@/assets/hero-moving.jpg";
 import emptyRoom from "@/assets/empty-room.jpg";
 import newHouse from "@/assets/new-house.jpg";
+import truckImage from "@/assets/moving-truck-branded.png";
 
 type Scene = "original" | "empty" | "newHouse";
 
@@ -85,36 +85,32 @@ const MovingAnimation = () => {
       {/* Truck driving right */}
       {truckPhase === "drive-right" && (
         <motion.div
-          initial={{ x: -200 }}
-          animate={{ x: "calc(100vw + 200px)" }}
+          initial={{ x: "-100%" }}
+          animate={{ x: "100vw" }}
           transition={{ duration: 2.5, ease: "linear" }}
-          className="absolute bottom-[18%] z-10 pointer-events-none"
+          className="absolute bottom-0 left-0 z-10 pointer-events-none w-full h-[80%]"
         >
-          <div className="bg-secondary/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-2xl flex items-center gap-3 border border-secondary">
-            <Truck className="w-10 h-10 md:w-14 md:h-14 text-foreground" />
-            <div className="text-foreground">
-              <p className="text-sm md:text-base font-bold whitespace-nowrap">Top Choice</p>
-              <p className="text-xs text-accent font-semibold">253-267-3212</p>
-            </div>
-          </div>
+          <img 
+            src={truckImage} 
+            alt="Top Choice Moving truck" 
+            className="h-full w-auto object-contain"
+          />
         </motion.div>
       )}
 
       {/* Truck driving left */}
       {truckPhase === "drive-left" && (
         <motion.div
-          initial={{ x: "calc(100vw + 200px)" }}
-          animate={{ x: -200 }}
+          initial={{ x: "100vw" }}
+          animate={{ x: "-100%" }}
           transition={{ duration: 2.5, ease: "linear" }}
-          className="absolute bottom-[18%] z-10 pointer-events-none"
+          className="absolute bottom-0 right-0 z-10 pointer-events-none w-full h-[80%]"
         >
-          <div className="bg-secondary/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-2xl flex items-center gap-3 border border-secondary transform scale-x-[-1]">
-            <Truck className="w-10 h-10 md:w-14 md:h-14 text-foreground" />
-            <div className="text-foreground scale-x-[-1]">
-              <p className="text-sm md:text-base font-bold whitespace-nowrap">Top Choice</p>
-              <p className="text-xs text-accent font-semibold">253-267-3212</p>
-            </div>
-          </div>
+          <img 
+            src={truckImage} 
+            alt="Top Choice Moving truck" 
+            className="h-full w-auto object-contain scale-x-[-1]"
+          />
         </motion.div>
       )}
     </div>
