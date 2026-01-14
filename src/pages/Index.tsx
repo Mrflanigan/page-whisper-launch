@@ -76,18 +76,10 @@ const Index = () => {
         </div>
 
         {/* Animated Truck - below header */}
-        <div className="relative z-10 px-6 md:px-12 overflow-hidden">
-          <motion.div
-            animate={{ x: ["0%", "100%"] }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              repeatDelay: 2,
-            }}
-            style={{ x: "-10%" }}
-          >
+        <div className="relative z-10 px-6 md:px-12">
+          <div className="animate-truck-drive">
             <Truck className="w-12 h-12 md:w-16 md:h-16 text-secondary" />
-          </motion.div>
+          </div>
         </div>
 
         {/* Hero Content - Centered, moved up */}
