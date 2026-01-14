@@ -88,12 +88,12 @@ const MovingAnimation = () => {
           initial={{ x: "-100%" }}
           animate={{ x: "100vw" }}
           transition={{ duration: 2.5, ease: "linear" }}
-          className="absolute bottom-0 left-0 z-10 pointer-events-none w-full h-[80%]"
+          className="absolute bottom-0 left-0 z-10 pointer-events-none w-full h-full flex items-end"
         >
           <img 
             src={truckImage} 
             alt="Top Choice Moving truck" 
-            className="h-full w-auto object-contain"
+            className="h-[90%] w-auto object-contain"
           />
         </motion.div>
       )}
@@ -104,12 +104,12 @@ const MovingAnimation = () => {
           initial={{ x: "100vw" }}
           animate={{ x: "-100%" }}
           transition={{ duration: 2.5, ease: "linear" }}
-          className="absolute bottom-0 right-0 z-10 pointer-events-none w-full h-[80%]"
+          className="absolute bottom-0 right-0 z-10 pointer-events-none w-full h-full flex items-end justify-end"
         >
           <img 
             src={truckImage} 
             alt="Top Choice Moving truck" 
-            className="h-full w-auto object-contain scale-x-[-1]"
+            className="h-[90%] w-auto object-contain scale-x-[-1]"
           />
         </motion.div>
       )}
