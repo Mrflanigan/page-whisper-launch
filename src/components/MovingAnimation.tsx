@@ -53,16 +53,16 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
       {/* Box/Trailer Section */}
       <div className="relative -ml-4">
         {/* Main Box */}
-        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-b from-white via-gray-50 to-gray-100 border-2 border-gray-400 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
+        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 border-2 border-amber-300 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
           {/* Top trim */}
-          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-400 to-gray-300" />
+          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-amber-400 to-amber-300" />
           
           {/* Bottom trim */}
-          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-gray-500 to-gray-400" />
+          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-amber-600 to-amber-400" />
           
           {/* Side ridges for realism */}
-          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-gray-300 to-transparent" />
-          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-gray-300 to-transparent" />
+          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-amber-200 to-transparent" />
+          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-amber-200 to-transparent" />
           
           {/* Branding Container */}
           <div className={`text-center ${flipped ? 'scale-x-[-1]' : ''} relative z-10`}>
