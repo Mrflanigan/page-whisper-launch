@@ -1,5 +1,11 @@
-import { Phone, Clock, MapPin, Truck } from "lucide-react";
+import { Phone, Clock, MapPin, Truck, Trash2, TreePine } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
@@ -110,6 +116,55 @@ const Index = () => {
               </p>
             </div>
           </div>
+
+          {/* More Services Accordion */}
+          <Accordion type="single" collapsible className="mb-16">
+            <AccordionItem value="more-services" className="border-none">
+              <AccordionTrigger className="bg-card rounded-lg px-8 py-6 shadow-md border border-border hover:no-underline hover:bg-card/80 text-xl font-semibold text-card-foreground">
+                More Services We Offer
+              </AccordionTrigger>
+              <AccordionContent className="pt-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Hauling & Dump Runs */}
+                  <div className="bg-card rounded-lg p-8 shadow-md border border-border">
+                    <div className="flex items-start gap-4">
+                      <Trash2 className="w-10 h-10 text-accent flex-shrink-0" />
+                      <div>
+                        <h4 className="text-lg font-semibold mb-2 text-card-foreground">
+                          Hauling & Dump Runs
+                        </h4>
+                        <p className="text-muted-foreground">
+                          We haul away unwanted items and make dump runs. Must be enough for a full load — no single item hauling.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Yard Clearing */}
+                  <div className="bg-card rounded-lg p-8 shadow-md border border-border">
+                    <div className="flex items-start gap-4">
+                      <TreePine className="w-10 h-10 text-accent flex-shrink-0" />
+                      <div>
+                        <h4 className="text-lg font-semibold mb-2 text-card-foreground">
+                          Yard Clearing
+                        </h4>
+                        <p className="text-muted-foreground">
+                          Clearing of objects and debris from your yard. Full load required for service.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 text-center">
+                  <p className="text-muted-foreground">
+                    <span className="font-semibold text-foreground">Service Area:</span> King County, Pierce County & surrounding areas
+                  </p>
+                  <p className="text-accent font-semibold mt-2">Very affordable rates!</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
 
           {/* Business Info */}
           <div className="bg-secondary rounded-lg p-8 md:p-12 text-center">
