@@ -82,28 +82,40 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Hero Content - Centered, moved up */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto -mt-16 md:-mt-20">
-          <p className="text-xl md:text-2xl text-secondary/90 mb-2 font-light">
+        {/* Hero Content - Everything on page one */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto -mt-8">
+          <p className="text-lg md:text-xl text-secondary/90 mb-1 font-light">
             Professional Loading & Unloading Services
           </p>
-          <p className="text-base md:text-lg text-secondary/80 mb-6 max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-secondary/80 mb-4 max-w-2xl mx-auto">
             We work with Uhaul, Penske, and all moving trucks. Very affordable rates — we come to you!
           </p>
 
-          {/* Three Service Cards - on hero */}
-          <div className="grid grid-cols-3 gap-3 mb-6 w-full max-w-3xl">
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-3 text-center border border-secondary/30">
-              <Truck className="w-6 h-6 mx-auto mb-1 text-secondary" />
-              <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
+          {/* Three Service Cards */}
+          <div className="grid grid-cols-3 gap-2 mb-4 w-full max-w-2xl">
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
+              <Truck className="w-5 h-5 mx-auto mb-1 text-secondary" />
+              <h3 className="text-xs font-semibold text-secondary">All Truck Types</h3>
             </div>
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-3 text-center border border-secondary/30">
-              <MapPin className="w-6 h-6 mx-auto mb-1 text-secondary" />
-              <h3 className="text-sm font-semibold text-secondary">We Come to You</h3>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
+              <MapPin className="w-5 h-5 mx-auto mb-1 text-secondary" />
+              <h3 className="text-xs font-semibold text-secondary">We Come to You</h3>
             </div>
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-3 text-center border border-secondary/30">
-              <Clock className="w-6 h-6 mx-auto mb-1 text-secondary" />
-              <h3 className="text-sm font-semibold text-secondary">Flexible Hours</h3>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
+              <Clock className="w-5 h-5 mx-auto mb-1 text-secondary" />
+              <h3 className="text-xs font-semibold text-secondary">Flexible Hours</h3>
+            </div>
+          </div>
+
+          {/* Hours & Service Area */}
+          <div className="flex gap-6 mb-4 text-secondary/80 text-sm">
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4" />
+              <span>Mon–Sat, 9am–5pm</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4" />
+              <span>King & Pierce County</span>
             </div>
           </div>
 
@@ -111,66 +123,15 @@ const Index = () => {
           <a href="tel:253-267-3212" className="inline-block">
             <Button
               size="lg"
-              className="text-xl md:text-2xl px-8 py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+              className="text-xl md:text-2xl px-8 py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Phone className="w-6 h-6 mr-3" />
               253-267-3212
             </Button>
           </a>
-          <p className="text-secondary/70 mt-3 text-sm">
-            Ready to move? Give us a call!
+          <p className="text-secondary/70 mt-2 text-xs">
+            Tap to call now!
           </p>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="relative z-10 pb-6 flex justify-center">
-          <div className="w-6 h-10 border-2 border-secondary/50 rounded-full flex justify-center animate-bounce">
-            <div className="w-1.5 h-3 bg-secondary/50 rounded-full mt-2" />
-          </div>
-        </div>
-      </section>
-
-      {/* Business Info Section */}
-      <section className="py-10 px-4 bg-background">
-        <div className="max-w-5xl mx-auto">
-
-          {/* Business Info */}
-          <div className="bg-secondary rounded-lg p-6 md:p-8 text-center">
-            <h3 className="text-xl md:text-2xl font-bold mb-5 text-secondary-foreground">
-              Ready to Get Moving?
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-4 mb-6 max-w-xl mx-auto text-left">
-              <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-sm text-secondary-foreground">Hours</p>
-                  <p className="text-sm text-muted-foreground">Monday – Saturday, 9am – 5pm</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-sm text-secondary-foreground">Service Area</p>
-                  <p className="text-sm text-muted-foreground">King & Pierce County</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Large Phone CTA */}
-            <a href="tel:253-267-3212" className="inline-block">
-              <Button
-                size="lg"
-                className="text-xl md:text-2xl px-8 py-6 h-auto bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <Phone className="w-6 h-6 mr-3" />
-                253-267-3212
-              </Button>
-            </a>
-            <p className="text-muted-foreground mt-3 text-sm">
-              Tap to call now!
-            </p>
-          </div>
         </div>
       </section>
 
