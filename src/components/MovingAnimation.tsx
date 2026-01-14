@@ -9,7 +9,7 @@ type Scene = "original" | "empty" | "newHouse";
 const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
   <div 
     className={`flex items-end ${flipped ? 'scale-x-[-1]' : ''}`}
-    style={{ height: '75vh', minHeight: '450px' }}
+    style={{ height: '100vh' }}
   >
     <div className="flex items-end drop-shadow-2xl">
       {/* Cab Section */}
@@ -53,7 +53,7 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
       {/* Box/Trailer Section */}
       <div className="relative -ml-4">
         {/* Main Box */}
-        <div className="w-[55vw] max-w-[700px] min-w-[350px] h-[55vh] min-h-[320px] bg-gradient-to-b from-white via-gray-50 to-gray-100 border-2 border-gray-400 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
+        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-b from-white via-gray-50 to-gray-100 border-2 border-gray-400 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
           {/* Top trim */}
           <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-400 to-gray-300" />
           
@@ -129,10 +129,10 @@ const MovingAnimation = () => {
 
       // Phase 2: Truck drives right across screen
       setTruckPhase("drive-right");
-      await delay(1000);
+      await delay(2500); // Wait until truck fully covers screen
       if (!isMounted) return;
       setScene("empty");
-      await delay(1500);
+      await delay(2500); // Wait until truck exits
       if (!isMounted) return;
       setTruckPhase("hidden");
 
@@ -142,10 +142,10 @@ const MovingAnimation = () => {
 
       // Phase 4: Truck drives left across screen
       setTruckPhase("drive-left");
-      await delay(1000);
+      await delay(2500); // Wait until truck fully covers screen
       if (!isMounted) return;
       setScene("newHouse");
-      await delay(1500);
+      await delay(2500); // Wait until truck exits
       if (!isMounted) return;
       setTruckPhase("hidden");
 
