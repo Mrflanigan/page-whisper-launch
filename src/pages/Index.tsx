@@ -24,78 +24,76 @@ const Index = () => {
         </div>
 
         {/* Header with Company Name and Services Dropdown */}
-        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight whitespace-nowrap">
+        <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex justify-between items-start">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-secondary tracking-tight whitespace-nowrap">
             Top Choice Moving
           </h1>
           
-          {/* Centered Services Button */}
-          <div className="flex flex-col items-center mt-4">
-            {/* Services Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
-                >
-                  Services Offered
-                  <ChevronDown className="w-4 h-4 ml-2" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-72 bg-card border border-border shadow-lg z-50">
-                <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
-                  <Truck className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-card-foreground">Loading & Unloading</p>
-                    <p className="text-sm text-muted-foreground">All truck types: Uhaul, Penske, Budget & more</p>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
-                  <Trash2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-card-foreground">Hauling & Dump Runs</p>
-                    <p className="text-sm text-muted-foreground">Full load required — no single item hauling</p>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
-                  <TreePine className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-card-foreground">Yard Clearing</p>
-                    <p className="text-sm text-muted-foreground">Objects & debris removal</p>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <div className="p-3 text-center border-t border-border bg-muted/50">
-                  <p className="text-sm text-muted-foreground">
-                    King County, Pierce County & surrounding
-                  </p>
-                  <p className="text-sm font-semibold text-accent">Very affordable rates!</p>
+          {/* Services Dropdown - Far Right */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+              >
+                Services Offered
+                <ChevronDown className="w-4 h-4 ml-2" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-72 bg-card border border-border shadow-lg z-50">
+              <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
+                <Truck className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-card-foreground">Loading & Unloading</p>
+                  <p className="text-sm text-muted-foreground">All truck types: Uhaul, Penske, Budget & more</p>
                 </div>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Animated Truck - simple side to side below button */}
-            <motion.div
-              initial={{ x: "-100vw" }}
-              animate={{ x: "100vw" }}
-              transition={{
-                duration: 18,
-                repeat: Infinity,
-                ease: [0.25, 0.1, 0.25, 1],
-                repeatDelay: 4,
-              }}
-              className="mt-4"
-            >
-              <Truck className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
-            </motion.div>
-          </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
+                <Trash2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-card-foreground">Hauling & Dump Runs</p>
+                  <p className="text-sm text-muted-foreground">Full load required — no single item hauling</p>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="flex items-start gap-3 p-3 cursor-default focus:bg-muted">
+                <TreePine className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-card-foreground">Yard Clearing</p>
+                  <p className="text-sm text-muted-foreground">Objects & debris removal</p>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <div className="p-3 text-center border-t border-border bg-muted/50">
+                <p className="text-sm text-muted-foreground">
+                  King County, Pierce County & surrounding
+                </p>
+                <p className="text-sm font-semibold text-accent">Very affordable rates!</p>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
-        {/* Hero Content - Centered */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto">
-          <p className="text-xl md:text-2xl text-secondary/90 mb-8 font-light">
+        {/* Animated Truck - below header */}
+        <div className="relative z-10 px-6 md:px-12">
+          <motion.div
+            initial={{ x: "-100vw" }}
+            animate={{ x: "100vw" }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: [0.25, 0.1, 0.25, 1],
+              repeatDelay: 4,
+            }}
+          >
+            <Truck className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
+          </motion.div>
+        </div>
+
+        {/* Hero Content - Centered, moved up */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto -mt-12 md:-mt-20">
+          <p className="text-xl md:text-2xl text-secondary/90 mb-6 font-light">
             Professional Loading & Unloading Services
           </p>
           <p className="text-lg md:text-xl text-secondary/80 mb-12 max-w-2xl mx-auto">
