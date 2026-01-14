@@ -30,21 +30,22 @@ const Index = () => {
           </h1>
           
           {/* Centered Services Button with Truck Animation */}
-          <div className="flex justify-center mt-4 relative">
+          <div className="flex justify-center mt-4 relative overflow-visible">
             {/* Animated Truck that goes around the button */}
             <motion.div
+              initial={{ x: "-50vw", y: 0 }}
               animate={{
-                x: ["-100vw", "calc(-80px)", "calc(-80px)", "calc(80px)", "calc(80px)", "100vw"],
-                y: [0, 0, 60, 60, 0, 0],
+                x: ["-50vw", "-100px", "-100px", "100px", "100px", "50vw"],
+                y: [0, 0, 50, 50, 0, 0],
               }}
               transition={{
-                duration: 6,
+                duration: 5,
                 repeat: Infinity,
-                ease: "linear",
-                repeatDelay: 3,
-                times: [0, 0.35, 0.42, 0.58, 0.65, 1],
+                repeatDelay: 2,
+                times: [0, 0.3, 0.38, 0.62, 0.7, 1],
               }}
-              className="absolute top-0 left-1/2 -translate-x-1/2"
+              className="absolute top-0 z-0"
+              style={{ left: "50%" }}
             >
               <Truck className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
             </motion.div>
