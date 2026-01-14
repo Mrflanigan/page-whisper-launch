@@ -121,38 +121,48 @@ const MovingAnimation = () => {
     const runAnimation = async () => {
       if (!isMounted) return;
       
-      // Phase 1: Original scene visible (8s pause)
+      // Scene 1: Original room with boxes (8s pause)
       setScene("original");
       setTruckPhase("hidden");
       await delay(8000);
       if (!isMounted) return;
 
-      // Phase 2: Truck drives right across screen
+      // Truck drives right → switches to new house with boxes
       setTruckPhase("drive-right");
-      await delay(2500); // Wait until truck fully covers screen
-      if (!isMounted) return;
-      setScene("empty");
-      await delay(2500); // Wait until truck exits
-      if (!isMounted) return;
-      setTruckPhase("hidden");
-
-      // Phase 3: Empty room pause (8s)
-      await delay(8000);
-      if (!isMounted) return;
-
-      // Phase 4: Truck drives left across screen
-      setTruckPhase("drive-left");
-      await delay(2500); // Wait until truck fully covers screen
+      await delay(2500);
       if (!isMounted) return;
       setScene("newHouse");
-      await delay(2500); // Wait until truck exits
+      await delay(2500);
       if (!isMounted) return;
       setTruckPhase("hidden");
 
-      // Phase 5: New house pause (8s)
+      // Scene 2: New house / blue room with boxes (8s pause)
       await delay(8000);
       if (!isMounted) return;
 
+      // Truck drives left → switches to empty blue room
+      setTruckPhase("drive-left");
+      await delay(2500);
+      if (!isMounted) return;
+      setScene("empty");
+      await delay(2500);
+      if (!isMounted) return;
+      setTruckPhase("hidden");
+
+      // Scene 3: Empty blue room without boxes (8s pause)
+      await delay(8000);
+      if (!isMounted) return;
+
+      // Truck drives right → switches back to original room with boxes
+      setTruckPhase("drive-right");
+      await delay(2500);
+      if (!isMounted) return;
+      setScene("original");
+      await delay(2500);
+      if (!isMounted) return;
+      setTruckPhase("hidden");
+
+      // Loop continues
       runAnimation();
     };
 
