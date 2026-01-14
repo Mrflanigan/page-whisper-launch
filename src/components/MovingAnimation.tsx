@@ -121,10 +121,10 @@ const MovingAnimation = () => {
     const runAnimation = async () => {
       if (!isMounted) return;
       
-      // Phase 1: Original scene visible (3s pause)
+      // Phase 1: Original scene visible (8s pause)
       setScene("original");
       setTruckPhase("hidden");
-      await delay(3000);
+      await delay(8000);
       if (!isMounted) return;
 
       // Phase 2: Truck drives right across screen
@@ -136,8 +136,8 @@ const MovingAnimation = () => {
       if (!isMounted) return;
       setTruckPhase("hidden");
 
-      // Phase 3: Empty room pause (2s)
-      await delay(2000);
+      // Phase 3: Empty room pause (8s)
+      await delay(8000);
       if (!isMounted) return;
 
       // Phase 4: Truck drives left across screen
@@ -149,8 +149,8 @@ const MovingAnimation = () => {
       if (!isMounted) return;
       setTruckPhase("hidden");
 
-      // Phase 5: New house pause (4s)
-      await delay(4000);
+      // Phase 5: New house pause (8s)
+      await delay(8000);
       if (!isMounted) return;
 
       runAnimation();
