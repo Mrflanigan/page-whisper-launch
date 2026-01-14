@@ -26,7 +26,7 @@ const Index = () => {
         {/* Header with Company Name and Services Dropdown */}
         <div className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex justify-between items-start">
           <div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-secondary mb-4 tracking-tight whitespace-nowrap">
               Top Choice Moving
             </h1>
             <motion.div
