@@ -81,10 +81,10 @@ const Index = () => {
             initial={{ x: "-100vw" }}
             animate={{ x: "100vw" }}
             transition={{
-              duration: 18,
+              duration: 15,
               repeat: Infinity,
-              ease: [0.25, 0.1, 0.25, 1],
-              repeatDelay: 4,
+              ease: "linear",
+              repeatDelay: 1.5,
             }}
           >
             <Truck className="w-10 h-10 md:w-12 md:h-12 text-secondary" />
