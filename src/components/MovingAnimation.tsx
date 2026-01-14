@@ -9,52 +9,97 @@ type Scene = "original" | "empty" | "newHouse";
 const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
   <div 
     className={`flex items-end ${flipped ? 'scale-x-[-1]' : ''}`}
-    style={{ height: '70vh', minHeight: '400px' }}
+    style={{ height: '75vh', minHeight: '450px' }}
   >
-    {/* Truck Container */}
-    <div className="flex items-end">
-      {/* Cab */}
-      <div className="relative">
-        {/* Cab body */}
-        <div className="w-32 h-40 bg-white rounded-t-lg rounded-bl-3xl border-4 border-gray-700 relative">
-          {/* Window */}
-          <div className="absolute top-4 left-4 right-4 h-16 bg-sky-200 rounded-t-md border-2 border-gray-600" />
+    <div className="flex items-end drop-shadow-2xl">
+      {/* Cab Section */}
+      <div className="relative z-10">
+        {/* Cab Body */}
+        <div className="w-36 h-44 bg-gradient-to-b from-gray-100 to-gray-200 rounded-tl-2xl rounded-bl-[40px] border-2 border-gray-400 relative shadow-lg">
+          {/* Roof accent */}
+          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-b from-gray-300 to-gray-200 rounded-tl-2xl" />
+          
+          {/* Windshield */}
+          <div className="absolute top-5 left-3 right-3 h-20 bg-gradient-to-br from-sky-300 via-sky-200 to-sky-400 rounded-tl-xl rounded-tr-sm border-2 border-gray-500 shadow-inner">
+            <div className="absolute inset-1 bg-gradient-to-br from-white/40 to-transparent rounded-tl-lg" />
+          </div>
+          
+          {/* Side mirror */}
+          <div className="absolute top-8 -left-4 w-4 h-6 bg-gray-600 rounded-l-full shadow-md" />
+          
           {/* Door */}
-          <div className="absolute bottom-0 left-2 right-2 h-20 bg-gray-100 border-2 border-gray-500 rounded-t-sm">
-            <div className="absolute top-2 right-2 w-2 h-4 bg-gray-600 rounded-full" />
+          <div className="absolute bottom-2 left-3 right-3 h-24 bg-gradient-to-b from-gray-50 to-gray-150 border border-gray-400 rounded-sm shadow-inner">
+            {/* Door handle */}
+            <div className="absolute top-3 right-2 w-1.5 h-5 bg-gray-500 rounded-full" />
+            {/* Door line */}
+            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" />
+          </div>
+          
+          {/* Headlight */}
+          <div className="absolute bottom-6 -left-1 w-3 h-6 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-l-full border border-gray-400" />
+        </div>
+        
+        {/* Front Wheel */}
+        <div className="absolute -bottom-10 left-6 w-24 h-24 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 rounded-full border-4 border-gray-600 shadow-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full border-2 border-gray-400 flex items-center justify-center">
+            <div className="w-4 h-4 bg-gray-600 rounded-full" />
           </div>
         </div>
-        {/* Front wheel */}
-        <div className="absolute -bottom-8 left-4 w-20 h-20 bg-gray-800 rounded-full border-4 border-gray-600 flex items-center justify-center">
-          <div className="w-8 h-8 bg-gray-400 rounded-full" />
-        </div>
+        
+        {/* Bumper */}
+        <div className="absolute -bottom-2 -left-2 w-20 h-4 bg-gradient-to-b from-gray-500 to-gray-700 rounded-l-lg" />
       </div>
       
-      {/* Box/Trailer */}
-      <div className="relative -ml-2">
-        {/* Main box */}
-        <div className="w-[50vw] max-w-[600px] min-w-[300px] h-[50vh] min-h-[280px] bg-white border-4 border-gray-700 rounded-tr-lg flex flex-col items-center justify-center px-8">
-          {/* Branding */}
-          <div className={`text-center ${flipped ? 'scale-x-[-1]' : ''}`}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-800 leading-tight">
+      {/* Box/Trailer Section */}
+      <div className="relative -ml-4">
+        {/* Main Box */}
+        <div className="w-[55vw] max-w-[700px] min-w-[350px] h-[55vh] min-h-[320px] bg-gradient-to-b from-white via-gray-50 to-gray-100 border-2 border-gray-400 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
+          {/* Top trim */}
+          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-400 to-gray-300" />
+          
+          {/* Bottom trim */}
+          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-gray-500 to-gray-400" />
+          
+          {/* Side ridges for realism */}
+          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-gray-300 to-transparent" />
+          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-gray-300 to-transparent" />
+          
+          {/* Branding Container */}
+          <div className={`text-center ${flipped ? 'scale-x-[-1]' : ''} relative z-10`}>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-800 leading-none tracking-tight drop-shadow-sm">
               TOP CHOICE
             </h2>
-            <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-700">
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-700 tracking-wide">
               MOVING
             </h3>
-            <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-amber-600 mt-4">
-              253-267-3212
-            </p>
+            <div className="mt-4 inline-block bg-amber-500 px-6 py-2 rounded-lg shadow-lg">
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-wider">
+                253-267-3212
+              </p>
+            </div>
           </div>
         </div>
-        {/* Rear wheel */}
-        <div className="absolute -bottom-8 right-12 w-20 h-20 bg-gray-800 rounded-full border-4 border-gray-600 flex items-center justify-center">
-          <div className="w-8 h-8 bg-gray-400 rounded-full" />
+        
+        {/* Rear Wheels */}
+        <div className="absolute -bottom-10 right-16 flex gap-2">
+          {/* Dual rear wheels */}
+          <div className="w-24 h-24 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 rounded-full border-4 border-gray-600 shadow-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full border-2 border-gray-400 flex items-center justify-center">
+              <div className="w-4 h-4 bg-gray-600 rounded-full" />
+            </div>
+          </div>
+          <div className="-ml-4 w-24 h-24 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 rounded-full border-4 border-gray-600 shadow-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full border-2 border-gray-400 flex items-center justify-center">
+              <div className="w-4 h-4 bg-gray-600 rounded-full" />
+            </div>
+          </div>
         </div>
-        {/* Middle wheel */}
-        <div className="absolute -bottom-8 right-36 w-20 h-20 bg-gray-800 rounded-full border-4 border-gray-600 flex items-center justify-center">
-          <div className="w-8 h-8 bg-gray-400 rounded-full" />
-        </div>
+        
+        {/* Mud flap */}
+        <div className="absolute -bottom-6 right-8 w-8 h-12 bg-gray-800 rounded-b-lg" />
+        
+        {/* Undercarriage */}
+        <div className="absolute -bottom-2 left-0 right-12 h-4 bg-gradient-to-b from-gray-600 to-gray-800" />
       </div>
     </div>
   </div>
