@@ -188,7 +188,7 @@ const MovingAnimation = () => {
           transition={{ duration: 2.5, ease: "linear" }}
           className="absolute bottom-8 left-0 z-10 pointer-events-none"
         >
-          <CssTruck />
+          <CssTruck flipped />
         </motion.div>
       )}
 
@@ -200,7 +200,7 @@ const MovingAnimation = () => {
           transition={{ duration: 2.5, ease: "linear" }}
           className="absolute bottom-8 left-0 z-10 pointer-events-none"
         >
-          <CssTruck flipped />
+          <CssTruck />
         </motion.div>
       )}
     </div>
