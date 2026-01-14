@@ -81,10 +81,10 @@ const Index = () => {
               initial={{ x: "-100vw" }}
               animate={{ x: "100vw" }}
               transition={{
-                duration: 8,
+                duration: 12,
                 repeat: Infinity,
-                ease: "linear",
-                repeatDelay: 2,
+                ease: "easeInOut",
+                repeatDelay: 3,
               }}
               className="mt-4"
             >
