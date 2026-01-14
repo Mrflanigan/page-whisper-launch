@@ -72,7 +72,7 @@ const Index = () => {
         </div>
 
         {/* Hero Content - Everything on page one */}
-        <div className="relative z-20 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto">
+        <div className="relative z-20 flex-1 flex flex-col items-center justify-end text-center px-4 max-w-5xl mx-auto pb-8">
           <p className="text-lg md:text-xl text-secondary/90 mb-1 font-light">
             Professional Loading & Unloading Services
           </p>
