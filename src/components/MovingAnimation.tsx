@@ -15,28 +15,28 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
       {/* Cab Section */}
       <div className="relative z-10">
         {/* Cab Body */}
-        <div className="w-36 h-44 bg-gradient-to-b from-gray-100 to-gray-200 rounded-tl-2xl rounded-bl-[40px] border-2 border-gray-400 relative shadow-lg">
+        <div className="w-36 h-44 bg-gradient-to-b from-amber-500 to-amber-600 rounded-tl-2xl rounded-bl-[40px] border-2 border-amber-700 relative shadow-lg">
           {/* Roof accent */}
-          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-b from-gray-300 to-gray-200 rounded-tl-2xl" />
+          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-b from-amber-400 to-amber-500 rounded-tl-2xl" />
           
           {/* Windshield */}
-          <div className="absolute top-5 left-3 right-3 h-20 bg-gradient-to-br from-sky-300 via-sky-200 to-sky-400 rounded-tl-xl rounded-tr-sm border-2 border-gray-500 shadow-inner">
+          <div className="absolute top-5 left-3 right-3 h-20 bg-gradient-to-br from-sky-300 via-sky-200 to-sky-400 rounded-tl-xl rounded-tr-sm border-2 border-amber-800 shadow-inner">
             <div className="absolute inset-1 bg-gradient-to-br from-white/40 to-transparent rounded-tl-lg" />
           </div>
           
           {/* Side mirror */}
-          <div className="absolute top-8 -left-4 w-4 h-6 bg-gray-600 rounded-l-full shadow-md" />
+          <div className="absolute top-8 -left-4 w-4 h-6 bg-amber-800 rounded-l-full shadow-md" />
           
           {/* Door */}
-          <div className="absolute bottom-2 left-3 right-3 h-24 bg-gradient-to-b from-gray-50 to-gray-150 border border-gray-400 rounded-sm shadow-inner">
+          <div className="absolute bottom-2 left-3 right-3 h-24 bg-gradient-to-b from-amber-400 to-amber-500 border border-amber-700 rounded-sm shadow-inner">
             {/* Door handle */}
-            <div className="absolute top-3 right-2 w-1.5 h-5 bg-gray-500 rounded-full" />
+            <div className="absolute top-3 right-2 w-1.5 h-5 bg-amber-800 rounded-full" />
             {/* Door line */}
-            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-gray-300" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-amber-600" />
           </div>
           
           {/* Headlight */}
-          <div className="absolute bottom-6 -left-1 w-3 h-6 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-l-full border border-gray-400" />
+          <div className="absolute bottom-6 -left-1 w-3 h-6 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-l-full border border-amber-700" />
         </div>
         
         {/* Front Wheel */}
@@ -47,7 +47,7 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
         </div>
         
         {/* Bumper */}
-        <div className="absolute -bottom-2 -left-2 w-20 h-4 bg-gradient-to-b from-gray-500 to-gray-700 rounded-l-lg" />
+        <div className="absolute -bottom-2 -left-2 w-20 h-4 bg-gradient-to-b from-amber-700 to-amber-900 rounded-l-lg" />
       </div>
       
       {/* Box/Trailer Section */}
