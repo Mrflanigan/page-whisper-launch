@@ -145,7 +145,8 @@ const Index = () => {
             style={{ 
               backgroundImage: `url(${heroMoving})`,
               backgroundSize: '140%',
-              backgroundPosition: 'center 50%'
+              backgroundPosition: 'center 50%',
+              backgroundColor: '#e8e0d5'
             }}
           >
             {/* Dark overlay for text readability */}
