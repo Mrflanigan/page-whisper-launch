@@ -167,8 +167,11 @@ const Index = () => {
               </p>
             </a>
 
+            {/* Spacer to push content to bottom */}
+            <div className="flex-1" />
+
             {/* Feature Highlights */}
-            <div className="grid grid-cols-3 gap-3 mb-8">
+            <div className="grid grid-cols-3 gap-3 mb-4">
               <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
                 <Truck className="w-7 h-7 mx-auto mb-2 text-accent" />
                 <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
@@ -184,7 +187,7 @@ const Index = () => {
             </div>
 
             {/* Scroll indicator */}
-            <div className="flex-1 flex flex-col items-center justify-end pb-6">
+            <div className="flex flex-col items-center pb-6">
               <p className="text-secondary/60 text-sm mb-2">Learn more</p>
               <ChevronDown className="w-6 h-6 text-secondary/60 animate-bounce" />
             </div>
