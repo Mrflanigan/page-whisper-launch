@@ -154,18 +154,20 @@ const Index = () => {
             </div>
 
             {/* CTA Button - Primary Action */}
-            <a href="tel:253-267-3212" className="block mb-6">
-              <Button
-                size="default"
-                className="w-full text-lg py-3 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                <span className="font-bookman font-bold">253-267-3212</span>
-              </Button>
-              <p className="text-secondary/70 mt-2 text-center text-sm">
-                Free estimates — we answer!
-              </p>
-            </a>
+            <div className="flex justify-center mb-6">
+              <a href="tel:253-267-3212">
+                <Button
+                  size="default"
+                  className="text-lg px-6 py-3 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
+                >
+                  <Phone className="w-5 h-5 mr-2" />
+                  <span className="font-bookman font-bold">253-267-3212</span>
+                </Button>
+              </a>
+            </div>
+            <p className="text-secondary/70 text-center text-sm mb-2">
+              Free estimates — we answer!
+            </p>
 
             {/* Spacer to push content to bottom */}
             <div className="flex-1" />
