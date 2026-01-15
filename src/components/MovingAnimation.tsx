@@ -173,7 +173,7 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
               MOVING
             </h3>
             <div className="mt-4 inline-block bg-white/90 backdrop-blur-sm px-6 py-2 rounded-lg shadow-lg">
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-orange-600 tracking-wider">
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bookman font-bold text-orange-600 tracking-wider">
                 253-267-3212
               </p>
             </div>
