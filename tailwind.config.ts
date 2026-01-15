@@ -17,6 +17,10 @@ export default {
         display: ['Cormorant Garamond', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
         bookman: ['Bookman Old Style', 'URW Bookman', 'Georgia', 'serif'],
+        oswald: ['Oswald', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        bebas: ['Bebas Neue', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
