@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ['Cormorant Garamond', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        bookman: ['Bookman Old Style', 'URW Bookman', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
