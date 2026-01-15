@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 import emptyRoom from "@/assets/empty-room.jpg";
 import newHouse from "@/assets/new-house.jpg";
-import blueEmptyRoom from "@/assets/empty-room-blue.jpg";
+import newHouseEmpty from "@/assets/new-house-empty.jpg";
 
 type Scene = "original" | "empty" | "newHouse" | "blueEmpty";
 
@@ -114,7 +114,7 @@ const MovingAnimation = () => {
     original: heroImage,
     empty: emptyRoom,
     newHouse: newHouse,
-    blueEmpty: blueEmptyRoom,
+    blueEmpty: newHouseEmpty,
   };
 
   useEffect(() => {
