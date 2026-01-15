@@ -220,7 +220,7 @@ const MovingAnimation = () => {
       <div className="absolute inset-0 bg-foreground/60" />
 
       {/* Truck animations - HIDDEN on mobile for better performance */}
-      <div className="hidden md:block">
+      <div className="hidden sm:block">
         {/* Truck driving right */}
         {truckPhase === "drive-right" && (
           <motion.div
