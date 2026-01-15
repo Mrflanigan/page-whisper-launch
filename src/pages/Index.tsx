@@ -1,4 +1,5 @@
-import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown } from "lucide-react";
+import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown, Smartphone } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -26,7 +27,16 @@ const Index = () => {
             </h1>
             
             {/* Services Dropdown - Below company name, far right */}
-            <div className="flex justify-end mt-4">
+            <div className="flex justify-end mt-4 gap-3">
+              <Link to="/mobile-preview">
+                <Button 
+                  variant="outline" 
+                  className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+                >
+                  <Smartphone className="w-4 h-4 mr-2" />
+                  View Mobile
+                </Button>
+              </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button 
