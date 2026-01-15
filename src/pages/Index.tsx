@@ -8,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import MovingAnimation from "@/components/MovingAnimation";
 import heroMoving from "@/assets/hero-moving.jpg";
 
 const Index = () => {
@@ -15,6 +16,8 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen md:h-[85vh] flex flex-col overflow-hidden">
+        {/* Animated Background with Truck */}
+        <MovingAnimation />
 
         {/* ===== DESKTOP VERSION (md and up - 768px+) ===== */}
         <div className="hidden md:flex md:flex-col md:flex-1 relative z-20">
