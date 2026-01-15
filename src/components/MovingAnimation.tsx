@@ -103,60 +103,60 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
           
           {/* Palm tree silhouettes - TALLER */}
           <div className="absolute bottom-6 left-[5%] pointer-events-none z-10">
-            {/* Left palm - very tall */}
-            <svg width="180" height="350" viewBox="0 0 180 350" className="fill-black/85">
+            {/* Left palm - MASSIVE */}
+            <svg width="280" height="600" viewBox="0 0 280 600" className="fill-black/85">
               {/* Trunk */}
-              <path d="M82 350 Q88 280 92 180 Q90 140 86 100 L94 100 Q98 140 96 180 Q102 280 108 350 Z" />
+              <path d="M125 600 Q135 480 142 300 Q138 220 130 150 L150 150 Q158 220 154 300 Q162 480 175 600 Z" />
               {/* Fronds */}
-              <path d="M90 110 Q45 70 5 90 Q55 55 90 100 Z" />
-              <path d="M90 100 Q35 40 15 50 Q60 25 90 90 Z" />
-              <path d="M90 90 Q75 20 90 5 Q105 20 90 90 Z" />
-              <path d="M90 100 Q145 40 165 50 Q120 25 90 90 Z" />
-              <path d="M90 110 Q135 70 175 90 Q125 55 90 100 Z" />
-              <path d="M90 105 Q55 55 25 70 Q70 45 90 95 Z" />
-              <path d="M90 105 Q125 55 155 70 Q110 45 90 95 Z" />
+              <path d="M140 165 Q70 110 10 140 Q85 85 140 150 Z" />
+              <path d="M140 150 Q55 65 25 80 Q95 40 140 135 Z" />
+              <path d="M140 135 Q115 30 140 8 Q165 30 140 135 Z" />
+              <path d="M140 150 Q225 65 255 80 Q185 40 140 135 Z" />
+              <path d="M140 165 Q210 110 270 140 Q195 85 140 150 Z" />
+              <path d="M140 158 Q85 90 40 110 Q110 70 140 145 Z" />
+              <path d="M140 158 Q195 90 240 110 Q170 70 140 145 Z" />
             </svg>
           </div>
           
-          <div className="absolute bottom-6 right-[8%] pointer-events-none z-10">
-            {/* Right palm - tall, slightly leaning */}
-            <svg width="160" height="300" viewBox="0 0 160 300" className="fill-black/85">
+          <div className="absolute bottom-6 right-[6%] pointer-events-none z-10">
+            {/* Right palm - MASSIVE, slightly leaning */}
+            <svg width="260" height="550" viewBox="0 0 260 550" className="fill-black/85">
               {/* Trunk - leaning right */}
-              <path d="M68 300 Q80 230 88 150 Q86 115 82 85 L90 85 Q94 115 92 150 Q100 230 112 300 Z" />
+              <path d="M110 550 Q130 420 142 270 Q138 190 130 130 L150 130 Q158 190 154 270 Q170 420 190 550 Z" />
               {/* Fronds */}
-              <path d="M86 95 Q40 65 8 80 Q52 50 86 85 Z" />
-              <path d="M86 85 Q45 35 20 42 Q62 20 86 75 Z" />
-              <path d="M86 75 Q78 15 90 5 Q102 15 86 75 Z" />
-              <path d="M86 85 Q127 35 152 42 Q110 20 86 75 Z" />
-              <path d="M86 95 Q132 65 155 80 Q120 50 86 85 Z" />
+              <path d="M140 145 Q65 100 15 125 Q85 75 140 130 Z" />
+              <path d="M140 130 Q70 55 35 68 Q100 30 140 115 Z" />
+              <path d="M140 115 Q125 25 145 8 Q165 25 140 115 Z" />
+              <path d="M140 130 Q210 55 245 68 Q180 30 140 115 Z" />
+              <path d="M140 145 Q215 100 255 125 Q195 75 140 130 Z" />
             </svg>
           </div>
           
-          <div className="absolute bottom-6 left-[22%] pointer-events-none z-10">
-            {/* Middle palm - medium height, background */}
-            <svg width="120" height="220" viewBox="0 0 120 220" className="fill-black/70">
+          <div className="absolute bottom-6 left-[20%] pointer-events-none z-10">
+            {/* Middle palm - tall background */}
+            <svg width="200" height="450" viewBox="0 0 200 450" className="fill-black/70">
               {/* Trunk */}
-              <path d="M54 220 Q60 170 63 110 Q61 85 58 65 L66 65 Q69 85 67 110 Q72 170 78 220 Z" />
+              <path d="M90 450 Q100 350 105 220 Q102 165 95 120 L115 120 Q122 165 118 220 Q125 350 138 450 Z" />
               {/* Fronds */}
-              <path d="M62 72 Q30 48 5 60 Q40 40 62 65 Z" />
-              <path d="M62 65 Q32 25 15 30 Q48 15 62 58 Z" />
-              <path d="M62 58 Q55 15 64 5 Q73 15 62 58 Z" />
-              <path d="M62 65 Q92 25 107 30 Q76 15 62 58 Z" />
-              <path d="M62 72 Q94 48 117 60 Q84 40 62 65 Z" />
+              <path d="M105 132 Q50 90 10 110 Q65 70 105 120 Z" />
+              <path d="M105 120 Q55 55 25 65 Q78 30 105 108 Z" />
+              <path d="M105 108 Q92 30 108 10 Q124 30 105 108 Z" />
+              <path d="M105 120 Q155 55 185 65 Q132 30 105 108 Z" />
+              <path d="M105 132 Q160 90 195 110 Q145 70 105 120 Z" />
             </svg>
           </div>
           
-          <div className="absolute bottom-6 right-[28%] pointer-events-none z-10">
-            {/* Far right palm - shorter, distant */}
-            <svg width="90" height="160" viewBox="0 0 90 160" className="fill-black/60">
+          <div className="absolute bottom-6 right-[24%] pointer-events-none z-10">
+            {/* Far palm - medium, distant */}
+            <svg width="150" height="350" viewBox="0 0 150 350" className="fill-black/60">
               {/* Trunk */}
-              <path d="M40 160 Q45 120 47 80 Q46 60 43 48 L50 48 Q53 60 52 80 Q56 120 62 160 Z" />
+              <path d="M68 350 Q76 270 80 175 Q78 130 72 95 L88 95 Q94 130 91 175 Q98 270 108 350 Z" />
               {/* Fronds */}
-              <path d="M47 54 Q25 38 5 46 Q32 32 47 50 Z" />
-              <path d="M47 50 Q28 22 15 26 Q38 14 47 46 Z" />
-              <path d="M47 46 Q42 15 49 5 Q56 15 47 46 Z" />
-              <path d="M47 50 Q66 22 80 26 Q56 14 47 46 Z" />
-              <path d="M47 54 Q69 38 87 46 Q62 32 47 50 Z" />
+              <path d="M80 105 Q40 72 10 88 Q52 58 80 95 Z" />
+              <path d="M80 95 Q48 45 25 52 Q62 25 80 85 Z" />
+              <path d="M80 85 Q70 25 82 8 Q94 25 80 85 Z" />
+              <path d="M80 95 Q112 45 140 52 Q98 25 80 85 Z" />
+              <path d="M80 105 Q120 72 145 88 Q108 58 80 95 Z" />
             </svg>
           </div>
           
