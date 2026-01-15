@@ -204,40 +204,32 @@ const Index = () => {
           </div>
 
           {/* PAGE 2: Additional Services */}
-          <div className="min-h-screen flex flex-col px-6 py-10 bg-foreground">
+          <div className="flex flex-col px-6 py-8 bg-foreground">
             
             {/* Also Available Header */}
-            <h2 className="text-secondary font-bold text-2xl text-center mb-8">
+            <h2 className="text-secondary font-bold text-xl text-center mb-6">
               Also Available
             </h2>
 
             {/* Services List - Clean & Classy */}
-            <div className="space-y-6 mb-10">
-              <div className="flex items-center gap-4">
-                <Trash2 className="w-6 h-6 text-accent flex-shrink-0" />
-                <div>
-                  <p className="text-secondary font-medium text-lg">Hauling & Dump Runs</p>
-                </div>
+            <div className="space-y-4 mb-6">
+              <div className="flex items-center gap-3">
+                <Trash2 className="w-5 h-5 text-accent flex-shrink-0" />
+                <p className="text-secondary font-medium">Hauling & Dump Runs</p>
               </div>
-              <div className="flex items-center gap-4">
-                <TreePine className="w-6 h-6 text-accent flex-shrink-0" />
-                <div>
-                  <p className="text-secondary font-medium text-lg">Yard Clearing</p>
-                  <p className="text-secondary/60 text-sm">Objects & debris removal</p>
-                </div>
+              <div className="flex items-center gap-3">
+                <TreePine className="w-5 h-5 text-accent flex-shrink-0" />
+                <p className="text-secondary font-medium">Yard Clearing (objects & debris)</p>
               </div>
             </div>
 
             {/* Note */}
-            <p className="text-secondary/50 text-sm text-center italic mb-10">
+            <p className="text-secondary/50 text-sm text-center italic mb-6">
               Full load required — no single item hauling
             </p>
 
-            {/* Spacer */}
-            <div className="flex-1" />
-
             {/* Phone CTA */}
-            <a href="tel:253-267-3212" className="block mb-8">
+            <a href="tel:253-267-3212" className="block mb-6">
               <Button
                 size="lg"
                 className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
@@ -248,8 +240,8 @@ const Index = () => {
             </a>
 
             {/* Mobile Footer */}
-            <div className="text-center pt-6 border-t border-secondary/20">
-              <p className="text-secondary font-semibold mb-1">Top Choice Moving Inc.</p>
+            <div className="text-center pt-4 border-t border-secondary/20">
+              <p className="text-secondary font-semibold text-sm mb-1">Top Choice Moving Inc.</p>
               <p className="text-secondary/50 text-xs">
                 © {new Date().getFullYear()} All rights reserved.
               </p>
@@ -258,8 +250,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-secondary py-6 md:py-8 px-4">
+      {/* Footer - Desktop Only */}
+      <footer className="hidden md:block bg-foreground text-secondary py-6 md:py-8 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-base md:text-lg font-semibold mb-2">Top Choice Moving Inc.</p>
           <p className="text-secondary/70 text-xs md:text-sm">
