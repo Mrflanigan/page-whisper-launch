@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
-import emptyRoom from "@/assets/empty-room.jpg";
+import heroEmpty from "@/assets/hero-empty.jpg";
 import newHouse from "@/assets/new-house.jpg";
 import newHouseEmpty from "@/assets/new-house-empty.jpg";
 
@@ -112,7 +112,7 @@ const MovingAnimation = () => {
 
   const backgrounds: Record<Scene, string> = {
     original: heroImage,
-    empty: emptyRoom,
+    empty: heroEmpty,
     newHouse: newHouse,
     blueEmpty: newHouseEmpty,
   };
