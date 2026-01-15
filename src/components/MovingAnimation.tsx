@@ -62,31 +62,39 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
       
       {/* Box/Trailer Section */}
       <div className="relative -ml-4">
-        {/* Main Box - warm cream with sunset tint */}
-        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 border-2 border-orange-300 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
-          {/* Top trim - sunset gradient */}
-          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-orange-400 via-red-400 to-pink-400" />
+        {/* Main Box - FULL SUNSET GRADIENT */}
+        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-b from-amber-300 via-orange-400 via-55% to-rose-500 border-2 border-orange-600 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
+          {/* Sun glow in upper area */}
+          <div 
+            className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] rounded-full opacity-60 blur-3xl pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(255,220,100,0.9) 0%, rgba(255,180,50,0.5) 40%, transparent 70%)' }}
+          />
           
-          {/* Bottom trim */}
-          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-orange-600 to-orange-400" />
+          {/* Top trim - golden */}
+          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-yellow-400 to-amber-400" />
           
-          {/* Sunset reflection overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-orange-200/20 via-transparent to-orange-300/10 pointer-events-none" />
+          {/* Bottom trim - deep sunset */}
+          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-rose-700 to-rose-500" />
+          
+          {/* Horizontal cloud streaks */}
+          <div className="absolute top-[20%] left-0 right-0 h-8 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+          <div className="absolute top-[35%] left-[10%] right-[20%] h-4 bg-gradient-to-r from-transparent via-orange-200/30 to-transparent pointer-events-none" />
+          <div className="absolute top-[50%] left-[5%] right-[10%] h-6 bg-gradient-to-r from-transparent via-rose-300/20 to-transparent pointer-events-none" />
           
           {/* Side ridges for realism */}
-          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-orange-200 to-transparent" />
-          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-orange-200 to-transparent" />
+          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-orange-600/50 to-transparent" />
+          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-orange-600/50 to-transparent" />
           
           {/* Branding Container */}
           <div className={`text-center ${flipped ? 'scale-x-[-1]' : ''} relative z-10`}>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-800 leading-none tracking-tight drop-shadow-sm">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
               TOP CHOICE
             </h2>
-            <h3 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-700 tracking-wide">
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white/90 tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)]">
               MOVING
             </h3>
-            <div className="mt-4 inline-block bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 px-6 py-2 rounded-lg shadow-lg">
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-wider">
+            <div className="mt-4 inline-block bg-white/90 backdrop-blur-sm px-6 py-2 rounded-lg shadow-lg">
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-orange-600 tracking-wider">
                 253-267-3212
               </p>
             </div>
