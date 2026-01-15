@@ -173,6 +173,11 @@ const Index = () => {
             </a>
             <p className="text-white/70 text-center text-sm font-bold mb-4 relative z-10 font-montserrat">Free Estimates</p>
 
+            {/* Little truck animation */}
+            <div className="relative z-10 flex justify-center mb-4">
+              <Truck className="w-8 h-8 text-white animate-truck-wiggle" />
+            </div>
+
             {/* Spacer */}
             <div className="flex-1 relative z-10" />
 
