@@ -104,7 +104,7 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              <span>King & Pierce County</span>
+              <span>King, Pierce & surrounding areas</span>
             </div>
           </div>
 
