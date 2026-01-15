@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 import emptyRoom from "@/assets/empty-room.jpg";
 import newHouse from "@/assets/new-house.jpg";
-import blueEmptyRoom from "@/assets/blue-empty-room.jpg";
+import blueEmptyRoom from "@/assets/empty-room-blue.jpg";
 
 type Scene = "original" | "empty" | "newHouse" | "blueEmpty";
 
