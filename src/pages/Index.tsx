@@ -168,20 +168,20 @@ const Index = () => {
                 className="text-base px-5 py-2 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                <span className="font-bookman font-bold">253-267-3212</span>
+                <span className="font-oswald font-bold">253-267-3212</span>
               </Button>
             </a>
-            <p className="text-secondary/70 text-center text-sm font-bold mb-4 relative z-10">Free Estimates</p>
+            <p className="text-secondary/70 text-center text-sm font-bold mb-4 relative z-10 font-montserrat">Free Estimates</p>
 
             {/* Spacer */}
             <div className="flex-1 relative z-10" />
 
             {/* Key Info - Classy Layout */}
-            <div className="relative z-10 text-center space-y-3 mb-6">
+            <div className="relative z-10 text-center space-y-3 mb-6 font-montserrat">
               <p className="text-secondary/80 text-sm font-bold">
                 We work with Uhaul, Penske & all moving trucks!
               </p>
-              <p className="text-secondary text-lg font-bold">
+              <p className="text-secondary text-lg font-bold font-oswald uppercase">
                 We Come to You
               </p>
               <div className="flex items-center justify-center gap-2 text-secondary/80">
@@ -192,7 +192,7 @@ const Index = () => {
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm font-bold">King & Pierce County</span>
               </div>
-              <p className="text-accent font-bold text-base pt-2">
+              <p className="text-accent font-bold text-base pt-2 font-oswald uppercase">
                 Very Affordable Rates
               </p>
             </div>
@@ -207,7 +207,7 @@ const Index = () => {
           <div className="flex flex-col px-6 py-8 bg-foreground">
             
             {/* Also Available Header */}
-            <h2 className="text-secondary font-bold text-xl text-center mb-6">
+            <h2 className="text-secondary font-bold text-xl text-center mb-6 font-oswald uppercase">
               Also Available
             </h2>
 
@@ -215,16 +215,16 @@ const Index = () => {
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <Trash2 className="w-5 h-5 text-accent flex-shrink-0" />
-                <p className="text-secondary font-bold">Hauling & Dump Runs</p>
+                <p className="text-secondary font-bold font-montserrat">Hauling & Dump Runs</p>
               </div>
               <div className="flex items-center gap-3">
                 <TreePine className="w-5 h-5 text-accent flex-shrink-0" />
-                <p className="text-secondary font-bold">Yard Clearing (objects & debris)</p>
+                <p className="text-secondary font-bold font-montserrat">Yard Clearing (objects & debris)</p>
               </div>
             </div>
 
             {/* Note */}
-            <p className="text-secondary/50 text-sm text-center italic font-bold mb-6">
+            <p className="text-secondary/50 text-sm text-center italic font-bold mb-6 font-montserrat">
               Full load required — no single item hauling
             </p>
 
@@ -235,7 +235,7 @@ const Index = () => {
                 className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
               >
                 <Phone className="w-6 h-6 mr-2" />
-                <span className="font-bookman font-bold">253-267-3212</span>
+                <span className="font-oswald font-bold">253-267-3212</span>
               </Button>
             </a>
 
@@ -244,8 +244,8 @@ const Index = () => {
               className="text-center py-6 -mx-6 px-6 mt-4"
               style={{ backgroundColor: '#6a5d4a' }}
             >
-              <p className="text-secondary font-bold text-sm mb-1">Top Choice Moving Inc.</p>
-              <p className="text-secondary/70 text-xs font-bold">
+              <p className="text-secondary font-bold text-sm mb-1 font-oswald uppercase">Top Choice Moving Inc.</p>
+              <p className="text-secondary/70 text-xs font-bold font-montserrat">
                 © {new Date().getFullYear()} All rights reserved.
               </p>
             </div>
