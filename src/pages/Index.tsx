@@ -131,7 +131,7 @@ const Index = () => {
               </Button>
             </a>
             <p className="text-secondary/70 mt-2 text-xs">
-              Tap to call now!
+              Free estimates — we answer!
             </p>
           </div>
         </div>
@@ -161,7 +161,7 @@ const Index = () => {
               253-267-3212
             </Button>
             <p className="text-secondary/70 mt-2 text-center text-sm">
-              Tap to call now!
+              Free estimates — we answer!
             </p>
           </a>
 
@@ -249,7 +249,7 @@ const Index = () => {
               className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
             >
               <Phone className="w-6 h-6 mr-2" />
-              Call Now: 253-267-3212
+              Get Your Free Estimate
             </Button>
           </a>
         </div>
