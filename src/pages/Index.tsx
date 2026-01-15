@@ -153,10 +153,10 @@ const Index = () => {
             <div className="absolute inset-0 bg-foreground/50" />
             {/* Company Name & Tagline */}
             <div className="text-center mb-8 relative z-10">
-              <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3">
+              <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3 font-oswald uppercase">
                 Top Choice Moving
               </h1>
-              <p className="text-secondary text-xl font-bold tracking-wide">
+              <p className="text-secondary text-xl font-bold tracking-wide font-montserrat">
                 Professional Loading & Unloading Services
               </p>
             </div>
