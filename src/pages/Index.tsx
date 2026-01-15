@@ -141,10 +141,11 @@ const Index = () => {
         <div className="md:hidden flex flex-col relative z-20">
           {/* PAGE 1: Hero with CTA */}
           <div 
-            className="min-h-screen flex flex-col px-6 py-8 relative bg-cover bg-no-repeat"
+            className="min-h-screen flex flex-col px-6 py-8 relative bg-no-repeat"
             style={{ 
               backgroundImage: `url(${heroMoving})`,
-              backgroundPosition: 'center 20%'
+              backgroundSize: '120%',
+              backgroundPosition: 'center 30%'
             }}
           >
             {/* Dark overlay for text readability */}
