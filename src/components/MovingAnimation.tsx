@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 import emptyRoom from "@/assets/empty-room.jpg";
 import newHouse from "@/assets/new-house.jpg";
+import blueEmptyRoom from "@/assets/blue-empty-room.jpg";
 
 type Scene = "original" | "empty" | "newHouse" | "blueEmpty";
 
@@ -112,8 +113,8 @@ const MovingAnimation = () => {
   const backgrounds: Record<Scene, string> = {
     original: heroImage,
     empty: emptyRoom,
-    newHouse: emptyRoom, // Placeholder - needs proper image
-    blueEmpty: newHouse,
+    newHouse: newHouse,
+    blueEmpty: blueEmptyRoom,
   };
 
   useEffect(() => {
