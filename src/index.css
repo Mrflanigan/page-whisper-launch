@@ -158,3 +158,17 @@ All colors MUST be HSL.
 .animate-truck-drive {
   animation: truck-drive 10s linear infinite;
 }
+
+/* Small truck wiggle animation for mobile */
+@keyframes truck-wiggle {
+  0%, 100% {
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+.animate-truck-wiggle {
+  animation: truck-wiggle 3s ease-in-out infinite;
+}
