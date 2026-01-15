@@ -159,9 +159,6 @@ const Index = () => {
               <p className="text-secondary text-xl font-bold tracking-wide">
                 Professional Loading & Unloading Services
               </p>
-              <p className="text-secondary/70 text-sm mt-1">
-                We work with Uhaul, Penske & all moving trucks!
-              </p>
             </div>
 
             {/* CTA Button - Primary Action */}
@@ -181,6 +178,9 @@ const Index = () => {
 
             {/* Key Info - Classy Layout */}
             <div className="relative z-10 text-center space-y-3 mb-6">
+              <p className="text-secondary/80 text-sm">
+                We work with Uhaul, Penske & all moving trucks!
+              </p>
               <p className="text-secondary text-lg font-medium">
                 We Come to You
               </p>
