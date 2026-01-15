@@ -163,6 +163,9 @@ const Index = () => {
             <p className="text-secondary/70 mt-2 text-center text-sm">
               Free estimates — we answer!
             </p>
+            <p className="text-accent font-bold text-center text-sm mt-1">
+              Very affordable rates!
+            </p>
           </a>
 
           {/* Feature Highlights */}
@@ -237,9 +240,6 @@ const Index = () => {
             <span className="bg-accent/20 text-accent px-5 py-2 rounded-full text-sm font-semibold border border-accent/30">
               ✓ Licensed & Insured
             </span>
-            <p className="text-accent font-bold text-lg">
-              Very affordable rates!
-            </p>
           </div>
 
           {/* Second CTA at bottom for long scroll */}
