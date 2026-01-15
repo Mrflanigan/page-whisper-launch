@@ -137,9 +137,28 @@ const Index = () => {
           <p className="text-secondary/90 text-center mt-2 text-sm">
             Loading & Unloading Services
           </p>
+          <p className="text-secondary/80 text-center mt-1 text-xs">
+            We work with Uhaul, Penske & all moving trucks!
+          </p>
 
           {/* Spacer to push content down */}
-          <div className="flex-1 min-h-[40px]" />
+          <div className="flex-1 min-h-[20px]" />
+
+          {/* Three Feature Cards - Mobile */}
+          <div className="grid grid-cols-3 gap-2 mb-4">
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
+              <Truck className="w-5 h-5 mx-auto mb-1 text-secondary" />
+              <h3 className="text-xs font-semibold text-secondary">All Truck Types</h3>
+            </div>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
+              <MapPin className="w-5 h-5 mx-auto mb-1 text-secondary" />
+              <h3 className="text-xs font-semibold text-secondary">We Come to You</h3>
+            </div>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
+              <Clock className="w-5 h-5 mx-auto mb-1 text-secondary" />
+              <h3 className="text-xs font-semibold text-secondary">Flexible Hours</h3>
+            </div>
+          </div>
 
           {/* Services List - Mobile (Simple text, no cards) */}
           <div className="bg-secondary/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-secondary/20">
