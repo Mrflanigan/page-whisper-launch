@@ -85,6 +85,51 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
           <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-orange-600/50 to-transparent" />
           <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-orange-600/50 to-transparent" />
           
+          {/* Palm tree silhouettes */}
+          <div className="absolute bottom-6 left-[8%] pointer-events-none">
+            {/* Left palm - tall */}
+            <svg width="120" height="200" viewBox="0 0 120 200" className="fill-black/80">
+              {/* Trunk */}
+              <path d="M55 200 Q58 150 62 100 Q60 80 58 60 L62 60 Q64 80 62 100 Q66 150 69 200 Z" />
+              {/* Fronds */}
+              <path d="M60 65 Q30 40 5 55 Q35 35 60 60 Z" />
+              <path d="M60 60 Q25 20 10 25 Q40 15 60 55 Z" />
+              <path d="M60 55 Q50 10 60 5 Q70 10 60 55 Z" />
+              <path d="M60 60 Q95 20 110 25 Q80 15 60 55 Z" />
+              <path d="M60 65 Q90 40 115 55 Q85 35 60 60 Z" />
+              <path d="M60 62 Q40 30 20 40 Q50 25 60 58 Z" />
+              <path d="M60 62 Q80 30 100 40 Q70 25 60 58 Z" />
+            </svg>
+          </div>
+          
+          <div className="absolute bottom-6 right-[12%] pointer-events-none">
+            {/* Right palm - medium, slightly leaning */}
+            <svg width="100" height="160" viewBox="0 0 100 160" className="fill-black/80">
+              {/* Trunk - leaning right */}
+              <path d="M42 160 Q50 120 55 80 Q54 65 52 50 L56 50 Q58 65 57 80 Q62 120 70 160 Z" />
+              {/* Fronds */}
+              <path d="M54 55 Q25 35 5 45 Q30 30 54 50 Z" />
+              <path d="M54 50 Q30 15 15 20 Q40 10 54 45 Z" />
+              <path d="M54 45 Q50 5 58 0 Q66 5 54 45 Z" />
+              <path d="M54 50 Q78 15 93 20 Q68 10 54 45 Z" />
+              <path d="M54 55 Q83 35 98 45 Q73 30 54 50 Z" />
+            </svg>
+          </div>
+          
+          <div className="absolute bottom-6 left-[25%] pointer-events-none">
+            {/* Background palm - smaller */}
+            <svg width="80" height="130" viewBox="0 0 80 130" className="fill-black/60">
+              {/* Trunk */}
+              <path d="M36 130 Q40 100 42 70 Q41 55 39 45 L43 45 Q45 55 44 70 Q48 100 52 130 Z" />
+              {/* Fronds */}
+              <path d="M41 48 Q20 32 5 40 Q25 28 41 45 Z" />
+              <path d="M41 45 Q25 15 12 18 Q32 10 41 42 Z" />
+              <path d="M41 42 Q38 8 44 2 Q50 8 41 42 Z" />
+              <path d="M41 45 Q57 15 70 18 Q50 10 41 42 Z" />
+              <path d="M41 48 Q62 32 77 40 Q57 28 41 45 Z" />
+            </svg>
+          </div>
+          
           {/* Branding Container */}
           <div className={`text-center ${flipped ? 'scale-x-[-1]' : ''} relative z-10`}>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
