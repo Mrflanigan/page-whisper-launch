@@ -17,8 +17,8 @@ const Index = () => {
         {/* Animated Background with Truck */}
         <MovingAnimation />
 
-        {/* ===== DESKTOP VERSION (sm and up - 640px+) ===== */}
-        <div className="hidden sm:flex sm:flex-col sm:flex-1 relative z-20">
+        {/* ===== DESKTOP VERSION (md and up - 768px+) ===== */}
+        <div className="hidden md:flex md:flex-col md:flex-1 relative z-20">
           {/* Header with Company Name */}
           <div className="px-6 md:px-12 pt-8 md:pt-12">
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-secondary tracking-tight whitespace-nowrap">
@@ -126,8 +126,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* ===== MOBILE VERSION (below sm - under 640px) ===== */}
-        <div className="flex sm:hidden flex-col flex-1 relative z-20 px-6 py-8">
+        {/* ===== MOBILE VERSION (below md - under 768px) ===== */}
+        <div className="flex md:hidden flex-col flex-1 relative z-20 px-6 py-8">
           {/* Company Name - Mobile */}
           <h1 className="text-3xl sm:text-4xl font-bold text-secondary tracking-tight text-center leading-tight">
             Top Choice Moving
