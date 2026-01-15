@@ -240,7 +240,10 @@ const Index = () => {
             </a>
 
             {/* Mobile Footer */}
-            <div className="text-center py-6 -mx-6 px-6 mt-4 bg-primary/90">
+            <div 
+              className="text-center py-6 -mx-6 px-6 mt-4"
+              style={{ backgroundColor: '#6a5d4a' }}
+            >
               <p className="text-secondary font-semibold text-sm mb-1">Top Choice Moving Inc.</p>
               <p className="text-secondary/70 text-xs">
                 © {new Date().getFullYear()} All rights reserved.
