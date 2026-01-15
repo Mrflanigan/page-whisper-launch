@@ -12,32 +12,41 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
     className={`flex items-end ${flipped ? 'scale-x-[-1]' : ''}`}
     style={{ height: '100vh' }}
   >
-    <div className="flex items-end drop-shadow-2xl">
+    {/* Sunset glow behind truck */}
+    <div className="absolute inset-0 pointer-events-none">
+      <div 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200%] h-[60vh] opacity-40"
+        style={{
+          background: 'radial-gradient(ellipse at center bottom, rgba(255,140,50,0.6) 0%, rgba(255,80,50,0.3) 30%, rgba(180,50,100,0.2) 50%, transparent 70%)',
+        }}
+      />
+    </div>
+    <div className="flex items-end drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 60px rgba(255,120,50,0.5))' }}>
       {/* Cab Section */}
       <div className="relative z-10">
-        {/* Cab Body */}
-        <div className="w-36 h-44 bg-gradient-to-b from-amber-500 to-amber-600 rounded-tl-2xl rounded-bl-[40px] border-2 border-amber-700 relative shadow-lg">
-          {/* Roof accent */}
-          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-b from-amber-400 to-amber-500 rounded-tl-2xl" />
+        {/* Cab Body - warm sunset orange */}
+        <div className="w-36 h-44 bg-gradient-to-b from-orange-400 via-orange-500 to-red-600 rounded-tl-2xl rounded-bl-[40px] border-2 border-orange-800 relative shadow-lg">
+          {/* Roof accent - golden highlight */}
+          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-b from-yellow-400 to-orange-400 rounded-tl-2xl" />
           
-          {/* Windshield */}
-          <div className="absolute top-5 left-3 right-3 h-20 bg-gradient-to-br from-sky-300 via-sky-200 to-sky-400 rounded-tl-xl rounded-tr-sm border-2 border-amber-800 shadow-inner">
-            <div className="absolute inset-1 bg-gradient-to-br from-white/40 to-transparent rounded-tl-lg" />
+          {/* Windshield - sunset reflection */}
+          <div className="absolute top-5 left-3 right-3 h-20 bg-gradient-to-br from-orange-300 via-pink-300 to-purple-400 rounded-tl-xl rounded-tr-sm border-2 border-orange-900 shadow-inner">
+            <div className="absolute inset-1 bg-gradient-to-br from-yellow-200/50 to-transparent rounded-tl-lg" />
           </div>
           
           {/* Side mirror */}
-          <div className="absolute top-8 -left-4 w-4 h-6 bg-amber-800 rounded-l-full shadow-md" />
+          <div className="absolute top-8 -left-4 w-4 h-6 bg-orange-900 rounded-l-full shadow-md" />
           
           {/* Door */}
-          <div className="absolute bottom-2 left-3 right-3 h-24 bg-gradient-to-b from-amber-400 to-amber-500 border border-amber-700 rounded-sm shadow-inner">
+          <div className="absolute bottom-2 left-3 right-3 h-24 bg-gradient-to-b from-orange-400 to-orange-600 border border-orange-800 rounded-sm shadow-inner">
             {/* Door handle */}
-            <div className="absolute top-3 right-2 w-1.5 h-5 bg-amber-800 rounded-full" />
+            <div className="absolute top-3 right-2 w-1.5 h-5 bg-orange-900 rounded-full" />
             {/* Door line */}
-            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-amber-600" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-orange-700" />
           </div>
           
-          {/* Headlight */}
-          <div className="absolute bottom-6 -left-1 w-3 h-6 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-l-full border border-amber-700" />
+          {/* Headlight - warm glow */}
+          <div className="absolute bottom-6 -left-1 w-3 h-6 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-l-full border border-orange-700 shadow-[0_0_10px_rgba(255,200,50,0.8)]" />
         </div>
         
         {/* Front Wheel */}
@@ -48,22 +57,25 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
         </div>
         
         {/* Bumper */}
-        <div className="absolute -bottom-2 -left-2 w-20 h-4 bg-gradient-to-b from-amber-700 to-amber-900 rounded-l-lg" />
+        <div className="absolute -bottom-2 -left-2 w-20 h-4 bg-gradient-to-b from-orange-700 to-orange-900 rounded-l-lg" />
       </div>
       
       {/* Box/Trailer Section */}
       <div className="relative -ml-4">
-        {/* Main Box */}
-        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 border-2 border-amber-300 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
-          {/* Top trim */}
-          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-amber-400 to-amber-300" />
+        {/* Main Box - warm cream with sunset tint */}
+        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 border-2 border-orange-300 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
+          {/* Top trim - sunset gradient */}
+          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-orange-400 via-red-400 to-pink-400" />
           
           {/* Bottom trim */}
-          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-amber-600 to-amber-400" />
+          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-orange-600 to-orange-400" />
+          
+          {/* Sunset reflection overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-orange-200/20 via-transparent to-orange-300/10 pointer-events-none" />
           
           {/* Side ridges for realism */}
-          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-amber-200 to-transparent" />
-          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-amber-200 to-transparent" />
+          <div className="absolute top-4 bottom-6 left-0 w-1 bg-gradient-to-r from-orange-200 to-transparent" />
+          <div className="absolute top-4 bottom-6 right-0 w-1 bg-gradient-to-l from-orange-200 to-transparent" />
           
           {/* Branding Container */}
           <div className={`text-center ${flipped ? 'scale-x-[-1]' : ''} relative z-10`}>
@@ -73,7 +85,7 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
             <h3 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-700 tracking-wide">
               MOVING
             </h3>
-            <div className="mt-4 inline-block bg-amber-500 px-6 py-2 rounded-lg shadow-lg">
+            <div className="mt-4 inline-block bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 px-6 py-2 rounded-lg shadow-lg">
               <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-wider">
                 253-267-3212
               </p>
