@@ -240,9 +240,9 @@ const Index = () => {
             </a>
 
             {/* Mobile Footer */}
-            <div className="text-center pt-4 border-t border-secondary/20">
+            <div className="text-center py-6 -mx-6 px-6 mt-4 bg-primary/90">
               <p className="text-secondary font-semibold text-sm mb-1">Top Choice Moving Inc.</p>
-              <p className="text-secondary/50 text-xs">
+              <p className="text-secondary/70 text-xs">
                 © {new Date().getFullYear()} All rights reserved.
               </p>
             </div>
