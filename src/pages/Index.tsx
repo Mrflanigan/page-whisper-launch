@@ -171,17 +171,17 @@ const Index = () => {
             <div className="flex-1" />
 
             {/* Feature Highlights */}
-            <div className="grid grid-cols-3 gap-3 mb-4">
-              <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
-                <Truck className="w-7 h-7 mx-auto mb-2 text-accent" />
+            <div className="flex flex-col gap-2 mb-4">
+              <div className="bg-secondary/15 rounded-lg px-4 py-3 flex items-center gap-3 border border-secondary/20">
+                <Truck className="w-6 h-6 text-accent flex-shrink-0" />
                 <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
               </div>
-              <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
-                <MapPin className="w-7 h-7 mx-auto mb-2 text-accent" />
+              <div className="bg-secondary/15 rounded-lg px-4 py-3 flex items-center gap-3 border border-secondary/20">
+                <MapPin className="w-6 h-6 text-accent flex-shrink-0" />
                 <h3 className="text-sm font-semibold text-secondary">We Come to You</h3>
               </div>
-              <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
-                <Clock className="w-7 h-7 mx-auto mb-2 text-accent" />
+              <div className="bg-secondary/15 rounded-lg px-4 py-3 flex items-center gap-3 border border-secondary/20">
+                <Clock className="w-6 h-6 text-accent flex-shrink-0" />
                 <h3 className="text-sm font-semibold text-secondary">Flexible Hours</h3>
               </div>
             </div>
