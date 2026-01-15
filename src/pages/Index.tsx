@@ -237,7 +237,7 @@ const Index = () => {
             <div className="flex-1" />
 
             {/* Phone CTA */}
-            <a href="tel:253-267-3212" className="block">
+            <a href="tel:253-267-3212" className="block mb-8">
               <Button
                 size="lg"
                 className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
@@ -246,6 +246,14 @@ const Index = () => {
                 <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
+
+            {/* Mobile Footer */}
+            <div className="text-center pt-6 border-t border-secondary/20">
+              <p className="text-secondary font-semibold mb-1">Top Choice Moving Inc.</p>
+              <p className="text-secondary/50 text-xs">
+                © {new Date().getFullYear()} All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </section>
