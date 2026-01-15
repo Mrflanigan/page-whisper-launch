@@ -137,56 +137,22 @@ const Index = () => {
         </div>
 
         {/* ===== MOBILE VERSION (below md - under 768px) ===== */}
-        <div className="flex md:hidden flex-col flex-1 relative z-20 px-6 py-10">
-          {/* Company Name - Mobile - BIGGER & BOLDER */}
-          <h1 className="text-4xl sm:text-5xl font-bold text-secondary tracking-tight text-center leading-tight">
-            Top Choice Moving
-          </h1>
-
-          {/* Spacer to push content down */}
-          <div className="flex-1 min-h-[30px]" />
-
-          {/* Feature Pills - Horizontal Layout */}
-          <div className="flex justify-center gap-3 mb-6">
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 border border-secondary/30">
-              <Truck className="w-4 h-4 text-secondary" />
-              <span className="text-xs font-semibold text-secondary">All Trucks</span>
-            </div>
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 border border-secondary/30">
-              <MapPin className="w-4 h-4 text-secondary" />
-              <span className="text-xs font-semibold text-secondary">Mobile</span>
-            </div>
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 border border-secondary/30">
-              <Clock className="w-4 h-4 text-secondary" />
-              <span className="text-xs font-semibold text-secondary">Flexible</span>
-            </div>
+        <div className="md:hidden flex flex-col relative z-20 px-6 py-8 overflow-y-auto bg-foreground/95">
+          {/* Company Name & Tagline */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3">
+              Top Choice Moving
+            </h1>
+            <p className="text-secondary/90 text-lg font-medium">
+              Loading & Unloading Services
+            </p>
+            <p className="text-secondary/70 text-sm mt-1">
+              We work with Uhaul, Penske & all moving trucks!
+            </p>
           </div>
 
-          {/* Services List - Clean & Minimal */}
-          <div className="bg-secondary/10 backdrop-blur-sm rounded-xl p-5 mb-6 border border-secondary/20">
-            <ul className="space-y-4">
-              <li className="flex items-center gap-4 py-1">
-                <Truck className="w-6 h-6 text-accent flex-shrink-0" />
-                <span className="text-secondary font-medium">Loading & Unloading</span>
-              </li>
-              <li className="flex items-center gap-4 py-1">
-                <Trash2 className="w-6 h-6 text-accent flex-shrink-0" />
-                <span className="text-secondary font-medium">Hauling & Dump Runs</span>
-              </li>
-              <li className="flex items-center gap-4 py-1">
-                <TreePine className="w-6 h-6 text-accent flex-shrink-0" />
-                <span className="text-secondary font-medium">Yard Clearing</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Hours & Area - Single Line Each */}
-          <div className="flex flex-col items-center gap-1 mb-6 text-secondary/80 text-sm">
-            <span>Mon–Sat, 9am–5pm • King & Pierce County</span>
-          </div>
-
-          {/* CTA Button - With Glow Effect */}
-          <a href="tel:253-267-3212" className="block">
+          {/* CTA Button - Primary Action First */}
+          <a href="tel:253-267-3212" className="block mb-8">
             <Button
               size="lg"
               className="w-full text-2xl py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_30px_rgba(251,191,36,0.4)]"
@@ -194,17 +160,98 @@ const Index = () => {
               <Phone className="w-7 h-7 mr-3" />
               253-267-3212
             </Button>
+            <p className="text-secondary/70 mt-2 text-center text-sm">
+              Tap to call now!
+            </p>
           </a>
-          <p className="text-secondary/70 mt-3 text-center text-sm font-medium">
-            Tap to call now!
-          </p>
 
-          {/* Trust Badge */}
-          <div className="mt-6 flex justify-center">
-            <span className="bg-accent/20 text-accent px-4 py-1.5 rounded-full text-xs font-semibold border border-accent/30">
+          {/* Feature Highlights */}
+          <div className="grid grid-cols-3 gap-3 mb-8">
+            <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
+              <Truck className="w-7 h-7 mx-auto mb-2 text-accent" />
+              <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
+            </div>
+            <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
+              <MapPin className="w-7 h-7 mx-auto mb-2 text-accent" />
+              <h3 className="text-sm font-semibold text-secondary">We Come to You</h3>
+            </div>
+            <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
+              <Clock className="w-7 h-7 mx-auto mb-2 text-accent" />
+              <h3 className="text-sm font-semibold text-secondary">Flexible Hours</h3>
+            </div>
+          </div>
+
+          {/* Services Section */}
+          <div className="bg-secondary/10 rounded-xl p-5 mb-8 border border-secondary/20">
+            <h2 className="text-secondary font-bold text-lg text-center mb-5">Our Services</h2>
+            
+            <div className="space-y-5">
+              {/* Loading & Unloading */}
+              <div className="flex items-start gap-4">
+                <Truck className="w-7 h-7 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="text-secondary font-semibold text-base">Loading & Unloading</h3>
+                  <p className="text-secondary/70 text-sm mt-1">Uhaul, Penske & all moving trucks</p>
+                </div>
+              </div>
+
+              {/* Hauling & Dump Runs */}
+              <div className="flex items-start gap-4">
+                <Trash2 className="w-7 h-7 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="text-secondary font-semibold text-base">Hauling & Dump Runs</h3>
+                  <p className="text-secondary/70 text-sm mt-1">Full load required — no single item</p>
+                </div>
+              </div>
+
+              {/* Yard Clearing */}
+              <div className="flex items-start gap-4">
+                <TreePine className="w-7 h-7 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="text-secondary font-semibold text-base">Yard Clearing & Debris Removal</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Hours & Service Area */}
+          <div className="bg-secondary/10 rounded-xl p-5 mb-8 border border-secondary/20">
+            <div className="flex items-center gap-3 mb-4">
+              <Clock className="w-6 h-6 text-accent" />
+              <div>
+                <h3 className="text-secondary font-semibold">Hours</h3>
+                <p className="text-secondary/80 text-sm">Monday – Saturday, 9am – 5pm</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-6 h-6 text-accent" />
+              <div>
+                <h3 className="text-secondary font-semibold">Service Area</h3>
+                <p className="text-secondary/80 text-sm">King & Pierce County</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="flex flex-col items-center gap-3 mb-6">
+            <span className="bg-accent/20 text-accent px-5 py-2 rounded-full text-sm font-semibold border border-accent/30">
               ✓ Licensed & Insured
             </span>
+            <p className="text-accent font-bold text-lg">
+              Very affordable rates!
+            </p>
           </div>
+
+          {/* Second CTA at bottom for long scroll */}
+          <a href="tel:253-267-3212" className="block mt-4">
+            <Button
+              size="lg"
+              className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
+              <Phone className="w-6 h-6 mr-2" />
+              Call Now: 253-267-3212
+            </Button>
+          </a>
         </div>
       </section>
 
