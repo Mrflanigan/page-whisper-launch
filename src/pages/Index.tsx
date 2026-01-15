@@ -124,10 +124,10 @@ const Index = () => {
             <a href="tel:253-267-3212" className="inline-block">
               <Button
                 size="lg"
-                className="text-xl md:text-2xl px-8 py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 font-bold"
+                className="text-xl md:text-2xl px-8 py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Phone className="w-6 h-6 mr-3" />
-                253-267-3212
+                <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
             <p className="text-secondary/70 mt-2 text-xs">
@@ -155,10 +155,10 @@ const Index = () => {
           <a href="tel:253-267-3212" className="block mb-8">
             <Button
               size="lg"
-              className="w-full text-2xl py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_30px_rgba(251,191,36,0.4)] font-bold"
+              className="w-full text-2xl py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_30px_rgba(251,191,36,0.4)]"
             >
               <Phone className="w-7 h-7 mr-3" />
-              253-267-3212
+              <span className="font-bookman font-bold">253-267-3212</span>
             </Button>
             <p className="text-secondary/70 mt-2 text-center text-sm">
               Free estimates — we answer!
