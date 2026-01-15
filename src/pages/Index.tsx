@@ -200,6 +200,7 @@ const Index = () => {
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm font-bold">King & Pierce County</span>
               </div>
+              <p className="text-white/70 text-xs font-bold">and surrounding areas</p>
               <p className="text-accent font-bold text-base pt-2 font-oswald uppercase">
                 Very Affordable Rates
               </p>
