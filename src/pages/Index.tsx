@@ -181,6 +181,9 @@ const Index = () => {
               <p className="text-secondary/80 text-sm font-bold">
                 We work with Uhaul, Penske & all moving trucks!
               </p>
+              <p className="text-secondary/60 text-sm font-bold">
+                and
+              </p>
               <p className="text-secondary text-lg font-bold font-oswald uppercase">
                 We Come to You
               </p>
