@@ -168,7 +168,7 @@ const Index = () => {
                 className="text-base px-5 py-2 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                <span className="font-oswald font-bold">253-267-3212</span>
+                <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
             <p className="text-secondary/70 text-center text-sm font-bold mb-4 relative z-10 font-montserrat">Free Estimates</p>
@@ -235,7 +235,7 @@ const Index = () => {
                 className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
               >
                 <Phone className="w-6 h-6 mr-2" />
-                <span className="font-oswald font-bold">253-267-3212</span>
+                <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
 
