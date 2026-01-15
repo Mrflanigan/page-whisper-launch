@@ -163,6 +163,7 @@ const Index = () => {
                 <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
+            <p className="text-secondary/70 text-center text-sm mb-4">Free Estimates</p>
 
             {/* Spacer to push content to bottom */}
             <div className="flex-1" />
