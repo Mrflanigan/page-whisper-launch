@@ -62,11 +62,11 @@ const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
       
       {/* Box/Trailer Section */}
       <div className="relative -ml-4">
-        {/* Main Box - FULL SUNSET GRADIENT */}
-        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-b from-amber-300 via-orange-400 via-55% to-rose-500 border-2 border-orange-600 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
-          {/* Sun glow in upper area */}
+        {/* Main Box - BLUE SKY TO SUNSET TO OCEAN */}
+        <div className="w-[120vw] min-w-[500px] h-[85vh] min-h-[400px] bg-gradient-to-b from-sky-400 via-sky-300 via-30% via-amber-300 via-50% via-orange-400 via-70% to-rose-500 border-2 border-orange-600 rounded-tr-xl shadow-2xl flex flex-col items-center justify-center px-8 relative overflow-hidden">
+          {/* Sun glow lower in sky */}
           <div 
-            className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] rounded-full opacity-60 blur-3xl pointer-events-none"
+            className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[50%] h-[35%] rounded-full opacity-70 blur-3xl pointer-events-none"
             style={{ background: 'radial-gradient(circle, rgba(255,220,100,0.9) 0%, rgba(255,180,50,0.5) 40%, transparent 70%)' }}
           />
           
