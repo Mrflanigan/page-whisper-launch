@@ -85,7 +85,7 @@ const Index = () => {
 
           {/* Hero Content - Desktop */}
           <div className="flex-1 flex flex-col items-center justify-end text-center px-4 max-w-5xl mx-auto pb-8">
-            <p className="text-lg md:text-xl text-secondary/90 mb-1 font-light">
+            <p className="text-2xl md:text-3xl lg:text-4xl text-secondary font-bold tracking-wide mb-2">
               Professional Loading & Unloading Services
             </p>
             <p className="text-sm md:text-base text-secondary/80 mb-4 max-w-2xl mx-auto">
@@ -143,8 +143,8 @@ const Index = () => {
             <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3">
               Top Choice Moving
             </h1>
-            <p className="text-secondary/90 text-lg font-medium">
-              Loading & Unloading Services
+            <p className="text-secondary text-xl font-bold tracking-wide">
+              Professional Loading & Unloading Services
             </p>
             <p className="text-secondary/70 text-sm mt-1">
               We work with Uhaul, Penske & all moving trucks!
