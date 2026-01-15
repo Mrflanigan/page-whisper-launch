@@ -154,36 +154,34 @@ const Index = () => {
             </div>
 
             {/* CTA Button - Primary Action */}
-            <div className="flex justify-center mb-6">
-              <a href="tel:253-267-3212">
-                <Button
-                  size="default"
-                  className="text-lg px-6 py-3 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  <span className="font-bookman font-bold">253-267-3212</span>
-                </Button>
-              </a>
-            </div>
-            <p className="text-secondary/70 text-center text-sm mb-2">
-              Free estimates — we answer!
-            </p>
+            <a href="tel:253-267-3212" className="block mb-6">
+              <Button
+                size="default"
+                className="w-full text-lg py-3 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                <span className="font-bookman font-bold">253-267-3212</span>
+              </Button>
+              <p className="text-secondary/70 mt-2 text-center text-sm">
+                Free estimates — we answer!
+              </p>
+            </a>
 
             {/* Spacer to push content to bottom */}
             <div className="flex-1" />
 
             {/* Feature Highlights */}
-            <div className="flex flex-col gap-2 mb-4">
-              <div className="bg-secondary/15 rounded-lg px-4 py-3 flex items-center gap-3 border border-secondary/20">
-                <Truck className="w-6 h-6 text-accent flex-shrink-0" />
+            <div className="grid grid-cols-3 gap-3 mb-4">
+              <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
+                <Truck className="w-7 h-7 mx-auto mb-2 text-accent" />
                 <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
               </div>
-              <div className="bg-secondary/15 rounded-lg px-4 py-3 flex items-center gap-3 border border-secondary/20">
-                <MapPin className="w-6 h-6 text-accent flex-shrink-0" />
+              <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
+                <MapPin className="w-7 h-7 mx-auto mb-2 text-accent" />
                 <h3 className="text-sm font-semibold text-secondary">We Come to You</h3>
               </div>
-              <div className="bg-secondary/15 rounded-lg px-4 py-3 flex items-center gap-3 border border-secondary/20">
-                <Clock className="w-6 h-6 text-accent flex-shrink-0" />
+              <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
+                <Clock className="w-7 h-7 mx-auto mb-2 text-accent" />
                 <h3 className="text-sm font-semibold text-secondary">Flexible Hours</h3>
               </div>
             </div>
