@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MovingAnimation from "@/components/MovingAnimation";
-import heroEmpty from "@/assets/hero-empty.jpg";
+import heroMoving from "@/assets/hero-moving.jpg";
 
 const Index = () => {
   return (
@@ -143,7 +143,7 @@ const Index = () => {
           <div 
             className="min-h-screen flex flex-col px-6 py-8 relative bg-no-repeat"
             style={{ 
-              backgroundImage: `url(${heroEmpty})`,
+              backgroundImage: `url(${heroMoving})`,
               backgroundSize: '150%',
               backgroundPosition: 'center top'
             }}
