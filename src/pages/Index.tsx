@@ -137,78 +137,59 @@ const Index = () => {
         </div>
 
         {/* ===== MOBILE VERSION (below md - under 768px) ===== */}
-        <div className="flex md:hidden flex-col flex-1 relative z-20 px-6 py-8">
-          {/* Company Name - Mobile */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-secondary tracking-tight text-center leading-tight">
+        <div className="flex md:hidden flex-col flex-1 relative z-20 px-6 py-10">
+          {/* Company Name - Mobile - BIGGER & BOLDER */}
+          <h1 className="text-4xl sm:text-5xl font-bold text-secondary tracking-tight text-center leading-tight">
             Top Choice Moving
           </h1>
-          
-          {/* Tagline - Mobile */}
-          <p className="text-secondary/90 text-center mt-2 text-sm">
-            Loading & Unloading Services
-          </p>
-          <p className="text-secondary/80 text-center mt-1 text-xs">
-            We work with Uhaul, Penske & all moving trucks!
-          </p>
 
           {/* Spacer to push content down */}
-          <div className="flex-1 min-h-[20px]" />
+          <div className="flex-1 min-h-[30px]" />
 
-          {/* Three Feature Cards - Mobile */}
-          <div className="grid grid-cols-3 gap-2 mb-4">
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
-              <Truck className="w-5 h-5 mx-auto mb-1 text-secondary" />
-              <h3 className="text-xs font-semibold text-secondary">All Truck Types</h3>
+          {/* Feature Pills - Horizontal Layout */}
+          <div className="flex justify-center gap-3 mb-6">
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 border border-secondary/30">
+              <Truck className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-semibold text-secondary">All Trucks</span>
             </div>
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
-              <MapPin className="w-5 h-5 mx-auto mb-1 text-secondary" />
-              <h3 className="text-xs font-semibold text-secondary">We Come to You</h3>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 border border-secondary/30">
+              <MapPin className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-semibold text-secondary">Mobile</span>
             </div>
-            <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-2 text-center border border-secondary/30">
-              <Clock className="w-5 h-5 mx-auto mb-1 text-secondary" />
-              <h3 className="text-xs font-semibold text-secondary">Flexible Hours</h3>
+            <div className="bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 border border-secondary/30">
+              <Clock className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-semibold text-secondary">Flexible</span>
             </div>
           </div>
 
-          {/* Services List - Mobile (Simple text, no cards) */}
-          <div className="bg-secondary/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-secondary/20">
-            <h2 className="text-secondary font-semibold text-center mb-3 text-sm uppercase tracking-wide">Our Services</h2>
-            <ul className="space-y-2 text-secondary/90 text-sm">
-              <li className="flex items-center gap-3">
-                <Truck className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Loading & Unloading (Uhaul, Penske, all trucks)</span>
+          {/* Services List - Clean & Minimal */}
+          <div className="bg-secondary/10 backdrop-blur-sm rounded-xl p-5 mb-6 border border-secondary/20">
+            <ul className="space-y-4">
+              <li className="flex items-center gap-4 py-1">
+                <Truck className="w-6 h-6 text-accent flex-shrink-0" />
+                <span className="text-secondary font-medium">Loading & Unloading</span>
               </li>
-              <li className="flex items-start gap-3">
-                <Trash2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <div>
-                  <span>Hauling & Dump Runs</span>
-                  <p className="text-xs text-secondary/70">Full load required — no single item</p>
-                </div>
+              <li className="flex items-center gap-4 py-1">
+                <Trash2 className="w-6 h-6 text-accent flex-shrink-0" />
+                <span className="text-secondary font-medium">Hauling & Dump Runs</span>
               </li>
-              <li className="flex items-center gap-3">
-                <TreePine className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Yard Clearing & Debris Removal</span>
+              <li className="flex items-center gap-4 py-1">
+                <TreePine className="w-6 h-6 text-accent flex-shrink-0" />
+                <span className="text-secondary font-medium">Yard Clearing</span>
               </li>
             </ul>
           </div>
 
-          {/* Hours & Area - Mobile (Stacked) */}
-          <div className="flex flex-col gap-2 mb-6 text-secondary/80 text-sm">
-            <div className="flex items-center justify-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span>Mon–Sat, 9am–5pm</span>
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <MapPin className="w-4 h-4" />
-              <span>King & Pierce County</span>
-            </div>
+          {/* Hours & Area - Single Line Each */}
+          <div className="flex flex-col items-center gap-1 mb-6 text-secondary/80 text-sm">
+            <span>Mon–Sat, 9am–5pm • King & Pierce County</span>
           </div>
 
-          {/* CTA Button - Mobile (Full width, larger) */}
+          {/* CTA Button - With Glow Effect */}
           <a href="tel:253-267-3212" className="block">
             <Button
               size="lg"
-              className="w-full text-2xl py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-xl"
+              className="w-full text-2xl py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_30px_rgba(251,191,36,0.4)]"
             >
               <Phone className="w-7 h-7 mr-3" />
               253-267-3212
@@ -218,10 +199,12 @@ const Index = () => {
             Tap to call now!
           </p>
 
-          {/* Affordable rates badge - Mobile */}
-          <p className="text-accent text-center mt-4 text-sm font-semibold">
-            Very affordable rates — we come to you!
-          </p>
+          {/* Trust Badge */}
+          <div className="mt-6 flex justify-center">
+            <span className="bg-accent/20 text-accent px-4 py-1.5 rounded-full text-xs font-semibold border border-accent/30">
+              ✓ Licensed & Insured
+            </span>
+          </div>
         </div>
       </section>
 
