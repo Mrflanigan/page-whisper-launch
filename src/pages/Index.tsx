@@ -168,9 +168,12 @@ const Index = () => {
                 <Truck className="w-5 h-5 text-accent flex-shrink-0" />
                 <span>Loading & Unloading (Uhaul, Penske, all trucks)</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Trash2 className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Hauling & Dump Runs</span>
+              <li className="flex items-start gap-3">
+                <Trash2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <span>Hauling & Dump Runs</span>
+                  <p className="text-xs text-secondary/70">Full load required — no single item</p>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <TreePine className="w-5 h-5 text-accent flex-shrink-0" />
