@@ -149,7 +149,7 @@ const Index = () => {
             }}
           >
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-foreground/75" />
+            <div className="absolute inset-0 bg-foreground/40" />
             {/* Company Name & Tagline */}
             <div className="text-center mb-8 relative z-10">
               <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3">
