@@ -8,8 +8,8 @@ const MobilePreview = () => {
       {/* Back button */}
       <div className="absolute top-4 left-4">
         <Link to="/">
-          <Button variant="ghost" className="text-white hover:bg-white/10">
-            <ArrowLeft className="w-4 h-4 mr-2" />
+          <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
+            <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Desktop
           </Button>
         </Link>
