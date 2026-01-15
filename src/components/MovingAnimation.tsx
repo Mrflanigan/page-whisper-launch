@@ -127,12 +127,12 @@ const MovingAnimation = () => {
       await delay(8000);
       if (!isMounted) return;
 
-      // Truck drives right → switches to new house with boxes
+      // Truck drives right (5s total) → scene changes at 2.5s when truck covers screen
       setTruckPhase("drive-right");
       await delay(2500);
       if (!isMounted) return;
       setScene("newHouse");
-      await delay(2500);
+      await delay(2600); // Wait slightly longer to ensure truck is off-screen
       if (!isMounted) return;
       setTruckPhase("hidden");
 
@@ -140,12 +140,12 @@ const MovingAnimation = () => {
       await delay(8000);
       if (!isMounted) return;
 
-      // Truck drives left → switches to empty blue room
+      // Truck drives left (5s total) → scene changes at 2.5s
       setTruckPhase("drive-left");
       await delay(2500);
       if (!isMounted) return;
       setScene("empty");
-      await delay(2500);
+      await delay(2600);
       if (!isMounted) return;
       setTruckPhase("hidden");
 
@@ -153,12 +153,12 @@ const MovingAnimation = () => {
       await delay(8000);
       if (!isMounted) return;
 
-      // Truck drives right → switches back to original room with boxes
+      // Truck drives right (5s total) → scene changes at 2.5s back to original
       setTruckPhase("drive-right");
       await delay(2500);
       if (!isMounted) return;
       setScene("original");
-      await delay(2500);
+      await delay(2600);
       if (!isMounted) return;
       setTruckPhase("hidden");
 
