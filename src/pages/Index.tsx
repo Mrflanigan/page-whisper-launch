@@ -176,51 +176,61 @@ const Index = () => {
             </a>
             <p className="text-secondary/70 text-center text-sm mb-4 relative z-10">Free Estimates</p>
 
-            {/* Spacer to push content to bottom */}
+            {/* Spacer */}
             <div className="flex-1 relative z-10" />
 
-            {/* Subtle scroll indicator */}
-            <div className="flex flex-col items-center pb-8 relative z-10">
-              <ChevronDown className="w-6 h-6 text-secondary/50 animate-bounce" />
+            {/* Key Info - Classy Layout */}
+            <div className="relative z-10 text-center space-y-3 mb-6">
+              <p className="text-secondary text-lg font-medium">
+                We Come to You
+              </p>
+              <div className="flex items-center justify-center gap-2 text-secondary/80">
+                <Clock className="w-4 h-4" />
+                <span className="text-sm">9am – 5pm • Mon – Sat</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-secondary/80">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm">King & Pierce County</span>
+              </div>
+              <p className="text-accent font-semibold text-base pt-2">
+                Very Affordable Rates
+              </p>
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="flex flex-col items-center pb-6 relative z-10">
+              <ChevronDown className="w-5 h-5 text-secondary/40 animate-bounce" />
             </div>
           </div>
 
-          {/* PAGE 2: Services & Info */}
+          {/* PAGE 2: Additional Services */}
           <div className="min-h-screen flex flex-col px-6 py-10 bg-foreground">
             
-            {/* Also Available Section */}
-            <div className="mb-10">
-              <h2 className="text-secondary font-bold text-xl mb-6">Also Available</h2>
-              <div className="space-y-4 text-secondary/90">
-                <div className="flex items-start gap-3">
-                  <Trash2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <p>Hauling & Dump Runs</p>
+            {/* Also Available Header */}
+            <h2 className="text-secondary font-bold text-2xl text-center mb-8">
+              Also Available
+            </h2>
+
+            {/* Services List - Clean & Classy */}
+            <div className="space-y-6 mb-10">
+              <div className="flex items-center gap-4">
+                <Trash2 className="w-6 h-6 text-accent flex-shrink-0" />
+                <div>
+                  <p className="text-secondary font-medium text-lg">Hauling & Dump Runs</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <TreePine className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <p>Yard Clearing (objects & debris)</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <TreePine className="w-6 h-6 text-accent flex-shrink-0" />
+                <div>
+                  <p className="text-secondary font-medium text-lg">Yard Clearing</p>
+                  <p className="text-secondary/60 text-sm">Objects & debris removal</p>
                 </div>
-                <p className="text-secondary/60 text-sm pl-8 italic">
-                  Full load required — no single item hauling
-                </p>
               </div>
             </div>
 
-            {/* Hours & Service Area */}
-            <div className="mb-10 space-y-4">
-              <div className="flex items-start gap-3 text-secondary/90">
-                <Clock className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <p>9am – 5pm, Monday – Saturday</p>
-              </div>
-              <div className="flex items-start gap-3 text-secondary/90">
-                <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <p>King County, Pierce County & surrounding areas</p>
-              </div>
-            </div>
-
-            {/* Affordable rates note */}
-            <p className="text-accent font-semibold text-center text-lg mb-8">
-              Very Affordable Rates
+            {/* Note */}
+            <p className="text-secondary/50 text-sm text-center italic mb-10">
+              Full load required — no single item hauling
             </p>
 
             {/* Spacer */}
