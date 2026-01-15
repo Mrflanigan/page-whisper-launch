@@ -219,30 +219,32 @@ const MovingAnimation = () => {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-foreground/60" />
 
+      {/* Truck animations - HIDDEN on mobile for better performance */}
+      <div className="hidden md:block">
+        {/* Truck driving right */}
+        {truckPhase === "drive-right" && (
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "100vw" }}
+            transition={{ duration: 5, ease: "linear" }}
+            className="absolute bottom-8 left-0 z-10 pointer-events-none"
+          >
+            <CssTruck flipped />
+          </motion.div>
+        )}
 
-      {/* Truck driving right */}
-      {truckPhase === "drive-right" && (
-        <motion.div
-          initial={{ x: "-100%" }}
-          animate={{ x: "100vw" }}
-          transition={{ duration: 5, ease: "linear" }}
-          className="absolute bottom-8 left-0 z-10 pointer-events-none"
-        >
-          <CssTruck flipped />
-        </motion.div>
-      )}
-
-      {/* Truck driving left */}
-      {truckPhase === "drive-left" && (
-        <motion.div
-          initial={{ x: "100vw" }}
-          animate={{ x: "-100%" }}
-          transition={{ duration: 5, ease: "linear" }}
-          className="absolute bottom-8 left-0 z-10 pointer-events-none"
-        >
-          <CssTruck />
-        </motion.div>
-      )}
+        {/* Truck driving left */}
+        {truckPhase === "drive-left" && (
+          <motion.div
+            initial={{ x: "100vw" }}
+            animate={{ x: "-100%" }}
+            transition={{ duration: 5, ease: "linear" }}
+            className="absolute bottom-8 left-0 z-10 pointer-events-none"
+          >
+            <CssTruck />
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 };
