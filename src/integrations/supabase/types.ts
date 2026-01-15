@@ -24,6 +24,7 @@ export type Database = {
           hours_text: string | null
           id: string
           logo_url: string | null
+          owner_id: string | null
           phone: string | null
           service_area: string | null
           tagline: string | null
@@ -39,6 +40,7 @@ export type Database = {
           hours_text?: string | null
           id?: string
           logo_url?: string | null
+          owner_id?: string | null
           phone?: string | null
           service_area?: string | null
           tagline?: string | null
@@ -54,6 +56,7 @@ export type Database = {
           hours_text?: string | null
           id?: string
           logo_url?: string | null
+          owner_id?: string | null
           phone?: string | null
           service_area?: string | null
           tagline?: string | null
@@ -67,6 +70,7 @@ export type Database = {
           created_at: string
           expires_at: string
           id: string
+          owner_id: string | null
           site_id: string | null
           token: string
           upload_type: string
@@ -76,6 +80,7 @@ export type Database = {
           created_at?: string
           expires_at?: string
           id?: string
+          owner_id?: string | null
           site_id?: string | null
           token?: string
           upload_type?: string
@@ -85,6 +90,7 @@ export type Database = {
           created_at?: string
           expires_at?: string
           id?: string
+          owner_id?: string | null
           site_id?: string | null
           token?: string
           upload_type?: string
