@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import MobilePreview from "./pages/MobilePreview";
 import Builder from "./pages/Builder";
 import CreateSite from "./pages/CreateSite";
 import Site from "./pages/Site";
@@ -20,6 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/mobile-preview" element={<MobilePreview />} />
           <Route path="/create" element={<CreateSite />} />
           <Route path="/builder" element={<Builder />} />
           <Route path="/site/:id" element={<Site />} />
