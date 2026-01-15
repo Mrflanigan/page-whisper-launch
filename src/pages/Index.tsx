@@ -178,21 +178,21 @@ const Index = () => {
 
             {/* Key Info - Classy Layout */}
             <div className="relative z-10 text-center space-y-3 mb-6">
-              <p className="text-secondary/80 text-sm">
+              <p className="text-secondary/80 text-sm font-bold">
                 We work with Uhaul, Penske & all moving trucks!
               </p>
-              <p className="text-secondary text-lg font-medium">
+              <p className="text-secondary text-lg font-bold">
                 We Come to You
               </p>
               <div className="flex items-center justify-center gap-2 text-secondary/80">
                 <Clock className="w-4 h-4" />
-                <span className="text-sm">9am – 5pm • Mon – Sat</span>
+                <span className="text-sm font-bold">9am – 5pm • Mon – Sat</span>
               </div>
               <div className="flex items-center justify-center gap-2 text-secondary/80">
                 <MapPin className="w-4 h-4" />
-                <span className="text-sm">King & Pierce County</span>
+                <span className="text-sm font-bold">King & Pierce County</span>
               </div>
-              <p className="text-accent font-semibold text-base pt-2">
+              <p className="text-accent font-bold text-base pt-2">
                 Very Affordable Rates
               </p>
             </div>
@@ -215,16 +215,16 @@ const Index = () => {
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <Trash2 className="w-5 h-5 text-accent flex-shrink-0" />
-                <p className="text-secondary font-medium">Hauling & Dump Runs</p>
+                <p className="text-secondary font-bold">Hauling & Dump Runs</p>
               </div>
               <div className="flex items-center gap-3">
                 <TreePine className="w-5 h-5 text-accent flex-shrink-0" />
-                <p className="text-secondary font-medium">Yard Clearing (objects & debris)</p>
+                <p className="text-secondary font-bold">Yard Clearing (objects & debris)</p>
               </div>
             </div>
 
             {/* Note */}
-            <p className="text-secondary/50 text-sm text-center italic mb-6">
+            <p className="text-secondary/50 text-sm text-center italic font-bold mb-6">
               Full load required — no single item hauling
             </p>
 
@@ -244,8 +244,8 @@ const Index = () => {
               className="text-center py-6 -mx-6 px-6 mt-4"
               style={{ backgroundColor: '#6a5d4a' }}
             >
-              <p className="text-secondary font-semibold text-sm mb-1">Top Choice Moving Inc.</p>
-              <p className="text-secondary/70 text-xs">
+              <p className="text-secondary font-bold text-sm mb-1">Top Choice Moving Inc.</p>
+              <p className="text-secondary/70 text-xs font-bold">
                 © {new Date().getFullYear()} All rights reserved.
               </p>
             </div>
