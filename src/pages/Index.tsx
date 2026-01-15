@@ -249,7 +249,7 @@ const Index = () => {
               className="w-full text-xl py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
             >
               <Phone className="w-6 h-6 mr-2" />
-              Get Your Free Estimate
+              253-267-3212
             </Button>
           </a>
         </div>
