@@ -154,12 +154,12 @@ const Index = () => {
             </div>
 
             {/* CTA Button - Primary Action */}
-            <a href="tel:253-267-3212" className="block mb-8">
+            <a href="tel:253-267-3212" className="block mb-6">
               <Button
-                size="lg"
-                className="w-full text-2xl py-6 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_30px_rgba(251,191,36,0.4)]"
+                size="default"
+                className="w-full text-lg py-3 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
               >
-                <Phone className="w-7 h-7 mr-3" />
+                <Phone className="w-5 h-5 mr-2" />
                 <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
               <p className="text-secondary/70 mt-2 text-center text-sm">
