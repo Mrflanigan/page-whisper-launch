@@ -153,10 +153,10 @@ const Index = () => {
             <div className="absolute inset-0 bg-foreground/50" />
             {/* Company Name & Tagline */}
             <div className="text-center mb-8 relative z-10">
-              <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3 font-oswald uppercase">
+              <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-3 font-oswald uppercase">
                 Top Choice Moving
               </h1>
-              <p className="text-secondary text-xl font-bold tracking-wide font-montserrat">
+              <p className="text-white text-xl font-bold tracking-wide font-montserrat">
                 Professional Loading & Unloading Services
               </p>
             </div>
@@ -171,27 +171,27 @@ const Index = () => {
                 <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
-            <p className="text-secondary/70 text-center text-sm font-bold mb-4 relative z-10 font-montserrat">Free Estimates</p>
+            <p className="text-white/70 text-center text-sm font-bold mb-4 relative z-10 font-montserrat">Free Estimates</p>
 
             {/* Spacer */}
             <div className="flex-1 relative z-10" />
 
             {/* Key Info - Classy Layout */}
             <div className="relative z-10 text-center space-y-3 mb-6 font-montserrat">
-              <p className="text-secondary/80 text-sm font-bold">
+              <p className="text-white/80 text-sm font-bold">
                 We work with Uhaul, Penske & all moving trucks!
               </p>
-              <p className="text-secondary/60 text-sm font-bold">
-                and
+              <p className="text-white/60 text-sm font-bold">
+                and...
               </p>
-              <p className="text-secondary text-lg font-bold font-oswald uppercase">
+              <p className="text-white text-lg font-bold font-oswald uppercase">
                 We Come to You
               </p>
-              <div className="flex items-center justify-center gap-2 text-secondary/80">
+              <div className="flex items-center justify-center gap-2 text-white/80">
                 <Clock className="w-4 h-4" />
                 <span className="text-sm font-bold">9am – 5pm • Mon – Sat</span>
               </div>
-              <div className="flex items-center justify-center gap-2 text-secondary/80">
+              <div className="flex items-center justify-center gap-2 text-white/80">
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm font-bold">King & Pierce County</span>
               </div>
@@ -202,7 +202,7 @@ const Index = () => {
 
             {/* Scroll indicator */}
             <div className="flex flex-col items-center pb-6 relative z-10">
-              <ChevronDown className="w-5 h-5 text-secondary/40 animate-bounce" />
+              <ChevronDown className="w-5 h-5 text-white/40 animate-bounce" />
             </div>
           </div>
 
@@ -210,7 +210,7 @@ const Index = () => {
           <div className="flex flex-col px-6 py-8 bg-foreground">
             
             {/* Also Available Header */}
-            <h2 className="text-secondary font-bold text-xl text-center mb-6 font-oswald uppercase">
+            <h2 className="text-white font-bold text-xl text-center mb-6 font-oswald uppercase">
               Also Available
             </h2>
 
@@ -218,16 +218,16 @@ const Index = () => {
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <Trash2 className="w-5 h-5 text-accent flex-shrink-0" />
-                <p className="text-secondary font-bold font-montserrat">Hauling & Dump Runs</p>
+                <p className="text-white font-bold font-montserrat">Hauling & Dump Runs</p>
               </div>
               <div className="flex items-center gap-3">
                 <TreePine className="w-5 h-5 text-accent flex-shrink-0" />
-                <p className="text-secondary font-bold font-montserrat">Yard Clearing (objects & debris)</p>
+                <p className="text-white font-bold font-montserrat">Yard Clearing (objects & debris)</p>
               </div>
             </div>
 
             {/* Note */}
-            <p className="text-secondary/50 text-sm text-center italic font-bold mb-6 font-montserrat">
+            <p className="text-white/50 text-sm text-center italic font-bold mb-6 font-montserrat">
               Full load required — no single item hauling
             </p>
 
@@ -247,8 +247,8 @@ const Index = () => {
               className="text-center py-6 -mx-6 px-6 mt-4"
               style={{ backgroundColor: '#6a5d4a' }}
             >
-              <p className="text-secondary font-bold text-sm mb-1 font-oswald uppercase">Top Choice Moving Inc.</p>
-              <p className="text-secondary/70 text-xs font-bold font-montserrat">
+              <p className="text-white font-bold text-sm mb-1 font-oswald uppercase">Top Choice Moving Inc.</p>
+              <p className="text-white/70 text-xs font-bold font-montserrat">
                 © {new Date().getFullYear()} All rights reserved.
               </p>
             </div>
