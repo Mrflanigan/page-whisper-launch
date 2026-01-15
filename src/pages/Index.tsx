@@ -146,11 +146,11 @@ const Index = () => {
               backgroundImage: `url(${heroMoving})`,
               backgroundSize: '140%',
               backgroundPosition: 'center 50%',
-              backgroundColor: '#c9b8a0'
+              backgroundColor: '#d4c4a8'
             }}
           >
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-foreground/50" />
+            {/* Dark overlay for text readability - extended above to cover background color */}
+            <div className="absolute inset-0 -top-96 bg-foreground/50" />
             {/* Company Name & Tagline */}
             <div className="text-center mb-8 relative z-10">
               <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3">
