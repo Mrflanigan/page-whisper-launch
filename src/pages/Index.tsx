@@ -140,18 +140,9 @@ const Index = () => {
         {/* ===== MOBILE VERSION (below md - under 768px) ===== */}
         <div className="md:hidden flex flex-col relative z-20">
           {/* PAGE 1: Hero with CTA */}
-          <div 
-            className="min-h-screen flex flex-col px-6 py-8 relative bg-no-repeat"
-            style={{ 
-              backgroundImage: `url(${heroMoving})`,
-              backgroundSize: '150%',
-              backgroundPosition: 'center top'
-            }}
-          >
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-foreground/40" />
+          <div className="min-h-screen flex flex-col px-6 py-8 bg-foreground">
             {/* Company Name & Tagline */}
-            <div className="text-center mb-8 relative z-10">
+            <div className="text-center mb-8">
               <h1 className="text-4xl font-bold text-secondary tracking-tight leading-tight mb-3">
                 Top Choice Moving
               </h1>
@@ -164,7 +155,7 @@ const Index = () => {
             </div>
 
             {/* CTA Button - Primary Action */}
-            <a href="tel:253-267-3212" className="inline-flex justify-center w-full mb-6 relative z-10">
+            <a href="tel:253-267-3212" className="inline-flex justify-center w-full mb-6">
               <Button
                 size="sm"
                 className="text-base px-5 py-2 h-auto bg-accent hover:bg-accent/90 text-accent-foreground"
@@ -173,13 +164,19 @@ const Index = () => {
                 <span className="font-bookman font-bold">253-267-3212</span>
               </Button>
             </a>
-            <p className="text-secondary/70 text-center text-sm mb-4 relative z-10">Free Estimates</p>
+            <p className="text-secondary/70 text-center text-sm mb-4">Free Estimates</p>
 
-            {/* Spacer to push content to bottom */}
-            <div className="flex-1 relative z-10" />
+            {/* Room with boxes image */}
+            <div className="flex-1 flex items-center justify-center py-4">
+              <img 
+                src={heroMoving} 
+                alt="Room with moving boxes" 
+                className="rounded-xl max-h-48 w-auto object-cover shadow-lg"
+              />
+            </div>
 
             {/* Feature Highlights */}
-            <div className="grid grid-cols-3 gap-3 mb-4 relative z-10">
+            <div className="grid grid-cols-3 gap-3 mb-4">
               <div className="bg-secondary/15 rounded-xl p-4 text-center border border-secondary/20">
                 <Truck className="w-7 h-7 mx-auto mb-2 text-accent" />
                 <h3 className="text-sm font-semibold text-secondary">All Truck Types</h3>
@@ -195,7 +192,7 @@ const Index = () => {
             </div>
 
             {/* Scroll indicator */}
-            <div className="flex flex-col items-center pb-6 relative z-10">
+            <div className="flex flex-col items-center pb-6">
               <p className="text-secondary/60 text-sm mb-2">Learn more</p>
               <ChevronDown className="w-6 h-6 text-secondary/60 animate-bounce" />
             </div>
