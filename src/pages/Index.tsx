@@ -144,7 +144,7 @@ const Index = () => {
             className="min-h-screen flex flex-col px-6 py-8 relative bg-no-repeat"
             style={{ 
               backgroundImage: `url(${heroMoving})`,
-              backgroundSize: '140%',
+              backgroundSize: 'cover',
               backgroundPosition: 'center top',
               backgroundColor: '#6a5d4a'
             }}
