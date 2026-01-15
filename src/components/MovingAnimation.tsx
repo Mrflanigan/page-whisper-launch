@@ -190,6 +190,11 @@ const MovingAnimation = () => {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-foreground/60" />
 
+      {/* Scene number indicator (temporary) */}
+      <div className="absolute top-4 right-4 z-50 bg-red-600 text-white text-4xl font-bold px-4 py-2 rounded-lg">
+        {scene === "original" ? "1" : scene === "newHouse" ? "2" : "3"}
+      </div>
+
       {/* Truck driving right */}
       {truckPhase === "drive-right" && (
         <motion.div
