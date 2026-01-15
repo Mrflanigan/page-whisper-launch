@@ -118,7 +118,34 @@ All colors MUST be HSL.
   }
 }
 
-/* Smooth truck driving animation */
+/* Smooth truck driving animations - GPU accelerated */
+@keyframes truck-drive-right {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(100vw, 0, 0);
+  }
+}
+
+@keyframes truck-drive-left {
+  0% {
+    transform: translate3d(100vw, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.animate-truck-drive-right {
+  animation: truck-drive-right 5s linear forwards;
+}
+
+.animate-truck-drive-left {
+  animation: truck-drive-left 5s linear forwards;
+}
+
+/* Legacy animation kept for compatibility */
 @keyframes truck-drive {
   0% {
     transform: translateX(-100px);

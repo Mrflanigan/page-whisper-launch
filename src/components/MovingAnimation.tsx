@@ -322,26 +322,22 @@ const MovingAnimation = () => {
       <div className="hidden md:block">
         {/* Truck driving right */}
         {truckPhase === "drive-right" && (
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "100vw" }}
-            transition={{ duration: 5, ease: "linear" }}
-            className="absolute bottom-8 left-0 z-10 pointer-events-none"
+          <div
+            className="absolute bottom-8 left-0 z-10 pointer-events-none animate-truck-drive-right"
+            style={{ willChange: 'transform' }}
           >
             <CssTruck flipped />
-          </motion.div>
+          </div>
         )}
 
         {/* Truck driving left */}
         {truckPhase === "drive-left" && (
-          <motion.div
-            initial={{ x: "100vw" }}
-            animate={{ x: "-100%" }}
-            transition={{ duration: 5, ease: "linear" }}
-            className="absolute bottom-8 left-0 z-10 pointer-events-none"
+          <div
+            className="absolute bottom-8 left-0 z-10 pointer-events-none animate-truck-drive-left"
+            style={{ willChange: 'transform' }}
           >
             <CssTruck />
-          </motion.div>
+          </div>
         )}
       </div>
     </div>
