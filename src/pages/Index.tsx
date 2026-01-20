@@ -1,4 +1,4 @@
-import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown, Smartphone } from "lucide-react";
+import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown, Smartphone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -109,8 +109,8 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Hours & Service Area */}
-            <div className="flex gap-6 mb-4 text-secondary/80 text-sm">
+            {/* Hours & Service Area & Email */}
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 text-secondary/80 text-sm">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 <span>Mon–Sat, 9am–5pm</span>
@@ -119,6 +119,10 @@ const Index = () => {
                 <MapPin className="w-4 h-4" />
                 <span>King & Pierce County & Surrounding Areas</span>
               </div>
+              <a href="mailto:Topchoicemovinginc@gmail.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
+                <Mail className="w-4 h-4" />
+                <span>Topchoicemovinginc@gmail.com</span>
+              </a>
             </div>
 
             {/* CTA Button */}
@@ -201,6 +205,10 @@ const Index = () => {
                 <span className="text-sm font-bold">King & Pierce County</span>
               </div>
               <p className="text-white/70 text-xs font-bold">and surrounding areas</p>
+              <a href="mailto:Topchoicemovinginc@gmail.com" className="flex items-center justify-center gap-2 text-white/80 hover:text-white transition-colors">
+                <Mail className="w-4 h-4" />
+                <span className="text-sm font-bold">Topchoicemovinginc@gmail.com</span>
+              </a>
               <p className="text-accent font-bold text-base pt-2 font-oswald uppercase">
                 Very Affordable Rates
               </p>
