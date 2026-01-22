@@ -1,3 +1,4 @@
+// RESTORE POINT - v1.0 - Working animation with 4 scenes (truck 100% untouched)
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
