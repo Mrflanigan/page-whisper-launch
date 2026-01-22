@@ -58,7 +58,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send notification to business owner
+    // Send notification to business owner (email)
     const businessEmail = await sendEmail(
       ["sewartron329@gmail.com"],
       `New Moving Inquiry from ${name}`,
@@ -78,8 +78,19 @@ const handler = async (req: Request): Promise<Response> => {
         </div>
       `
     );
-
     console.log("Business notification sent:", businessEmail);
+
+    // Send SMS notification via T-Mobile email gateway
+    try {
+      const smsNotification = await sendEmail(
+        ["2532673212@tmomail.net"],
+        "New Inquiry",
+        `New inquiry from ${name}. Phone: ${phone}. ${message.substring(0, 100)}`
+      );
+      console.log("SMS notification sent:", smsNotification);
+    } catch (smsError) {
+      console.error("SMS notification failed (non-critical):", smsError);
+    }
 
     // Send confirmation to customer if they provided email
     if (email) {
