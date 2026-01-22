@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MovingAnimation from "@/components/MovingAnimation";
-import ContactForm from "@/components/ContactForm";
+import QuoteModal from "@/components/QuoteModal";
 import heroMoving from "@/assets/hero-moving.jpg";
 
 const Index = () => {
@@ -126,16 +126,21 @@ const Index = () => {
               </a>
             </div>
 
-            {/* CTA Button */}
-            <a href="tel:253-267-3212" className="inline-block">
-              <Button
-                size="lg"
-                className="text-xl md:text-2xl px-8 py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <Phone className="w-6 h-6 mr-3" />
-                <span className="font-bookman font-bold">253-267-3212</span>
-              </Button>
-            </a>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 items-center">
+              <a href="tel:253-267-3212" className="inline-block">
+                <Button
+                  size="lg"
+                  className="text-xl md:text-2xl px-8 py-5 h-auto bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Phone className="w-6 h-6 mr-3" />
+                  <span className="font-bookman font-bold">253-267-3212</span>
+                </Button>
+              </a>
+              <QuoteModal 
+                triggerClassName="text-lg px-6 py-5 h-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg"
+              />
+            </div>
             <p className="text-secondary/70 mt-2 text-xs">
               Free estimates — we answer!
             </p>
@@ -246,12 +251,11 @@ const Index = () => {
               Full load required — no single item hauling
             </p>
 
-            {/* Contact Form - Mobile */}
+            {/* Quote Button - Mobile */}
             <div className="mb-6">
-              <h3 className="text-white font-bold text-lg text-center mb-4 font-oswald uppercase">
-                Send Us a Message
-              </h3>
-              <ContactForm variant="mobile" />
+              <QuoteModal 
+                triggerClassName="w-full text-lg py-5 h-auto bg-secondary text-secondary-foreground hover:bg-secondary/90"
+              />
             </div>
 
             {/* Phone CTA */}
@@ -280,14 +284,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Form Section - Desktop */}
-      <section className="hidden md:block bg-primary/10 py-12 px-4">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-2">Get a Free Quote</h2>
-          <p className="text-center text-muted-foreground mb-6">Tell us about your move and we'll get back to you ASAP</p>
-          <ContactForm variant="desktop" />
-        </div>
-      </section>
 
       {/* Footer - Desktop Only */}
       <footer className="hidden md:block bg-foreground text-secondary py-6 md:py-8 px-4">
