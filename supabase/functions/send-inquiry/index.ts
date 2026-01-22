@@ -15,6 +15,9 @@ interface InquiryRequest {
   message: string;
 }
 
+// Helper to add delay between API calls
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 async function sendEmail(to: string[], subject: string, html: string) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -80,6 +83,9 @@ const handler = async (req: Request): Promise<Response> => {
     );
     console.log("Business notification sent:", businessEmail);
 
+    // Wait before sending next email (rate limit: 2 per second)
+    await delay(600);
+
     // Send SMS notification via T-Mobile email gateway
     try {
       const smsNotification = await sendEmail(
@@ -94,6 +100,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation to customer if they provided email
     if (email) {
+      await delay(600);
       const confirmationEmail = await sendEmail(
         [email],
         "We received your inquiry - Top Choice Moving",
