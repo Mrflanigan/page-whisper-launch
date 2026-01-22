@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MovingAnimation from "@/components/MovingAnimation";
+import ContactForm from "@/components/ContactForm";
 import heroMoving from "@/assets/hero-moving.jpg";
 
 const Index = () => {
@@ -245,7 +246,16 @@ const Index = () => {
               Full load required — no single item hauling
             </p>
 
+            {/* Contact Form - Mobile */}
+            <div className="mb-6">
+              <h3 className="text-white font-bold text-lg text-center mb-4 font-oswald uppercase">
+                Send Us a Message
+              </h3>
+              <ContactForm variant="mobile" />
+            </div>
+
             {/* Phone CTA */}
+            <p className="text-white/60 text-center text-sm mb-2 font-montserrat">Or call us directly:</p>
             <a href="tel:253-267-3212" className="block mb-6">
               <Button
                 size="lg"
@@ -267,6 +277,15 @@ const Index = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section - Desktop */}
+      <section className="hidden md:block bg-primary/10 py-12 px-4">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-foreground mb-2">Get a Free Quote</h2>
+          <p className="text-center text-muted-foreground mb-6">Tell us about your move and we'll get back to you ASAP</p>
+          <ContactForm variant="desktop" />
         </div>
       </section>
 
