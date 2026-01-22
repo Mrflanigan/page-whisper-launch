@@ -60,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to business owner (email)
     const businessEmail = await sendEmail(
-      ["sewartron329@gmail.com"],
+      ["Stewartron329@gmail.com"],
       `New Moving Inquiry from ${name}`,
       `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #3d3630; padding: 30px; border-radius: 10px;">
