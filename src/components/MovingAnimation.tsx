@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-moving.jpg";
 import heroEmpty from "@/assets/hero-empty.jpg";
 import newHouse from "@/assets/new-house.jpg";
-import newHouseEmpty from "@/assets/new-house-empty.jpg";
 
-type Scene = "original" | "empty" | "newHouse" | "blueEmpty";
+type Scene = "original" | "empty" | "newHouse";
 
 const CssTruck = ({ flipped = false }: { flipped?: boolean }) => (
   <div 
@@ -214,23 +213,22 @@ const MovingAnimation = () => {
     original: heroImage,
     empty: heroEmpty,
     newHouse: newHouse,
-    blueEmpty: newHouseEmpty,
   };
 
   useEffect(() => {
     let isMounted = true;
     
-    // Sequence: 1 → 3 → 4 → 2 → 4 → repeat
+    // Sequence: original → empty → newHouse → repeat
     const runAnimation = async () => {
       if (!isMounted) return;
       
-      // Scene 1: Original room (8s pause)
+      // Scene 1: Original room with boxes (8s pause)
       setScene("original");
       setTruckPhase("hidden");
       await delay(8000);
       if (!isMounted) return;
 
-      // Truck drives right → transition to Scene 3
+      // Truck drives right → transition to empty room
       setTruckPhase("drive-right");
       await delay(2500);
       if (!isMounted) return;
@@ -239,25 +237,12 @@ const MovingAnimation = () => {
       if (!isMounted) return;
       setTruckPhase("hidden");
 
-      // Scene 3: Empty room (8s pause)
+      // Scene 2: Empty room (8s pause)
       await delay(8000);
       if (!isMounted) return;
 
-      // Truck drives left → transition to Scene 4
+      // Truck drives left → transition to new house
       setTruckPhase("drive-left");
-      await delay(2500);
-      if (!isMounted) return;
-      setScene("blueEmpty");
-      await delay(2600);
-      if (!isMounted) return;
-      setTruckPhase("hidden");
-
-      // Scene 4: Blue empty room (8s pause)
-      await delay(8000);
-      if (!isMounted) return;
-
-      // Truck drives right → transition to Scene 2
-      setTruckPhase("drive-right");
       await delay(2500);
       if (!isMounted) return;
       setScene("newHouse");
@@ -265,24 +250,11 @@ const MovingAnimation = () => {
       if (!isMounted) return;
       setTruckPhase("hidden");
 
-      // Scene 2: New house (8s pause)
+      // Scene 3: New house with boxes (8s pause)
       await delay(8000);
       if (!isMounted) return;
 
-      // Truck drives left → transition to Scene 4
-      setTruckPhase("drive-left");
-      await delay(2500);
-      if (!isMounted) return;
-      setScene("blueEmpty");
-      await delay(2600);
-      if (!isMounted) return;
-      setTruckPhase("hidden");
-
-      // Scene 4: Blue empty room again (8s pause)
-      await delay(8000);
-      if (!isMounted) return;
-
-      // Truck drives right → back to Scene 1
+      // Truck drives right → back to original
       setTruckPhase("drive-right");
       await delay(2500);
       if (!isMounted) return;
