@@ -138,7 +138,7 @@ const Index = () => {
                 </Button>
               </a>
               <QuoteModal 
-                triggerClassName="text-lg px-6 py-5 h-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg"
+                triggerClassName="text-lg px-6 py-5 h-auto bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg"
               />
             </div>
             <p className="text-secondary/70 mt-2 text-xs">
@@ -254,7 +254,7 @@ const Index = () => {
             {/* Quote Button - Mobile */}
             <div className="mb-6">
               <QuoteModal 
-                triggerClassName="w-full text-lg py-5 h-auto bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                triggerClassName="w-full text-lg py-5 h-auto bg-accent text-accent-foreground hover:bg-accent/90"
               />
             </div>
 
