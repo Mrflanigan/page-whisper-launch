@@ -93,9 +93,9 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
           Request a Quote
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto bg-background border-border">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center font-oswald uppercase">
+          <DialogTitle className="text-2xl font-bold text-center font-oswald uppercase text-foreground">
             Top Choice Moving
           </DialogTitle>
         </DialogHeader>
