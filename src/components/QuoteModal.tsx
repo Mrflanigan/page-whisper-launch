@@ -93,67 +93,70 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
           Request a Quote
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto border-border" style={{ backgroundColor: '#f5f0e8' }}>
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center font-oswald uppercase text-foreground">
+      <DialogContent 
+        className="sm:max-w-md max-h-[90vh] overflow-y-auto border-0 shadow-2xl" 
+        style={{ backgroundColor: '#3d3630' }}
+      >
+        <DialogHeader className="pb-2 border-b border-white/10">
+          <DialogTitle className="text-2xl font-bold text-center font-oswald uppercase text-white tracking-wide">
             Top Choice Moving
           </DialogTitle>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div>
-            <Label htmlFor="fullName">Full Name *</Label>
+            <Label htmlFor="fullName" className="text-white/80 font-montserrat text-sm">Full Name *</Label>
             <Input
               id="fullName"
               placeholder="Full Name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="mt-1"
+              className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent"
               required
             />
           </div>
 
           <div>
-            <Label htmlFor="phone">Phone Number *</Label>
+            <Label htmlFor="phone" className="text-white/80 font-montserrat text-sm">Phone Number *</Label>
             <Input
               id="phone"
               type="tel"
               placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="mt-1"
+              className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent"
               required
             />
           </div>
 
           <div>
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email" className="text-white/80 font-montserrat text-sm">Email Address</Label>
             <Input
               id="email"
               type="email"
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1"
+              className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent"
             />
           </div>
 
           <div>
-            <Label className="text-sm font-medium">Do you have a truck lined up?</Label>
+            <Label className="text-white/80 font-montserrat text-sm">Do you have a truck lined up?</Label>
             <RadioGroup 
               value={hasTruck} 
               onValueChange={setHasTruck}
               className="mt-2 space-y-2"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="yes" id="truck-yes" />
-                <Label htmlFor="truck-yes" className="font-normal cursor-pointer">
+              <div className="flex items-center space-x-3 p-3 rounded-md bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                <RadioGroupItem value="yes" id="truck-yes" className="border-white/40 text-accent" />
+                <Label htmlFor="truck-yes" className="font-normal cursor-pointer text-white/90 font-montserrat">
                   Yes, I have a truck
                 </Label>
               </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="no" id="truck-no" />
-                <Label htmlFor="truck-no" className="font-normal cursor-pointer">
+              <div className="flex items-center space-x-3 p-3 rounded-md bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                <RadioGroupItem value="no" id="truck-no" className="border-white/40 text-accent" />
+                <Label htmlFor="truck-no" className="font-normal cursor-pointer text-white/90 font-montserrat">
                   No, I need help with that
                 </Label>
               </div>
@@ -161,14 +164,14 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
           </div>
 
           <div>
-            <Label htmlFor="message">Tell Us About Your Move *</Label>
+            <Label htmlFor="message" className="text-white/80 font-montserrat text-sm">Tell Us About Your Move *</Label>
             <Textarea
               id="message"
               placeholder="Tell us about your move..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={4}
-              className="mt-1 resize-none"
+              className="mt-1 resize-none bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent"
               required
             />
           </div>
@@ -176,7 +179,7 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-6"
+            className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-6 font-oswald uppercase tracking-wide font-bold shadow-lg"
           >
             {isLoading ? (
               <>
@@ -188,7 +191,7 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
             )}
           </Button>
 
-          <p className="text-center text-xs text-muted-foreground">
+          <p className="text-center text-xs text-white/50 font-montserrat">
             We never share your information
           </p>
         </form>
