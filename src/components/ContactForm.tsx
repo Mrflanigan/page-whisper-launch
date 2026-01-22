@@ -71,8 +71,8 @@ const ContactForm = ({ variant = "desktop" }: ContactFormProps) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className={isMobile 
-            ? "bg-white/10 border-white/20 text-white placeholder:text-white/50" 
-            : "bg-secondary/10 border-secondary/30 text-secondary placeholder:text-secondary/50"
+            ? "bg-white/10 border-white/30 text-white placeholder:text-white/60" 
+            : "bg-white border-foreground/30 text-foreground placeholder:text-foreground/60"
           }
           required
         />
@@ -82,8 +82,8 @@ const ContactForm = ({ variant = "desktop" }: ContactFormProps) => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className={isMobile 
-            ? "bg-white/10 border-white/20 text-white placeholder:text-white/50" 
-            : "bg-secondary/10 border-secondary/30 text-secondary placeholder:text-secondary/50"
+            ? "bg-white/10 border-white/30 text-white placeholder:text-white/60" 
+            : "bg-white border-foreground/30 text-foreground placeholder:text-foreground/60"
           }
           required
         />
@@ -94,8 +94,8 @@ const ContactForm = ({ variant = "desktop" }: ContactFormProps) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className={isMobile 
-          ? "bg-white/10 border-white/20 text-white placeholder:text-white/50" 
-          : "bg-secondary/10 border-secondary/30 text-secondary placeholder:text-secondary/50"
+          ? "bg-white/10 border-white/30 text-white placeholder:text-white/60" 
+          : "bg-white border-foreground/30 text-foreground placeholder:text-foreground/60"
         }
       />
       <Textarea
@@ -104,8 +104,8 @@ const ContactForm = ({ variant = "desktop" }: ContactFormProps) => {
         onChange={(e) => setMessage(e.target.value)}
         rows={3}
         className={isMobile 
-          ? "bg-white/10 border-white/20 text-white placeholder:text-white/50 resize-none" 
-          : "bg-secondary/10 border-secondary/30 text-secondary placeholder:text-secondary/50 resize-none"
+          ? "bg-white/10 border-white/30 text-white placeholder:text-white/60 resize-none" 
+          : "bg-white border-foreground/30 text-foreground placeholder:text-foreground/60 resize-none"
         }
         required
       />
