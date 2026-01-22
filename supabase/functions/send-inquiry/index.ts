@@ -58,19 +58,24 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send notification to business
+    // Send notification to business owner
     const businessEmail = await sendEmail(
-      ["Topchoicemovinginc@gmail.com"],
+      ["sewartron329@gmail.com"],
       `New Moving Inquiry from ${name}`,
       `
-        <h2>New Moving Inquiry</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-        <hr>
-        <p style="color: #666; font-size: 12px;">Sent from Top Choice Moving website</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #3d3630; padding: 30px; border-radius: 10px;">
+          <h1 style="color: #e97451; text-align: center; font-size: 24px; margin-bottom: 20px;">New Moving Inquiry</h1>
+          <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="color: #fff; margin: 10px 0;"><strong style="color: #e97451;">Name:</strong> ${name}</p>
+            <p style="color: #fff; margin: 10px 0;"><strong style="color: #e97451;">Phone:</strong> <a href="tel:${phone}" style="color: #fff;">${phone}</a></p>
+            ${email ? `<p style="color: #fff; margin: 10px 0;"><strong style="color: #e97451;">Email:</strong> <a href="mailto:${email}" style="color: #fff;">${email}</a></p>` : ''}
+          </div>
+          <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px;">
+            <p style="color: #e97451; font-weight: bold; margin-bottom: 10px;">Message:</p>
+            <p style="color: #fff; white-space: pre-wrap;">${message}</p>
+          </div>
+          <p style="color: rgba(255,255,255,0.5); font-size: 12px; text-align: center; margin-top: 20px;">Sent from Top Choice Moving website</p>
+        </div>
       `
     );
 
@@ -82,18 +87,29 @@ const handler = async (req: Request): Promise<Response> => {
         [email],
         "We received your inquiry - Top Choice Moving",
         `
-          <h2>Thank you for contacting Top Choice Moving!</h2>
-          <p>Hi ${name},</p>
-          <p>We've received your inquiry and will get back to you as soon as possible.</p>
-          <p>Here's a copy of your message:</p>
-          <blockquote style="border-left: 3px solid #e97451; padding-left: 15px; color: #555;">
-            ${message}
-          </blockquote>
-          <p>We typically respond within 24 hours. If your request is urgent, please call us directly at <strong>253-267-3212</strong>.</p>
-          <br>
-          <p>Best regards,<br>Top Choice Moving Inc.</p>
-          <hr>
-          <p style="color: #666; font-size: 12px;">King County, Pierce County & Surrounding Areas</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f5f0e8; padding: 30px; border-radius: 10px;">
+            <h1 style="color: #3d3630; text-align: center; font-size: 24px; margin-bottom: 10px;">Top Choice Moving</h1>
+            <p style="color: #e97451; text-align: center; font-size: 14px; margin-bottom: 30px;">Professional Loading & Unloading Services</p>
+            
+            <h2 style="color: #3d3630; font-size: 20px;">Thank you for reaching out, ${name}!</h2>
+            <p style="color: #555;">We've received your inquiry and will get back to you as soon as possible.</p>
+            
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid #e97451; margin: 20px 0;">
+              <p style="color: #888; font-size: 12px; margin-bottom: 10px;">Your message:</p>
+              <p style="color: #333; white-space: pre-wrap;">${message}</p>
+            </div>
+            
+            <p style="color: #555;">We typically respond within 24 hours. If your request is urgent, please call us directly:</p>
+            <p style="text-align: center; margin: 20px 0;">
+              <a href="tel:253-267-3212" style="background: #e97451; color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold;">📞 253-267-3212</a>
+            </p>
+            
+            <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
+            <p style="color: #888; font-size: 12px; text-align: center;">
+              Top Choice Moving Inc.<br>
+              King County, Pierce County & Surrounding Areas
+            </p>
+          </div>
         `
       );
       console.log("Customer confirmation sent:", confirmationEmail);
