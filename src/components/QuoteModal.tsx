@@ -45,14 +45,14 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
     setIsLoading(true);
 
     try {
-      const inquiryMessage = `${message}\n\nTruck Status: ${hasTruck || "Not specified"}`;
-      
       const { data, error } = await supabase.functions.invoke("send-inquiry", {
         body: { 
           name: fullName, 
           phone, 
           email, 
-          message: inquiryMessage 
+          message,
+          hasTruck: hasTruck === "yes",
+          truckType: hasTruck === "yes" ? "Customer has truck" : hasTruck === "no" ? "Needs help with truck" : null
         },
       });
 

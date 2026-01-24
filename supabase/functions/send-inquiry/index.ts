@@ -1,6 +1,9 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -13,6 +16,8 @@ interface InquiryRequest {
   phone: string;
   email?: string;
   message: string;
+  hasTruck?: boolean;
+  truckType?: string;
 }
 
 // Helper to add delay between API calls
@@ -48,7 +53,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, phone, email, message }: InquiryRequest = await req.json();
+    const { name, phone, email, message, hasTruck, truckType }: InquiryRequest = await req.json();
 
     // Validate required fields
     if (!name || !phone || !message) {
@@ -59,6 +64,24 @@ const handler = async (req: Request): Promise<Response> => {
           headers: { "Content-Type": "application/json", ...corsHeaders },
         }
       );
+    }
+
+    // Save inquiry to database
+    const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
+    const { error: dbError } = await supabase.from("inquiries").insert({
+      name,
+      phone,
+      email: email || null,
+      details: message,
+      has_truck: hasTruck ?? null,
+      truck_type: truckType || null,
+    });
+
+    if (dbError) {
+      console.error("Failed to save inquiry to database:", dbError);
+      // Continue with email even if DB save fails
+    } else {
+      console.log("Inquiry saved to database");
     }
 
     // Send notification to business owner (email)
