@@ -90,6 +90,9 @@ const Index = () => {
             <p className="text-2xl md:text-3xl lg:text-4xl text-secondary font-bold tracking-wide mb-2">
               Professional Loading & Unloading Services
             </p>
+            <p className="text-lg md:text-xl text-accent font-bold mb-2">
+              You Pack It... Let Us Help Load and Unload. It's What We Do Best!
+            </p>
             <p className="text-sm md:text-base text-secondary/80 mb-4 max-w-2xl mx-auto">
               We work with Uhaul, Penske, and all moving trucks. Very affordable rates — we come to you!
             </p>
@@ -168,6 +171,9 @@ const Index = () => {
               </h1>
               <p className="text-white text-xl font-bold tracking-wide font-montserrat">
                 Professional Loading & Unloading Services
+              </p>
+              <p className="text-accent text-base font-bold mt-2 font-montserrat">
+                You Pack It... Let Us Help Load and Unload. It's What We Do Best!
               </p>
             </div>
 
