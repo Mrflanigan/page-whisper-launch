@@ -65,6 +65,48 @@ export type Database = {
         }
         Relationships: []
       }
+      inquiries: {
+        Row: {
+          created_at: string
+          details: string | null
+          email: string | null
+          has_truck: boolean | null
+          id: string
+          move_date: string | null
+          move_from: string | null
+          move_to: string | null
+          name: string
+          phone: string
+          truck_type: string | null
+        }
+        Insert: {
+          created_at?: string
+          details?: string | null
+          email?: string | null
+          has_truck?: boolean | null
+          id?: string
+          move_date?: string | null
+          move_from?: string | null
+          move_to?: string | null
+          name: string
+          phone: string
+          truck_type?: string | null
+        }
+        Update: {
+          created_at?: string
+          details?: string | null
+          email?: string | null
+          has_truck?: boolean | null
+          id?: string
+          move_date?: string | null
+          move_from?: string | null
+          move_to?: string | null
+          name?: string
+          phone?: string
+          truck_type?: string | null
+        }
+        Relationships: []
+      }
       upload_sessions: {
         Row: {
           created_at: string
