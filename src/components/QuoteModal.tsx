@@ -58,6 +58,15 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
 
       if (error) throw error;
 
+      // Fire Google Ads conversion tracking
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-17900064574/pFfiCKydmu0bEL6etddC',
+          'value': 1.0,
+          'currency': 'USD'
+        });
+      }
+
       toast({
         title: "Quote Request Sent!",
         description: "We'll get back to you as soon as possible.",

@@ -39,6 +39,15 @@ const ContactForm = ({ variant = "desktop" }: ContactFormProps) => {
 
       if (error) throw error;
 
+      // Fire Google Ads conversion tracking
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-17900064574/P1Q8CIj5qesbEL6etddC',
+          'value': 1.0,
+          'currency': 'USD'
+        });
+      }
+
       toast({
         title: "Message Sent!",
         description: "We'll get back to you as soon as possible.",
