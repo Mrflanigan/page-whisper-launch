@@ -34,8 +34,12 @@ const AdsLanding = () => {
             Loading • Hauling • Dump Runs
           </p>
           
-          <p className="text-lg text-gray-400 mb-8">
+          <p className="text-lg text-gray-400 mb-4">
             Serving Tacoma & Surrounding Areas
+          </p>
+          
+          <p className="text-xl md:text-2xl text-amber-400 font-semibold mb-8">
+            You Pack It... Let Us Help Load and Unload. It's What We Do Best!
           </p>
 
           {/* CTA Buttons */}
