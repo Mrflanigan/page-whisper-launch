@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,7 @@ interface QuoteModalProps {
 }
 
 const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModalProps) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -67,18 +69,10 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
         });
       }
 
-      toast({
-        title: "Quote Request Sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-
-      // Clear form and close modal
-      setFullName("");
-      setPhone("");
-      setEmail("");
-      setHasTruck("");
-      setMessage("");
+      // Close modal and redirect to thank you page
       setOpen(false);
+      navigate("/thank-you");
+      
     } catch (error: any) {
       console.error("Error sending inquiry:", error);
       toast({

@@ -10,6 +10,7 @@ import CreateSite from "./pages/CreateSite";
 import Site from "./pages/Site";
 import MobileUpload from "./pages/MobileUpload";
 import AdsLanding from "./pages/AdsLanding";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ads" element={<AdsLanding />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/mobile-preview" element={<MobilePreview />} />
           <Route path="/create" element={<CreateSite />} />
           <Route path="/builder" element={<Builder />} />
