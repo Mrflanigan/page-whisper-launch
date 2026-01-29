@@ -1,4 +1,4 @@
-import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown, Smartphone, Mail } from "lucide-react";
+import { Phone, Clock, MapPin, Truck, Trash2, TreePine, ChevronDown, Smartphone, Mail, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +11,7 @@ import {
 import MovingAnimation from "@/components/MovingAnimation";
 import QuoteModal from "@/components/QuoteModal";
 import heroMoving from "@/assets/hero-moving.jpg";
-
+import promoImage from "@/assets/craigslist-promo-v2.jpg";
 const Index = () => {
   return (
     <div className="min-h-screen">
@@ -30,6 +30,15 @@ const Index = () => {
             
             {/* Services Dropdown - Below company name, far right */}
             <div className="flex justify-end mt-4 gap-3">
+              <a href={promoImage} download="TopChoiceMoving-Promo.jpg" target="_blank" rel="noopener noreferrer">
+                <Button 
+                  variant="outline" 
+                  className="bg-secondary/20 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Promo Flyer
+                </Button>
+              </a>
               <Link to="/mobile-preview">
                 <Button 
                   variant="outline" 
