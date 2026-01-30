@@ -21,6 +21,37 @@ interface QuoteModalProps {
   triggerVariant?: "default" | "outline" | "secondary";
 }
 
+// Spam words to filter
+const SPAM_WORDS = ['porno', 'porn', 'xxx', 'casino', 'viagra', 'crypto', 'bitcoin', 'lottery', 'winner'];
+
+// Validate US phone number (10 digits, common formats)
+const isValidUSPhone = (phone: string): boolean => {
+  // Remove all non-digits
+  const digits = phone.replace(/\D/g, '');
+  // Must be exactly 10 digits (or 11 if starts with 1)
+  if (digits.length === 10) return true;
+  if (digits.length === 11 && digits.startsWith('1')) return true;
+  return false;
+};
+
+// Format phone to readable format
+const formatPhone = (phone: string): string => {
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length === 10) {
+    return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+  }
+  if (digits.length === 11 && digits.startsWith('1')) {
+    return `(${digits.slice(1,4)}) ${digits.slice(4,7)}-${digits.slice(7)}`;
+  }
+  return phone;
+};
+
+// Check for spam content
+const containsSpam = (text: string): boolean => {
+  const lowerText = text.toLowerCase();
+  return SPAM_WORDS.some(word => lowerText.includes(word));
+};
+
 const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModalProps) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -30,15 +61,43 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
   const [hasTruck, setHasTruck] = useState<string>("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [honeypot, setHoneypot] = useState(""); // Hidden field to catch bots
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Bot detection - honeypot field should be empty
+    if (honeypot) {
+      console.log("Bot detected via honeypot");
+      setOpen(false);
+      return;
+    }
+
     if (!fullName || !phone || !message) {
       toast({
         title: "Missing Information",
         description: "Please fill in your name, phone, and move details.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate US phone number
+    if (!isValidUSPhone(phone)) {
+      toast({
+        title: "Invalid Phone Number",
+        description: "Please enter a valid US phone number (10 digits).",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Check for spam content
+    if (containsSpam(message) || containsSpam(fullName)) {
+      toast({
+        title: "Invalid Content",
+        description: "Your message could not be sent. Please try again.",
         variant: "destructive",
       });
       return;
@@ -119,12 +178,24 @@ const QuoteModal = ({ triggerClassName, triggerVariant = "default" }: QuoteModal
             />
           </div>
 
+          {/* Honeypot field - hidden from humans, catches bots */}
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <Input
+              type="text"
+              name="website"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div>
-            <Label htmlFor="phone" className="text-white/80 font-montserrat text-sm">Phone Number *</Label>
+            <Label htmlFor="phone" className="text-white/80 font-montserrat text-sm">Phone Number * <span className="text-white/50">(US only)</span></Label>
             <Input
               id="phone"
               type="tel"
-              placeholder="Phone Number"
+              placeholder="(253) 555-1234"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent"
