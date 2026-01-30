@@ -82,7 +82,7 @@ const PromoFlyer = () => {
         <div className="bg-[#3d3630] p-4 text-center border-t border-[#4a4035]">
           <div className="flex items-center justify-center gap-2 text-white/80 text-sm">
             <MapPin className="w-4 h-4" />
-            <span>King & Pierce County</span>
+            <span>King & Pierce County & Surrounding Areas</span>
           </div>
           <div className="flex items-center justify-center gap-2 text-white/60 text-xs mt-1">
             <Clock className="w-3 h-3" />
