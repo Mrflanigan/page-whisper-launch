@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Phone, Truck, Clock, MapPin, CheckCircle, ArrowLeft, Download, Loader2 } from "lucide-react";
+import { Phone, Truck, Clock, MapPin, CheckCircle, ArrowLeft, Copy, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -7,13 +7,13 @@ import html2canvas from "html2canvas";
 
 const PromoFlyer = () => {
   const flyerRef = useRef<HTMLDivElement>(null);
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isCopying, setIsCopying] = useState(false);
   const { toast } = useToast();
 
-  const handleDownload = async () => {
+  const handleCopyToClipboard = async () => {
     if (!flyerRef.current) return;
     
-    setIsDownloading(true);
+    setIsCopying(true);
     
     try {
       const canvas = await html2canvas(flyerRef.current, {
@@ -23,27 +23,42 @@ const PromoFlyer = () => {
         logging: false,
       });
       
-      const dataUrl = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.download = "TopChoiceMoving-Flyer.png";
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      toast({
-        title: "Download started!",
-        description: "Check your downloads folder.",
-      });
+      // Convert canvas to blob
+      canvas.toBlob(async (blob) => {
+        if (!blob) {
+          throw new Error("Failed to create image");
+        }
+        
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              "image/png": blob,
+            }),
+          ]);
+          
+          toast({
+            title: "Copied to clipboard!",
+            description: "Now paste it anywhere (Ctrl+V or Cmd+V)",
+          });
+        } catch (clipboardError) {
+          console.error("Clipboard error:", clipboardError);
+          toast({
+            title: "Clipboard blocked",
+            description: "Use screenshot instead: Win+Shift+S (Windows) or Cmd+Shift+4 (Mac)",
+            variant: "destructive",
+          });
+        }
+        
+        setIsCopying(false);
+      }, "image/png");
     } catch (error) {
-      console.error("Download error:", error);
+      console.error("Copy error:", error);
       toast({
-        title: "Download issue",
-        description: "Try taking a screenshot instead (Win+Shift+S or Cmd+Shift+4)",
+        title: "Copy failed",
+        description: "Use screenshot: Win+Shift+S (Windows) or Cmd+Shift+4 (Mac)",
         variant: "destructive",
       });
-    } finally {
-      setIsDownloading(false);
+      setIsCopying(false);
     }
   };
 
@@ -56,16 +71,17 @@ const PromoFlyer = () => {
           Back to Home
         </Link>
         <Button 
-          onClick={handleDownload}
-          disabled={isDownloading}
+          onClick={handleCopyToClipboard}
+          disabled={isCopying}
+          size="lg"
           className="bg-accent hover:bg-accent/90 text-accent-foreground"
         >
-          {isDownloading ? (
+          {isCopying ? (
             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
           ) : (
-            <Download className="w-4 h-4 mr-2" />
+            <Copy className="w-4 h-4 mr-2" />
           )}
-          {isDownloading ? "Saving..." : "Download Image"}
+          {isCopying ? "Copying..." : "Copy to Clipboard"}
         </Button>
       </div>
 
