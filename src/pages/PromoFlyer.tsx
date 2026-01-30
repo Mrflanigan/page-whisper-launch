@@ -1,24 +1,50 @@
-import { useRef } from "react";
-import { Phone, Truck, Clock, MapPin, CheckCircle, ArrowLeft, Download } from "lucide-react";
+import { useRef, useState } from "react";
+import { Phone, Truck, Clock, MapPin, CheckCircle, ArrowLeft, Download, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import html2canvas from "html2canvas";
 
 const PromoFlyer = () => {
   const flyerRef = useRef<HTMLDivElement>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const { toast } = useToast();
 
   const handleDownload = async () => {
     if (!flyerRef.current) return;
     
-    const canvas = await html2canvas(flyerRef.current, {
-      backgroundColor: "#3d3630",
-      scale: 2, // Higher quality
-    });
+    setIsDownloading(true);
     
-    const link = document.createElement("a");
-    link.download = "TopChoiceMoving-Flyer.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+    try {
+      const canvas = await html2canvas(flyerRef.current, {
+        backgroundColor: "#2a2520",
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      });
+      
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.download = "TopChoiceMoving-Flyer.png";
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: "Download started!",
+        description: "Check your downloads folder.",
+      });
+    } catch (error) {
+      console.error("Download error:", error);
+      toast({
+        title: "Download issue",
+        description: "Try taking a screenshot instead (Win+Shift+S or Cmd+Shift+4)",
+        variant: "destructive",
+      });
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -31,10 +57,15 @@ const PromoFlyer = () => {
         </Link>
         <Button 
           onClick={handleDownload}
+          disabled={isDownloading}
           className="bg-accent hover:bg-accent/90 text-accent-foreground"
         >
-          <Download className="w-4 h-4 mr-2" />
-          Download Image
+          {isDownloading ? (
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+          ) : (
+            <Download className="w-4 h-4 mr-2" />
+          )}
+          {isDownloading ? "Saving..." : "Download Image"}
         </Button>
       </div>
 
