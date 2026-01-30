@@ -1,15 +1,45 @@
-import { Phone, Truck, Clock, MapPin, CheckCircle, ArrowLeft } from "lucide-react";
+import { useRef } from "react";
+import { Phone, Truck, Clock, MapPin, CheckCircle, ArrowLeft, Download } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import html2canvas from "html2canvas";
 
 const PromoFlyer = () => {
+  const flyerRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = async () => {
+    if (!flyerRef.current) return;
+    
+    const canvas = await html2canvas(flyerRef.current, {
+      backgroundColor: "#3d3630",
+      scale: 2, // Higher quality
+    });
+    
+    const link = document.createElement("a");
+    link.download = "TopChoiceMoving-Flyer.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  };
+
   return (
     <div className="min-h-screen bg-[#3d3630] flex flex-col items-center justify-center p-4">
-      {/* Back Button */}
-      <Link to="/" className="self-start mb-4 text-white/60 hover:text-white flex items-center gap-2 text-sm">
-        <ArrowLeft className="w-4 h-4" />
-        Back to Home
-      </Link>
-      <div className="w-[400px] bg-[#2a2520] rounded-2xl overflow-hidden shadow-2xl border border-[#4a4035]">
+      {/* Controls */}
+      <div className="flex items-center justify-between w-[400px] mb-4">
+        <Link to="/" className="text-white/60 hover:text-white flex items-center gap-2 text-sm">
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
+        <Button 
+          onClick={handleDownload}
+          className="bg-accent hover:bg-accent/90 text-accent-foreground"
+        >
+          <Download className="w-4 h-4 mr-2" />
+          Download Image
+        </Button>
+      </div>
+
+      {/* Flyer - This is what gets captured */}
+      <div ref={flyerRef} className="w-[400px] bg-[#2a2520] rounded-2xl overflow-hidden shadow-2xl border border-[#4a4035]">
         {/* Header */}
         <div className="bg-gradient-to-r from-[#4a4035] to-[#3d3630] p-6 text-center">
           <h1 className="text-3xl font-bold text-white font-oswald uppercase tracking-wide">
