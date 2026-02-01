@@ -62,7 +62,7 @@ const Index = () => {
                     <Truck className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-card-foreground">Loading & Unloading</p>
-                      <p className="text-sm text-muted-foreground">All truck types: Uhaul, Penske, Budget & more</p>
+                      <p className="text-sm text-muted-foreground">Your truck or any rental — we load it all</p>
                     </div>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -102,7 +102,7 @@ const Index = () => {
               You Pack It... Let Us Help Load and Unload. It's What We Do Best!
             </p>
             <p className="text-sm md:text-base text-secondary/80 mb-4 max-w-2xl mx-auto">
-              We work with Uhaul, Penske, and all moving trucks. Very affordable rates — we come to you!
+              Your truck or any rental — we load and unload it all. Very affordable rates — we come to you!
             </p>
 
             {/* Three Service Cards */}
@@ -208,7 +208,7 @@ const Index = () => {
             {/* Key Info - Classy Layout */}
             <div className="relative z-10 text-center space-y-3 mb-6 font-montserrat">
               <p className="text-white/80 text-sm font-bold">
-                We work with Uhaul, Penske & all moving trucks!
+                Your truck or any rental — we load it all!
               </p>
               <p className="text-white/60 text-sm font-bold">
                 and...
