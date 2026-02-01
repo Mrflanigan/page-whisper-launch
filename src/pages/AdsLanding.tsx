@@ -71,7 +71,7 @@ const AdsLanding = () => {
             </span>
             <span className="flex items-center gap-1">
               <CheckCircle className="w-4 h-4 text-green-500" />
-              Licensed & Insured
+              Licensed
             </span>
           </div>
         </div>
@@ -109,7 +109,7 @@ const AdsLanding = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <TrustItem icon={<Clock className="w-6 h-6" />} label="Quick Response" />
-            <TrustItem icon={<Shield className="w-6 h-6" />} label="Insured" />
+            <TrustItem icon={<Shield className="w-6 h-6" />} label="Licensed" />
             <TrustItem icon={<MapPin className="w-6 h-6" />} label="Local Experts" />
             <TrustItem icon={<Star className="w-6 h-6" />} label="5-Star Service" />
           </div>
