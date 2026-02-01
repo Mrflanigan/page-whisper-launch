@@ -290,7 +290,16 @@ const Index = () => {
               style={{ backgroundColor: '#6a5d4a' }}
             >
               <p className="text-white font-bold text-sm mb-1 font-oswald uppercase">Top Choice Moving Inc.</p>
-              <p className="text-white/70 text-xs font-bold font-montserrat">
+              <div className="flex justify-center gap-3 mt-2 text-xs">
+                <Link to="/privacy" className="text-white/50 hover:text-white transition-colors">
+                  Privacy
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link to="/terms" className="text-white/50 hover:text-white transition-colors">
+                  Terms
+                </Link>
+              </div>
+              <p className="text-white/70 text-xs font-bold font-montserrat mt-2">
                 © {new Date().getFullYear()} All rights reserved.
               </p>
             </div>
@@ -306,7 +315,16 @@ const Index = () => {
           <p className="text-secondary/70 text-xs md:text-sm">
             Professional loading & unloading services in the greater Seattle area
           </p>
-          <p className="text-secondary/50 text-xs mt-4">
+          <div className="flex justify-center gap-4 mt-4 text-xs">
+            <Link to="/privacy" className="text-secondary/50 hover:text-secondary transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-secondary/30">|</span>
+            <Link to="/terms" className="text-secondary/50 hover:text-secondary transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+          <p className="text-secondary/50 text-xs mt-3">
             © {new Date().getFullYear()} Top Choice Moving Inc. All rights reserved.
           </p>
         </div>

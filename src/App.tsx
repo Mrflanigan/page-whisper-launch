@@ -12,6 +12,8 @@ import MobileUpload from "./pages/MobileUpload";
 import AdsLanding from "./pages/AdsLanding";
 import ThankYou from "./pages/ThankYou";
 import PromoFlyer from "./pages/PromoFlyer";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/ads" element={<AdsLanding />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/promo" element={<PromoFlyer />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
           <Route path="/mobile-preview" element={<MobilePreview />} />
           <Route path="/create" element={<CreateSite />} />
           <Route path="/builder" element={<Builder />} />
