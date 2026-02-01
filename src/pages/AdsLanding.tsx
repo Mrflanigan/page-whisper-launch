@@ -138,6 +138,25 @@ const AdsLanding = () => {
         </div>
       </section>
 
+      {/* Footer */}
+      <footer className="py-6 px-4 bg-[#1a1a1a] border-t border-white/10">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-gray-400 text-sm mb-2">Top Choice Moving Inc.</p>
+          <div className="flex justify-center gap-4 text-xs">
+            <a href="/privacy" className="text-gray-500 hover:text-gray-300 transition-colors">
+              Privacy Policy
+            </a>
+            <span className="text-gray-600">|</span>
+            <a href="/terms" className="text-gray-500 hover:text-gray-300 transition-colors">
+              Terms of Service
+            </a>
+          </div>
+          <p className="text-gray-600 text-xs mt-2">
+            © {new Date().getFullYear()} All rights reserved.
+          </p>
+        </div>
+      </footer>
+
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#1a1a1a]/95 backdrop-blur border-t border-white/10 md:hidden z-50">
         <a href={`tel:${phoneNumber.replace(/-/g, '')}`} className="block">
