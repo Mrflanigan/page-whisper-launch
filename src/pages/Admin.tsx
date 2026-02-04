@@ -295,49 +295,53 @@ const Admin = () => {
             <div className="mt-4 space-y-4">
               {/* Logos */}
               <div>
-                <h3 className="text-xs font-medium text-muted-foreground mb-2">Logos</h3>
+                <h3 className="text-xs font-medium text-muted-foreground mb-2">Logos (right-click image → "Copy image")</h3>
                 <div className="flex gap-3 flex-wrap">
                   {[
                     { src: logoOriginal, name: "logo-original.png", label: "Original" },
                     { src: logoSharp, name: "logo-sharp.png", label: "Sharp" },
                   ].map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.src}
-                      download={item.name}
-                      className="group relative bg-white border rounded p-2 hover:border-primary transition-colors"
-                    >
-                      <img src={item.src} alt={item.label} className="w-20 h-20 object-contain" />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded">
-                        <Download className="w-5 h-5 text-white" />
+                    <div key={item.name} className="text-center">
+                      <div className="bg-white border rounded p-2 hover:border-primary transition-colors">
+                        <img src={item.src} alt={item.label} className="w-20 h-20 object-contain" />
                       </div>
-                      <p className="text-xs text-center mt-1 text-muted-foreground">{item.label}</p>
-                    </a>
+                      <p className="text-xs mt-1 text-muted-foreground">{item.label}</p>
+                      <a
+                        href={item.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-primary hover:underline"
+                      >
+                        Open full size
+                      </a>
+                    </div>
                   ))}
                 </div>
               </div>
 
               {/* Instagram Photos */}
               <div>
-                <h3 className="text-xs font-medium text-muted-foreground mb-2">Instagram Photos</h3>
+                <h3 className="text-xs font-medium text-muted-foreground mb-2">Instagram Photos (right-click image → "Copy image")</h3>
                 <div className="flex gap-3 flex-wrap">
                   {[
                     { src: imgMoversLoading, name: "movers-loading.jpg", label: "Loading" },
                     { src: imgBoxesInTruck, name: "boxes-truck.jpg", label: "Boxes" },
                     { src: imgHappyMove, name: "happy-move.jpg", label: "Happy Move" },
                   ].map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.src}
-                      download={item.name}
-                      className="group relative border rounded overflow-hidden hover:border-primary transition-colors"
-                    >
-                      <img src={item.src} alt={item.label} className="w-24 h-24 object-cover" />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <Download className="w-5 h-5 text-white" />
+                    <div key={item.name} className="text-center">
+                      <div className="border rounded overflow-hidden hover:border-primary transition-colors">
+                        <img src={item.src} alt={item.label} className="w-24 h-24 object-cover" />
                       </div>
-                      <p className="text-xs text-center py-1 bg-background text-muted-foreground">{item.label}</p>
-                    </a>
+                      <p className="text-xs mt-1 text-muted-foreground">{item.label}</p>
+                      <a
+                        href={item.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-primary hover:underline"
+                      >
+                        Open full size
+                      </a>
+                    </div>
                   ))}
                 </div>
               </div>
