@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -242,7 +242,20 @@ const Admin = () => {
               <span className="text-muted-foreground">With Trucks:</span>
               <span className="font-medium">{withTrucks}</span>
             </li>
-          </ul>
+        </ul>
+        </section>
+
+        {/* Instagram Link */}
+        <section className="mb-6">
+          <a 
+            href="https://business.instagram.com/getting-started" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <Instagram className="w-4 h-4" />
+            Set up Instagram for Business
+          </a>
         </section>
 
         {/* Divider */}
