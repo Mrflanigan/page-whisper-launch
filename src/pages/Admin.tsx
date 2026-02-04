@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -245,17 +245,28 @@ const Admin = () => {
         </ul>
         </section>
 
-        {/* Instagram Link */}
+        {/* Social Media Links */}
         <section className="mb-6">
-          <a 
-            href="https://business.instagram.com/getting-started" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-          >
-            <Instagram className="w-4 h-4" />
-            Set up Instagram for Business
-          </a>
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://business.instagram.com/getting-started" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            >
+              <Instagram className="w-4 h-4" />
+              Instagram Setup
+            </a>
+            <a 
+              href="https://www.facebook.com/pages/create" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            >
+              <Facebook className="w-4 h-4" />
+              Facebook Setup
+            </a>
+          </div>
         </section>
 
         {/* Divider */}
