@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import marketing assets
@@ -36,6 +36,7 @@ const Admin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loadingInquiries, setLoadingInquiries] = useState(false);
+  const [showAssets, setShowAssets] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -279,60 +280,69 @@ const Admin = () => {
         {/* Divider */}
         <hr className="border-border mb-4" />
 
-        {/* Marketing Assets Gallery */}
+        {/* Marketing Assets Toggle */}
         <section className="mb-6">
-          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-3">Marketing Assets</h2>
+          <button
+            onClick={() => setShowAssets(!showAssets)}
+            className="flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <ImageIcon className="w-4 h-4" />
+            Marketing Assets
+            {showAssets ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
           
-          <div className="space-y-4">
-            {/* Logos */}
-            <div>
-              <h3 className="text-xs font-medium text-muted-foreground mb-2">Logos</h3>
-              <div className="flex gap-3 flex-wrap">
-                {[
-                  { src: logoOriginal, name: "logo-original.png", label: "Original" },
-                  { src: logoSharp, name: "logo-sharp.png", label: "Sharp" },
-                ].map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.src}
-                    download={item.name}
-                    className="group relative bg-white border rounded p-2 hover:border-primary transition-colors"
-                  >
-                    <img src={item.src} alt={item.label} className="w-20 h-20 object-contain" />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded">
-                      <Download className="w-5 h-5 text-white" />
-                    </div>
-                    <p className="text-xs text-center mt-1 text-muted-foreground">{item.label}</p>
-                  </a>
-                ))}
+          {showAssets && (
+            <div className="mt-4 space-y-4">
+              {/* Logos */}
+              <div>
+                <h3 className="text-xs font-medium text-muted-foreground mb-2">Logos</h3>
+                <div className="flex gap-3 flex-wrap">
+                  {[
+                    { src: logoOriginal, name: "logo-original.png", label: "Original" },
+                    { src: logoSharp, name: "logo-sharp.png", label: "Sharp" },
+                  ].map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.src}
+                      download={item.name}
+                      className="group relative bg-white border rounded p-2 hover:border-primary transition-colors"
+                    >
+                      <img src={item.src} alt={item.label} className="w-20 h-20 object-contain" />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded">
+                        <Download className="w-5 h-5 text-white" />
+                      </div>
+                      <p className="text-xs text-center mt-1 text-muted-foreground">{item.label}</p>
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Instagram Photos */}
-            <div>
-              <h3 className="text-xs font-medium text-muted-foreground mb-2">Instagram Photos</h3>
-              <div className="flex gap-3 flex-wrap">
-                {[
-                  { src: imgMoversLoading, name: "movers-loading.jpg", label: "Loading" },
-                  { src: imgBoxesInTruck, name: "boxes-truck.jpg", label: "Boxes" },
-                  { src: imgHappyMove, name: "happy-move.jpg", label: "Happy Move" },
-                ].map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.src}
-                    download={item.name}
-                    className="group relative border rounded overflow-hidden hover:border-primary transition-colors"
-                  >
-                    <img src={item.src} alt={item.label} className="w-24 h-24 object-cover" />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Download className="w-5 h-5 text-white" />
-                    </div>
-                    <p className="text-xs text-center py-1 bg-background text-muted-foreground">{item.label}</p>
-                  </a>
-                ))}
+              {/* Instagram Photos */}
+              <div>
+                <h3 className="text-xs font-medium text-muted-foreground mb-2">Instagram Photos</h3>
+                <div className="flex gap-3 flex-wrap">
+                  {[
+                    { src: imgMoversLoading, name: "movers-loading.jpg", label: "Loading" },
+                    { src: imgBoxesInTruck, name: "boxes-truck.jpg", label: "Boxes" },
+                    { src: imgHappyMove, name: "happy-move.jpg", label: "Happy Move" },
+                  ].map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.src}
+                      download={item.name}
+                      className="group relative border rounded overflow-hidden hover:border-primary transition-colors"
+                    >
+                      <img src={item.src} alt={item.label} className="w-24 h-24 object-cover" />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <Download className="w-5 h-5 text-white" />
+                      </div>
+                      <p className="text-xs text-center py-1 bg-background text-muted-foreground">{item.label}</p>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </section>
 
         {/* Divider */}
