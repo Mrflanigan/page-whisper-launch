@@ -280,6 +280,10 @@ const Index = () => {
                 <Link to="/terms" className="text-white/50 hover:text-white transition-colors">
                   Terms
                 </Link>
+                <span className="text-white/30">|</span>
+                <Link to="/admin" className="text-white/50 hover:text-white transition-colors">
+                  Admin
+                </Link>
               </div>
               <p className="text-white/70 text-xs font-bold font-montserrat mt-2">
                 © {new Date().getFullYear()} All rights reserved.
@@ -304,6 +308,10 @@ const Index = () => {
             <span className="text-secondary/30">|</span>
             <Link to="/terms" className="text-secondary/50 hover:text-secondary transition-colors">
               Terms of Service
+            </Link>
+            <span className="text-secondary/30">|</span>
+            <Link to="/admin" className="text-secondary/50 hover:text-secondary transition-colors">
+              Admin
             </Link>
           </div>
           <p className="text-secondary/50 text-xs mt-3">
