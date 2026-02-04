@@ -14,6 +14,7 @@ import ThankYou from "./pages/ThankYou";
 import PromoFlyer from "./pages/PromoFlyer";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/builder" element={<Builder />} />
           <Route path="/site/:id" element={<Site />} />
           <Route path="/upload/:token" element={<MobileUpload />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
