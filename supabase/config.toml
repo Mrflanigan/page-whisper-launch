@@ -1,1 +1,7 @@
 project_id = "oidxogpkffmntszqmwtr"
+
+[functions.verify-admin]
+verify_jwt = false
+
+[functions.get-inquiries]
+verify_jwt = false
