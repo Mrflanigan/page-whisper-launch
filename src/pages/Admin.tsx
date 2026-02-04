@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, BarChart3, DollarSign, MousePointerClick, TrendingUp, ArrowLeft } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -32,7 +31,6 @@ const Admin = () => {
   const [loadingInquiries, setLoadingInquiries] = useState(false);
   const { toast } = useToast();
 
-  // Check for existing session
   useEffect(() => {
     const token = sessionStorage.getItem("admin_token");
     if (token) {
@@ -40,7 +38,6 @@ const Admin = () => {
     }
   }, []);
 
-  // Fetch inquiries when authenticated
   useEffect(() => {
     if (isAuthenticated) {
       fetchInquiries();
@@ -105,12 +102,12 @@ const Admin = () => {
         setPassword("");
         toast({
           title: "Welcome!",
-          description: "You've successfully logged in to the admin dashboard.",
+          description: "You've successfully logged in.",
         });
       } else {
         toast({
           title: "Access Denied",
-          description: data.error || "Invalid password. Please try again.",
+          description: data.error || "Invalid password.",
           variant: "destructive",
         });
       }
@@ -118,7 +115,7 @@ const Admin = () => {
       console.error("Login error:", error);
       toast({
         title: "Error",
-        description: "Failed to connect. Please try again.",
+        description: "Failed to connect.",
         variant: "destructive",
       });
     } finally {
@@ -130,243 +127,190 @@ const Admin = () => {
     sessionStorage.removeItem("admin_token");
     setIsAuthenticated(false);
     setInquiries([]);
-    toast({
-      title: "Logged Out",
-      description: "You've been logged out successfully.",
-    });
+    toast({ title: "Logged Out" });
   };
+
+  // Stats calculations
+  const thisWeekInquiries = inquiries.filter((i) => {
+    const date = new Date(i.created_at);
+    const weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
+    return date >= weekAgo;
+  }).length;
+
+  const withTrucks = inquiries.filter((i) => i.has_truck).length;
 
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center">
-            <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <Lock className="w-6 h-6 text-primary" />
-            </div>
-            <CardTitle className="text-2xl">Admin Access</CardTitle>
-            <CardDescription>
-              Enter your password to access the admin dashboard
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter admin password"
-                    required
-                    className="pr-10"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
+        <div className="w-full max-w-sm">
+          <div className="flex items-center gap-3 mb-6">
+            <Lock className="w-5 h-5 text-primary" />
+            <h1 className="text-xl font-semibold">Admin Access</h1>
+          </div>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-1">
+              <Label htmlFor="password" className="text-sm">Password</Label>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter password"
+                  required
+                  className="pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
               </div>
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Verifying..." : "Access Dashboard"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+            </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Verifying..." : "Login"}
+            </Button>
+          </form>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+      {/* Compact Header */}
+      <header className="border-b">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <Link to="/">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back
+              <Button variant="ghost" size="sm" className="h-8 px-2">
+                <ArrowLeft className="w-4 h-4" />
               </Button>
             </Link>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Admin Dashboard</h1>
-              <p className="text-sm text-muted-foreground">Manage your advertising campaigns</p>
-            </div>
+            <h1 className="text-lg font-semibold">Admin</h1>
           </div>
-          <Button variant="outline" onClick={handleLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
+          <Button variant="ghost" size="sm" onClick={handleLogout} className="h-8">
+            <LogOut className="w-4 h-4 mr-1" />
             Logout
           </Button>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Total Inquiries
-              </CardTitle>
-              <BarChart3 className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{inquiries.length}</div>
-              <p className="text-xs text-muted-foreground">From all campaigns</p>
-            </CardContent>
-          </Card>
+      <main className="container mx-auto px-4 py-4">
+        {/* Stats as compact bullet list */}
+        <section className="mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Quick Stats</h2>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={fetchInquiries} 
+              disabled={loadingInquiries}
+              className="h-7 px-2 text-xs"
+            >
+              <RefreshCw className={`w-3 h-3 mr-1 ${loadingInquiries ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+          </div>
+          <ul className="space-y-1 text-sm">
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              <span className="text-muted-foreground">Page Views:</span>
+              <span className="font-medium">580</span>
+              <span className="text-muted-foreground text-xs">(all time)</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              <span className="text-muted-foreground">Unique Visitors:</span>
+              <span className="font-medium">333</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              <span className="text-muted-foreground">Total Inquiries:</span>
+              <span className="font-medium">{inquiries.length}</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="text-muted-foreground">This Week:</span>
+              <span className="font-medium">{thisWeekInquiries}</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="text-muted-foreground">With Trucks:</span>
+              <span className="font-medium">{withTrucks}</span>
+            </li>
+          </ul>
+        </section>
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                This Week
-              </CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
-                {inquiries.filter((i) => {
-                  const date = new Date(i.created_at);
-                  const weekAgo = new Date();
-                  weekAgo.setDate(weekAgo.getDate() - 7);
-                  return date >= weekAgo;
-                }).length}
-              </div>
-              <p className="text-xs text-muted-foreground">New inquiries</p>
-            </CardContent>
-          </Card>
+        {/* Divider */}
+        <hr className="border-border mb-4" />
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                With Trucks
-              </CardTitle>
-              <MousePointerClick className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
-                {inquiries.filter((i) => i.has_truck).length}
-              </div>
-              <p className="text-xs text-muted-foreground">Customers with trucks</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Conversion Rate
-              </CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">--</div>
-              <p className="text-xs text-muted-foreground">Track manually</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Inquiries Table */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Inquiries</CardTitle>
-            <CardDescription>
-              All customer inquiries from your advertising campaigns
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {loadingInquiries ? (
-              <div className="text-center py-8 text-muted-foreground">
-                Loading inquiries...
-              </div>
-            ) : inquiries.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
-                <p className="mb-2">No inquiries to display yet.</p>
-                <p className="text-sm">
-                  Note: Inquiries will appear here once customers submit the contact form.
-                </p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Phone</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Move Details</TableHead>
-                      <TableHead>Has Truck</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {inquiries.map((inquiry) => (
-                      <TableRow key={inquiry.id}>
-                        <TableCell className="whitespace-nowrap">
-                          {format(new Date(inquiry.created_at), "MMM d, yyyy")}
-                        </TableCell>
-                        <TableCell className="font-medium">{inquiry.name}</TableCell>
-                        <TableCell>
-                          <a
-                            href={`tel:${inquiry.phone}`}
-                            className="text-primary hover:underline"
-                          >
-                            {inquiry.phone}
+        {/* Inquiries Table - compact */}
+        <section>
+          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-3">Inquiries</h2>
+          
+          {loadingInquiries ? (
+            <p className="text-sm text-muted-foreground">Loading...</p>
+          ) : inquiries.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No inquiries yet. They'll appear here when customers submit the contact form.</p>
+          ) : (
+            <div className="overflow-x-auto -mx-4 px-4">
+              <Table>
+                <TableHeader>
+                  <TableRow className="text-xs">
+                    <TableHead className="py-2">Date</TableHead>
+                    <TableHead className="py-2">Name</TableHead>
+                    <TableHead className="py-2">Phone</TableHead>
+                    <TableHead className="py-2">Email</TableHead>
+                    <TableHead className="py-2">Move</TableHead>
+                    <TableHead className="py-2">Truck</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {inquiries.map((inquiry) => (
+                    <TableRow key={inquiry.id} className="text-sm">
+                      <TableCell className="py-2 whitespace-nowrap">
+                        {format(new Date(inquiry.created_at), "MMM d")}
+                      </TableCell>
+                      <TableCell className="py-2 font-medium">{inquiry.name}</TableCell>
+                      <TableCell className="py-2">
+                        <a href={`tel:${inquiry.phone}`} className="text-primary hover:underline">
+                          {inquiry.phone}
+                        </a>
+                      </TableCell>
+                      <TableCell className="py-2">
+                        {inquiry.email ? (
+                          <a href={`mailto:${inquiry.email}`} className="text-primary hover:underline">
+                            {inquiry.email}
                           </a>
-                        </TableCell>
-                        <TableCell>
-                          {inquiry.email ? (
-                            <a
-                              href={`mailto:${inquiry.email}`}
-                              className="text-primary hover:underline"
-                            >
-                              {inquiry.email}
-                            </a>
-                          ) : (
-                            <span className="text-muted-foreground">—</span>
-                          )}
-                        </TableCell>
-                        <TableCell className="max-w-[200px]">
-                          <div className="text-sm">
-                            {inquiry.move_from && inquiry.move_to ? (
-                              <>
-                                <span className="font-medium">From:</span> {inquiry.move_from}
-                                <br />
-                                <span className="font-medium">To:</span> {inquiry.move_to}
-                              </>
-                            ) : (
-                              <span className="text-muted-foreground">Not specified</span>
-                            )}
-                            {inquiry.move_date && (
-                              <>
-                                <br />
-                                <span className="font-medium">Date:</span> {inquiry.move_date}
-                              </>
-                            )}
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          {inquiry.has_truck ? (
-                            <span className="text-primary font-medium">
-                              Yes ({inquiry.truck_type || "Type N/A"})
-                            </span>
-                          ) : (
-                            <span className="text-muted-foreground">No</span>
-                          )}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
+                      </TableCell>
+                      <TableCell className="py-2 text-xs">
+                        {inquiry.move_from && inquiry.move_to ? (
+                          <span>{inquiry.move_from} → {inquiry.move_to}</span>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
+                      </TableCell>
+                      <TableCell className="py-2">
+                        {inquiry.has_truck ? (
+                          <span className="text-primary">Yes</span>
+                        ) : (
+                          <span className="text-muted-foreground">No</span>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </section>
       </main>
     </div>
   );
