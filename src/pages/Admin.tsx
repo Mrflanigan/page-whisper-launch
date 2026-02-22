@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp, Plus, Trash2, ExternalLink, Phone, Mail, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import marketing assets
@@ -29,6 +29,21 @@ interface Inquiry {
   created_at: string;
 }
 
+interface Lead {
+  id: string;
+  company_name: string;
+  contact_name: string | null;
+  phone: string | null;
+  email: string | null;
+  website: string | null;
+  area: string | null;
+  unit_count: string | null;
+  notes: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
@@ -37,6 +52,9 @@ const Admin = () => {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loadingInquiries, setLoadingInquiries] = useState(false);
   const [showAssets, setShowAssets] = useState(false);
+  const [showLeads, setShowLeads] = useState(false);
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loadingLeads, setLoadingLeads] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -49,8 +67,56 @@ const Admin = () => {
   useEffect(() => {
     if (isAuthenticated) {
       fetchInquiries();
+      fetchLeads();
     }
   }, [isAuthenticated]);
+
+  const fetchLeads = async () => {
+    setLoadingLeads(true);
+    const token = sessionStorage.getItem("admin_token");
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-leads`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            "x-admin-token": token || "",
+          },
+        }
+      );
+      const data = await response.json();
+      if (response.ok && data.leads) {
+        setLeads(data.leads);
+      }
+    } catch (error) {
+      console.error("Error fetching leads:", error);
+    } finally {
+      setLoadingLeads(false);
+    }
+  };
+
+  const updateLeadStatus = async (id: string, status: string) => {
+    const token = sessionStorage.getItem("admin_token");
+    try {
+      await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-leads`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            "x-admin-token": token || "",
+          },
+          body: JSON.stringify({ action: "update", lead: { id, status } }),
+        }
+      );
+      setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status } : l)));
+    } catch (error) {
+      console.error("Error updating lead:", error);
+    }
+  };
 
   const fetchInquiries = async () => {
     setLoadingInquiries(true);
@@ -275,6 +341,88 @@ const Admin = () => {
               Facebook Setup
             </a>
           </div>
+        </section>
+
+        {/* Leads Section */}
+        <section className="mb-6">
+          <button
+            onClick={() => setShowLeads(!showLeads)}
+            className="flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <Building2 className="w-4 h-4" />
+            Apartment Manager Leads ({leads.length})
+            {showLeads ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
+          {showLeads && (
+            <div className="mt-3">
+              {loadingLeads ? (
+                <p className="text-sm text-muted-foreground">Loading leads...</p>
+              ) : leads.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No leads yet.</p>
+              ) : (
+                <div className="overflow-x-auto -mx-4 px-4">
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="text-xs">
+                        <TableHead className="py-2">Company</TableHead>
+                        <TableHead className="py-2">Area</TableHead>
+                        <TableHead className="py-2">Units</TableHead>
+                        <TableHead className="py-2">Contact</TableHead>
+                        <TableHead className="py-2">Status</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {leads.map((lead) => (
+                        <TableRow key={lead.id} className="text-sm">
+                          <TableCell className="py-2">
+                            <div className="font-medium">{lead.company_name}</div>
+                            {lead.website && (
+                              <a href={lead.website} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline inline-flex items-center gap-1">
+                                Website <ExternalLink className="w-3 h-3" />
+                              </a>
+                            )}
+                            {lead.notes && <p className="text-xs text-muted-foreground mt-0.5">{lead.notes}</p>}
+                          </TableCell>
+                          <TableCell className="py-2 text-xs">{lead.area || "—"}</TableCell>
+                          <TableCell className="py-2 text-xs">{lead.unit_count || "—"}</TableCell>
+                          <TableCell className="py-2">
+                            <div className="space-y-0.5">
+                              {lead.contact_name && <div className="text-xs font-medium">{lead.contact_name}</div>}
+                              {lead.phone && (
+                                <a href={`tel:${lead.phone}`} className="text-xs text-primary hover:underline flex items-center gap-1">
+                                  <Phone className="w-3 h-3" /> {lead.phone}
+                                </a>
+                              )}
+                              {lead.email && (
+                                <a href={`mailto:${lead.email}`} className="text-xs text-primary hover:underline flex items-center gap-1">
+                                  <Mail className="w-3 h-3" /> {lead.email}
+                                </a>
+                              )}
+                              {!lead.contact_name && !lead.phone && !lead.email && <span className="text-xs text-muted-foreground">—</span>}
+                            </div>
+                          </TableCell>
+                          <TableCell className="py-2">
+                            <select
+                              value={lead.status}
+                              onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
+                              className="text-xs border rounded px-1.5 py-0.5 bg-background"
+                            >
+                              <option value="new">New</option>
+                              <option value="contacted">Contacted</option>
+                              <option value="interested">Interested</option>
+                              <option value="not_interested">Not Interested</option>
+                              <option value="converted">Converted</option>
+                            </select>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              )}
+            </div>
+          )}
         </section>
 
         {/* Divider */}

@@ -107,6 +107,51 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          area: string | null
+          company_name: string
+          contact_name: string | null
+          created_at: string
+          email: string | null
+          id: string
+          notes: string | null
+          phone: string | null
+          status: string
+          unit_count: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          area?: string | null
+          company_name: string
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          status?: string
+          unit_count?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          area?: string | null
+          company_name?: string
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          status?: string
+          unit_count?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
       upload_sessions: {
         Row: {
           created_at: string
