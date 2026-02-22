@@ -171,7 +171,7 @@ const Admin = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        sessionStorage.setItem("admin_token", data.token);
+        sessionStorage.setItem("admin_token", password);
         setIsAuthenticated(true);
         setPassword("");
         toast({
