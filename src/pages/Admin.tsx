@@ -445,7 +445,7 @@ const Admin = () => {
                 leads.map((lead) => {
                   const name = lead.company_name;
                   const subject = `Quick intro — moving help for ${name} residents`;
-                  const body = `Hi there,\n\nI'm Ron Stewart, owner of Top Choice Moving Inc. We're a local crew based right here in the Seattle metro area.\n\nWe specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!\n\nWe'd love to partner with ${name} to offer your tenants professional moving services. We pay $30.00 on a Visa gift card for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.\n\nHappy to swing by with some business cards you can hand out, or just save my number.\n\n📞 (253) 267-3212\n📧 Stewartron329@gmail.com\n🌐 Website: https://page-whisper-launch.lovable.app\n\nThanks for your time!\n\nRon Stewart\nTop Choice Moving Inc.`;
+                  const body = `Hi there,\n\nI'm Ron Stewart, owner of Top Choice Moving Inc. We're a local crew based right here in the Seattle metro area.\n\nWe specialize in helping folks move when the time comes — We are usually less expensive. We provide the labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load...  We unload. Save your back — let us do it!\n\nWe'd like to partner with ${name} to offer your tenants professional moving experiance. We'd like to give you $30.00 on a Visa gift card for every completed move you refer our way. No strings — Just our way of saying thanks for thinking of us.\n\nHappy to swing by with some business cards you can hand out, or just save my number.\n\n📞 (253) 267-3212\n📧 Stewartron329@gmail.com\n🌐 Website: https://page-whisper-launch.lovable.app\n\nThanks for your time!\n\nRon Stewart\nTop Choice Moving Inc.`;
 
                   return (
                     <div key={lead.id} className="border rounded-lg overflow-hidden">
@@ -496,8 +496,8 @@ const Admin = () => {
                         <hr className="border-border" />
                         <p>Hi there,</p>
                         <p>I'm Ron Stewart, owner of <strong>Top Choice Moving Inc.</strong> We're a local crew based right here in the Seattle metro area.</p>
-                        <p>We specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!</p>
-                        <p>We'd love to partner with <strong className="text-primary">{name}</strong> to offer your tenants professional moving services. We pay <strong>$30.00 on a Visa gift card</strong> for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.</p>
+                        <p>We specialize in helping folks move when the time comes — We are usually less expensive. We provide the labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load...  We unload. Save your back — let us do it!</p>
+                        <p>We'd like to partner with <strong className="text-primary">{name}</strong> to offer your tenants professional moving experiance. We'd like to give you <strong>$30.00 on a Visa gift card</strong> for every completed move you refer our way. No strings — Just our way of saying thanks for thinking of us.</p>
                         <p>Happy to swing by with some business cards you can hand out, or just save my number.</p>
                         <div className="space-y-0.5">
                           <p>📞 (253) 267-3212</p>
