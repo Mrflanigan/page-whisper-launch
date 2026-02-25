@@ -56,7 +56,6 @@ const Admin = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loadingLeads, setLoadingLeads] = useState(false);
   const [showEmailTemplate, setShowEmailTemplate] = useState(false);
-  const [apartmentName, setApartmentName] = useState("");
   const { toast } = useToast();
 
   useEffect(() => {
@@ -427,92 +426,93 @@ const Admin = () => {
           )}
         </section>
 
-        {/* Email Outreach Template */}
+        {/* Email Outreach Templates */}
         <section className="mb-6">
           <button
             onClick={() => setShowEmailTemplate(!showEmailTemplate)}
             className="flex items-center gap-2 text-sm text-primary hover:underline"
           >
             <Send className="w-4 h-4" />
-            Email Outreach Template
+            Email Outreach — Ready to Send ({leads.filter(l => l.status === "new" || l.status === "contacted").length} leads)
             {showEmailTemplate ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
 
           {showEmailTemplate && (
-            <div className="mt-3 space-y-3">
-              <div className="space-y-1">
-                <Label htmlFor="apt-name" className="text-xs text-muted-foreground">Apartment / Property Name</Label>
-                <Input
-                  id="apt-name"
-                  value={apartmentName}
-                  onChange={(e) => setApartmentName(e.target.value)}
-                  placeholder="e.g. The Seasons of Renton"
-                  className="max-w-sm text-sm"
-                />
-              </div>
+            <div className="mt-3 space-y-4">
+              {leads.length === 0 ? (
+                <p className="text-sm text-muted-foreground">No leads in database. Add apartment leads first.</p>
+              ) : (
+                leads.map((lead) => {
+                  const name = lead.company_name;
+                  const subject = `Quick intro — moving help for ${name} residents`;
+                  const body = `Hi there,\n\nI'm Ron Stewart, owner of Top Choice Moving Inc. We're a local crew based right here in the Seattle metro area.\n\nWe specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!\n\nWe'd love to partner with ${name} to offer your tenants professional moving services. We pay $30.00 on a Visa gift card for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.\n\nHappy to swing by with some business cards you can hand out, or just save my number.\n\n📞 (253) 267-3212\n📧 Stewartron329@gmail.com\n🌐 Website: https://page-whisper-launch.lovable.app\n\nThanks for your time!\n\nRon Stewart\nTop Choice Moving Inc.`;
 
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <p className="text-xs font-medium text-muted-foreground">Subject Line (copy this):</p>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(`Quick intro — moving help for ${apartmentName || "[Property Name]"} residents`);
-                      toast({ title: "Copied!", description: "Subject line copied to clipboard." });
-                    }}
-                    className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-                  >
-                    <Copy className="w-3 h-3" /> Copy
-                  </button>
-                </div>
-                <p className="text-sm bg-muted/50 rounded px-3 py-2 font-medium">
-                  Quick intro — moving help for {apartmentName || "[Property Name]"} residents
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <p className="text-xs font-medium text-muted-foreground">Email Body:</p>
-                  <button
-                    onClick={() => {
-                      const name = apartmentName || "[Property Name]";
-                      const body = `Hi there,\n\nI'm Ron Stewart, owner of Top Choice Moving Inc. We're a local crew based right here in the Seattle metro area.\n\nWe specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!\n\nWe'd love to partner with ${name} to offer your tenants professional moving services. We pay $30.00 on a Visa gift card for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.\n\nHappy to swing by with some business cards you can hand out, or just save my number.\n\n📞 (253) 267-3212\n📧 Stewartron329@gmail.com\n🌐 Website: https://page-whisper-launch.lovable.app\n\nThanks for your time!\n\nRon Stewart\nTop Choice Moving Inc.`;
-                      navigator.clipboard.writeText(body);
-                      toast({ title: "Copied!", description: "Email body copied to clipboard." });
-                    }}
-                    className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-                  >
-                    <Copy className="w-3 h-3" /> Copy Plain Text
-                  </button>
-                </div>
-                <div className="bg-muted/50 rounded px-4 py-4 text-sm space-y-3 leading-relaxed">
-                  <p>Hi there,</p>
-                  <p>
-                    I'm Ron Stewart, owner of <strong>Top Choice Moving Inc.</strong> We're a local crew based right here in the Seattle metro area.
-                  </p>
-                  <p>
-                    We specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!
-                  </p>
-                  <p>
-                    We'd love to partner with <strong className="text-primary">{apartmentName || "[Property Name]"}</strong> to offer your tenants professional moving services. We pay <strong>$30.00 on a Visa gift card</strong> for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.
-                  </p>
-                  <p>
-                    Happy to swing by with some business cards you can hand out, or just save my number.
-                  </p>
-                  <div className="space-y-1">
-                    <p>📞 <a href="tel:253-267-3212" className="text-primary hover:underline">(253) 267-3212</a></p>
-                    <p>📧 <a href="mailto:Stewartron329@gmail.com" className="text-primary hover:underline">Stewartron329@gmail.com</a></p>
-                    <p>🌐 <a href="https://page-whisper-launch.lovable.app" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Website</a></p>
-                  </div>
-                  <p>Thanks for your time!</p>
-                  <p>
-                    <strong>Ron Stewart</strong><br />
-                    Top Choice Moving Inc.
-                  </p>
-                </div>
-              </div>
-
+                  return (
+                    <div key={lead.id} className="border rounded-lg overflow-hidden">
+                      <div className="flex items-center justify-between px-3 py-2 bg-muted/30">
+                        <div className="flex items-center gap-2">
+                          <Building2 className="w-4 h-4 text-primary" />
+                          <span className="text-sm font-medium">{name}</span>
+                          <span className={`text-xs px-1.5 py-0.5 rounded ${
+                            lead.status === "new" ? "bg-primary/10 text-primary" :
+                            lead.status === "contacted" ? "bg-accent/50 text-accent-foreground" :
+                            lead.status === "converted" ? "bg-green-100 text-green-800" :
+                            "bg-muted text-muted-foreground"
+                          }`}>
+                            {lead.status}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          {lead.email && (
+                            <a
+                              href={`mailto:${lead.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
+                              className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded hover:bg-primary/90 inline-flex items-center gap-1"
+                            >
+                              <Mail className="w-3 h-3" /> Open in Email
+                            </a>
+                          )}
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(body);
+                              toast({ title: "Copied!", description: `Email for ${name} copied to clipboard.` });
+                            }}
+                            className="text-xs border px-2 py-1 rounded hover:bg-muted inline-flex items-center gap-1"
+                          >
+                            <Copy className="w-3 h-3" /> Copy Body
+                          </button>
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(subject);
+                              toast({ title: "Copied!", description: "Subject line copied." });
+                            }}
+                            className="text-xs border px-2 py-1 rounded hover:bg-muted inline-flex items-center gap-1"
+                          >
+                            <Copy className="w-3 h-3" /> Copy Subject
+                          </button>
+                        </div>
+                      </div>
+                      <div className="px-4 py-3 text-sm space-y-2 leading-relaxed max-h-48 overflow-y-auto">
+                        <p className="text-xs text-muted-foreground"><strong>Subject:</strong> {subject}</p>
+                        <hr className="border-border" />
+                        <p>Hi there,</p>
+                        <p>I'm Ron Stewart, owner of <strong>Top Choice Moving Inc.</strong> We're a local crew based right here in the Seattle metro area.</p>
+                        <p>We specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!</p>
+                        <p>We'd love to partner with <strong className="text-primary">{name}</strong> to offer your tenants professional moving services. We pay <strong>$30.00 on a Visa gift card</strong> for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.</p>
+                        <p>Happy to swing by with some business cards you can hand out, or just save my number.</p>
+                        <div className="space-y-0.5">
+                          <p>📞 (253) 267-3212</p>
+                          <p>📧 Stewartron329@gmail.com</p>
+                          <p>🌐 <a href="https://page-whisper-launch.lovable.app" className="text-primary hover:underline">Website</a></p>
+                        </div>
+                        <p>Thanks for your time!</p>
+                        <p><strong>Ron Stewart</strong><br />Top Choice Moving Inc.</p>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
               <p className="text-xs text-muted-foreground italic">
-                💡 Tip: Right-click the Top Choice logo above in Marketing Assets to copy it, then paste it into your email for a professional look.
+                💡 Tip: Right-click the Top Choice logo in Marketing Assets to copy it, then paste into your email for a professional look.
               </p>
             </div>
           )}
