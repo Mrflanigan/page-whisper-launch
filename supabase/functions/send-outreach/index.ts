@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    const { leadIds } = await req.json();
+    const { leadIds, extraEmails } = await req.json();
 
     if (!leadIds || !Array.isArray(leadIds) || leadIds.length === 0) {
       return new Response(JSON.stringify({ error: "No lead IDs provided" }), {
@@ -94,7 +94,7 @@ Deno.serve(async (req) => {
           },
           body: JSON.stringify({
             from: "Ron Stewart <ron@topchoicemovinginc.com>",
-            to: [lead.email],
+            to: [lead.email, ...(extraEmails?.[lead.id] || [])],
             reply_to: "Stewartron329@gmail.com",
             subject,
             html: htmlBody,
