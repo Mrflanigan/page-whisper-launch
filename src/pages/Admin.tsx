@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp, Plus, Trash2, ExternalLink, Phone, Mail, Building2, Copy, Send } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp, Plus, Trash2, ExternalLink, Phone, Mail, Building2, Copy, Send, Smartphone } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 
 // Import marketing assets
@@ -374,10 +375,17 @@ const Admin = () => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {leads.map((lead) => (
+                    {[...leads].sort((a, b) => {
+                      if (a.email && !b.email) return -1;
+                      if (!a.email && b.email) return 1;
+                      return 0;
+                    }).map((lead) => (
                         <TableRow key={lead.id} className="text-sm">
                           <TableCell className="py-2">
-                            <div className="font-medium">{lead.company_name}</div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium">{lead.company_name}</span>
+                              {lead.email && <Badge variant="default" className="text-[10px] px-1.5 py-0">📧 Email</Badge>}
+                            </div>
                             {lead.website && (
                               <a href={lead.website} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline inline-flex items-center gap-1">
                                 Website <ExternalLink className="w-3 h-3" />
@@ -393,6 +401,7 @@ const Admin = () => {
                               {lead.phone && (
                                 <a href={`tel:${lead.phone}`} className="text-xs text-primary hover:underline flex items-center gap-1">
                                   <Phone className="w-3 h-3" /> {lead.phone}
+                                  <span className="text-[10px] text-muted-foreground ml-1">(Landline)</span>
                                 </a>
                               )}
                               {lead.email && (
@@ -442,7 +451,11 @@ const Admin = () => {
               {leads.length === 0 ? (
                 <p className="text-sm text-muted-foreground">No leads in database. Add apartment leads first.</p>
               ) : (
-                leads.map((lead) => {
+                [...leads].sort((a, b) => {
+                  if (a.email && !b.email) return -1;
+                  if (!a.email && b.email) return 1;
+                  return 0;
+                }).map((lead) => {
                   const name = lead.company_name;
                   const subject = `Quick intro — moving help for ${name} residents`;
                   const body = `Hi there,\n\nI'm Ron Stewart, owner of Top Choice Moving Inc. We're a local crew based right here in the Seattle metro area.\n\nWe specialize in helping folks move when the time comes — We are usually less expensive. We provide the labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load...  We unload. Save your back — let us do it!\n\nWe'd like to partner with ${name} to offer your tenants professional moving experiance. We'd like to give you $30.00 on a Visa gift card for every completed move you refer our way. No strings — Just our way of saying thanks for thinking of us.\n\nHappy to swing by with some business cards you can hand out, or just save my number.\n\n📞 (253) 267-3212\n📧 Stewartron329@gmail.com\n🌐 Website: https://page-whisper-launch.lovable.app\n\nThanks for your time!\n\nRon Stewart\nTop Choice Moving Inc.`;
@@ -451,8 +464,9 @@ const Admin = () => {
                     <div key={lead.id} className="border rounded-lg overflow-hidden">
                       <div className="flex items-center justify-between px-3 py-2 bg-muted/30">
                         <div className="flex items-center gap-2">
-                          <Building2 className="w-4 h-4 text-primary" />
                           <span className="text-sm font-medium">{name}</span>
+                          {lead.email && <Badge variant="default" className="text-[10px] px-1.5 py-0">📧 Has Email</Badge>}
+                          {!lead.email && <Badge variant="outline" className="text-[10px] px-1.5 py-0 text-muted-foreground">No Email</Badge>}
                           <span className={`text-xs px-1.5 py-0.5 rounded ${
                             lead.status === "new" ? "bg-primary/10 text-primary" :
                             lead.status === "contacted" ? "bg-accent/50 text-accent-foreground" :
