@@ -454,7 +454,7 @@ const Admin = () => {
                 <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
                   <div className="flex-1">
                     <p className="text-sm font-medium">
-                      🚀 {leads.filter(l => l.email && l.status === "new").length} unsent emails ready
+                      🚀 {leads.filter(l => l.email).length} leads with email
                     </p>
                     <p className="text-xs text-muted-foreground">
                       Sends from ron@topchoicemovinginc.com via your verified domain. Replies go to your Gmail.
@@ -464,9 +464,9 @@ const Admin = () => {
                     size="sm"
                     disabled={isSendingEmails}
                     onClick={async () => {
-                      const emailLeads = leads.filter(l => l.email && l.status === "new");
+                      const emailLeads = leads.filter(l => l.email && (l.status === "new" || l.status === "contacted"));
                       if (emailLeads.length === 0) {
-                        toast({ title: "No new leads to email", description: "All leads with emails have already been contacted." });
+                        toast({ title: "No leads to email", description: "No leads with email addresses found." });
                         return;
                       }
                       setIsSendingEmails(true);
@@ -481,7 +481,14 @@ const Admin = () => {
                               Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
                               "x-admin-token": token || "",
                             },
-                            body: JSON.stringify({ leadIds: emailLeads.map(l => l.id) }),
+                            body: JSON.stringify({ 
+                              leadIds: emailLeads.map(l => l.id),
+                              extraEmails: Object.fromEntries(
+                                emailLeads
+                                  .filter(l => l.company_name === "Acres Property Management")
+                                  .map(l => [l.id, ["info@acresrealestate-wa.com"]])
+                              )
+                            }),
                           }
                         );
                         const data = await response.json();
@@ -506,7 +513,7 @@ const Admin = () => {
                     className="gap-1"
                   >
                     <Mail className="w-3.5 h-3.5" />
-                    {isSendingEmails ? "Sending..." : `Send ${leads.filter(l => l.email && l.status === "new").length} Emails`}
+                    {isSendingEmails ? "Sending..." : `Send ${leads.filter(l => l.email).length} Emails`}
                   </Button>
                 </div>
               )}
