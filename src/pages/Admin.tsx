@@ -57,6 +57,7 @@ const Admin = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loadingLeads, setLoadingLeads] = useState(false);
   const [showEmailTemplate, setShowEmailTemplate] = useState(false);
+  const [isSendingEmails, setIsSendingEmails] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -442,12 +443,75 @@ const Admin = () => {
             className="flex items-center gap-2 text-sm text-primary hover:underline"
           >
             <Send className="w-4 h-4" />
-            Email Outreach — Ready to Send ({leads.filter(l => l.status === "new" || l.status === "contacted").length} leads)
+            Email Outreach — Ready to Send ({leads.filter(l => l.email).length} with email)
             {showEmailTemplate ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
 
           {showEmailTemplate && (
             <div className="mt-3 space-y-4">
+              {/* Send All Button */}
+              {leads.filter(l => l.email && (l.status === "new" || l.status === "contacted")).length > 0 && (
+                <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium">
+                      🚀 {leads.filter(l => l.email && l.status === "new").length} unsent emails ready
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Sends from ron@topchoicemovinginc.com via your verified domain. Replies go to your Gmail.
+                    </p>
+                  </div>
+                  <Button
+                    size="sm"
+                    disabled={isSendingEmails}
+                    onClick={async () => {
+                      const emailLeads = leads.filter(l => l.email && l.status === "new");
+                      if (emailLeads.length === 0) {
+                        toast({ title: "No new leads to email", description: "All leads with emails have already been contacted." });
+                        return;
+                      }
+                      setIsSendingEmails(true);
+                      const token = sessionStorage.getItem("admin_token");
+                      try {
+                        const response = await fetch(
+                          `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-outreach`,
+                          {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+                              "x-admin-token": token || "",
+                            },
+                            body: JSON.stringify({ leadIds: emailLeads.map(l => l.id) }),
+                          }
+                        );
+                        const data = await response.json();
+                        if (response.ok) {
+                          toast({
+                            title: `✅ ${data.sent} emails sent!`,
+                            description: data.failed > 0 ? `${data.failed} failed to send.` : "All emails delivered successfully.",
+                          });
+                          // Update local state
+                          setLeads(prev => prev.map(l => 
+                            emailLeads.find(el => el.id === l.id) ? { ...l, status: "contacted" } : l
+                          ));
+                        } else {
+                          toast({ title: "Error", description: data.error || "Failed to send emails.", variant: "destructive" });
+                        }
+                      } catch (error) {
+                        toast({ title: "Error", description: "Network error sending emails.", variant: "destructive" });
+                      } finally {
+                        setIsSendingEmails(false);
+                      }
+                    }}
+                    className="gap-1"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    {isSendingEmails ? "Sending..." : `Send ${leads.filter(l => l.email && l.status === "new").length} Emails`}
+                  </Button>
+                </div>
+              )}
+
+
               {leads.length === 0 ? (
                 <p className="text-sm text-muted-foreground">No leads in database. Add apartment leads first.</p>
               ) : (
