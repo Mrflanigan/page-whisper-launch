@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp, Plus, Trash2, ExternalLink, Phone, Mail, Building2 } from "lucide-react";
+import { Lock, LogOut, Eye, EyeOff, ArrowLeft, RefreshCw, Instagram, Facebook, Download, ImageIcon, ChevronDown, ChevronUp, Plus, Trash2, ExternalLink, Phone, Mail, Building2, Copy, Send } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Import marketing assets
@@ -55,6 +55,8 @@ const Admin = () => {
   const [showLeads, setShowLeads] = useState(false);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loadingLeads, setLoadingLeads] = useState(false);
+  const [showEmailTemplate, setShowEmailTemplate] = useState(false);
+  const [apartmentName, setApartmentName] = useState("");
   const { toast } = useToast();
 
   useEffect(() => {
@@ -421,6 +423,97 @@ const Admin = () => {
                   </Table>
                 </div>
               )}
+            </div>
+          )}
+        </section>
+
+        {/* Email Outreach Template */}
+        <section className="mb-6">
+          <button
+            onClick={() => setShowEmailTemplate(!showEmailTemplate)}
+            className="flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <Send className="w-4 h-4" />
+            Email Outreach Template
+            {showEmailTemplate ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
+          {showEmailTemplate && (
+            <div className="mt-3 space-y-3">
+              <div className="space-y-1">
+                <Label htmlFor="apt-name" className="text-xs text-muted-foreground">Apartment / Property Name</Label>
+                <Input
+                  id="apt-name"
+                  value={apartmentName}
+                  onChange={(e) => setApartmentName(e.target.value)}
+                  placeholder="e.g. The Seasons of Renton"
+                  className="max-w-sm text-sm"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <p className="text-xs font-medium text-muted-foreground">Subject Line (copy this):</p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(`Quick intro — moving help for ${apartmentName || "[Property Name]"} residents`);
+                      toast({ title: "Copied!", description: "Subject line copied to clipboard." });
+                    }}
+                    className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                  >
+                    <Copy className="w-3 h-3" /> Copy
+                  </button>
+                </div>
+                <p className="text-sm bg-muted/50 rounded px-3 py-2 font-medium">
+                  Quick intro — moving help for {apartmentName || "[Property Name]"} residents
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <p className="text-xs font-medium text-muted-foreground">Email Body:</p>
+                  <button
+                    onClick={() => {
+                      const name = apartmentName || "[Property Name]";
+                      const body = `Hi there,\n\nI'm Ron Stewart, owner of Top Choice Moving Inc. We're a local crew based right here in the Seattle metro area.\n\nWe specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!\n\nWe'd love to partner with ${name} to offer your tenants professional moving services. We pay $30.00 on a Visa gift card for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.\n\nHappy to swing by with some business cards you can hand out, or just save my number.\n\n📞 (253) 267-3212\n📧 Stewartron329@gmail.com\n🌐 Website: https://page-whisper-launch.lovable.app\n\nThanks for your time!\n\nRon Stewart\nTop Choice Moving Inc.`;
+                      navigator.clipboard.writeText(body);
+                      toast({ title: "Copied!", description: "Email body copied to clipboard." });
+                    }}
+                    className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                  >
+                    <Copy className="w-3 h-3" /> Copy Plain Text
+                  </button>
+                </div>
+                <div className="bg-muted/50 rounded px-4 py-4 text-sm space-y-3 leading-relaxed">
+                  <p>Hi there,</p>
+                  <p>
+                    I'm Ron Stewart, owner of <strong>Top Choice Moving Inc.</strong> We're a local crew based right here in the Seattle metro area.
+                  </p>
+                  <p>
+                    We specialize in helping folks move when the time comes — and we're usually less expensive. We provide the hard labor paired with the client's truck of choice. By being labor-only, we can get the move done for less. We load, we unload. Save your back — let us do it!
+                  </p>
+                  <p>
+                    We'd love to partner with <strong className="text-primary">{apartmentName || "[Property Name]"}</strong> to offer your tenants professional moving services. We pay <strong>$30.00 on a Visa gift card</strong> for every completed move you refer our way. No strings — just our way of saying thanks for thinking of us.
+                  </p>
+                  <p>
+                    Happy to swing by with some business cards you can hand out, or just save my number.
+                  </p>
+                  <div className="space-y-1">
+                    <p>📞 <a href="tel:253-267-3212" className="text-primary hover:underline">(253) 267-3212</a></p>
+                    <p>📧 <a href="mailto:Stewartron329@gmail.com" className="text-primary hover:underline">Stewartron329@gmail.com</a></p>
+                    <p>🌐 <a href="https://page-whisper-launch.lovable.app" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Website</a></p>
+                  </div>
+                  <p>Thanks for your time!</p>
+                  <p>
+                    <strong>Ron Stewart</strong><br />
+                    Top Choice Moving Inc.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs text-muted-foreground italic">
+                💡 Tip: Right-click the Top Choice logo above in Marketing Assets to copy it, then paste it into your email for a professional look.
+              </p>
             </div>
           )}
         </section>
